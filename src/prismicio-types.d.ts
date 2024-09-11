@@ -4,6 +4,73 @@ import type * as prismic from '@prismicio/client';
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
+/**
+ * Item in *nav → Link*
+ */
+export interface NavDocumentDataLinkItem {
+	/**
+	 * Label field in *nav → Link*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: nav.link[].label
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	label: prismic.KeyTextField;
+
+	/**
+	 * Link field in *nav → Link*
+	 *
+	 * - **Field Type**: Link
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: nav.link[].link
+	 * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+	 */
+	link: prismic.LinkField;
+}
+
+/**
+ * Content for nav documents
+ */
+interface NavDocumentData {
+	/**
+	 * Logo field in *nav*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: nav.logo
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#image
+	 */
+	logo: prismic.ImageField<never>;
+
+	/**
+	 * Link field in *nav*
+	 *
+	 * - **Field Type**: Group
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: nav.link[]
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#group
+	 */
+	link: prismic.GroupField<Simplify<NavDocumentDataLinkItem>>;
+}
+
+/**
+ * nav document from Prismic
+ *
+ * - **API ID**: `nav`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type NavDocument<Lang extends string = string> = prismic.PrismicDocumentWithoutUID<
+	Simplify<NavDocumentData>,
+	'nav',
+	Lang
+>;
+
 type PageDocumentDataSlicesSlice = RichTextSlice;
 
 /**
@@ -79,7 +146,7 @@ export type PageDocument<Lang extends string = string> = prismic.PrismicDocument
 	Lang
 >;
 
-export type AllDocumentTypes = PageDocument;
+export type AllDocumentTypes = NavDocument | PageDocument;
 
 /**
  * Primary content in *RichText → Default → Primary*
@@ -133,6 +200,9 @@ declare module '@prismicio/client' {
 
 	namespace Content {
 		export type {
+			NavDocument,
+			NavDocumentData,
+			NavDocumentDataLinkItem,
 			PageDocument,
 			PageDocumentData,
 			PageDocumentDataSlicesSlice,

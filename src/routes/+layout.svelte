@@ -3,6 +3,7 @@
 	import { page } from '$app/stores';
 	import { repositoryName } from '$lib/prismicio';
 	import '../app.css';
+	import Navbar from '$lib/components/Navbar.svelte';
 </script>
 
 <svelte:head>
@@ -18,7 +19,8 @@
 		<meta name="twitter:card" content="summary_large_image" />
 	{/if}
 </svelte:head>
-<main>
+<Navbar />
+<main class="mx-2 md:mx-20 my-36">
 	<slot />
 </main>
 <PrismicPreview {repositoryName} />
