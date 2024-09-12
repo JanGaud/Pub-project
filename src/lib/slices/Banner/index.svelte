@@ -32,7 +32,7 @@
 <section
 	data-slice-type={slice.slice_type}
 	data-slice-variation={slice.variation}
-	class="relative overflow-hidden h-screen -mx-2 md:-mx-20 -my-36 mb-24"
+	class="relative overflow-hidden h-screen max-h-[800px] -mx-2 md:-mx-20 -my-36 mb-20 md:mb-32"
 >
 	{#if slice.primary.slide && slideCount > 0}
 		<div

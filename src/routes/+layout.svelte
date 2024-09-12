@@ -19,8 +19,11 @@
 		<meta name="twitter:card" content="summary_large_image" />
 	{/if}
 </svelte:head>
+
 <Navbar />
-<main class="mx-2 md:mx-20 my-36">
+
+<main class="mx-auto my-36 px-2 md:px-20 max-w-screen-2xl">
 	<slot />
 </main>
+
 <PrismicPreview {repositoryName} />

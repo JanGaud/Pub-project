@@ -71,7 +71,7 @@ export type NavDocument<Lang extends string = string> = prismic.PrismicDocumentW
 	Lang
 >;
 
-type PageDocumentDataSlicesSlice = AboutSlice | BannerSlice | RichTextSlice;
+type PageDocumentDataSlicesSlice = GallerySlice | AboutSlice | BannerSlice | RichTextSlice;
 
 /**
  * Content for Page documents
@@ -323,6 +323,83 @@ type BannerSliceVariation = BannerSliceDefault;
 export type BannerSlice = prismic.SharedSlice<'banner', BannerSliceVariation>;
 
 /**
+ * Item in *Gallery → Default → Primary → Thumbnail*
+ */
+export interface GallerySliceDefaultPrimaryThumbnailItem {
+	/**
+	 * Image field in *Gallery → Default → Primary → Thumbnail*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: gallery.default.primary.thumbnail[].image
+	 * - **Documentation**: https://prismic.io/docs/field#image
+	 */
+	image: prismic.ImageField<never>;
+}
+
+/**
+ * Primary content in *Gallery → Default → Primary*
+ */
+export interface GallerySliceDefaultPrimary {
+	/**
+	 * Title field in *Gallery → Default → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: gallery.default.primary.title
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	title: prismic.KeyTextField;
+
+	/**
+	 * Image field in *Gallery → Default → Primary*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: gallery.default.primary.image
+	 * - **Documentation**: https://prismic.io/docs/field#image
+	 */
+	image: prismic.ImageField<never>;
+
+	/**
+	 * Thumbnail field in *Gallery → Default → Primary*
+	 *
+	 * - **Field Type**: Group
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: gallery.default.primary.thumbnail[]
+	 * - **Documentation**: https://prismic.io/docs/field#group
+	 */
+	thumbnail: prismic.GroupField<Simplify<GallerySliceDefaultPrimaryThumbnailItem>>;
+}
+
+/**
+ * Default variation for Gallery Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type GallerySliceDefault = prismic.SharedSliceVariation<
+	'default',
+	Simplify<GallerySliceDefaultPrimary>,
+	never
+>;
+
+/**
+ * Slice variation for *Gallery*
+ */
+type GallerySliceVariation = GallerySliceDefault;
+
+/**
+ * Gallery Shared Slice
+ *
+ * - **API ID**: `gallery`
+ * - **Description**: Gallery
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type GallerySlice = prismic.SharedSlice<'gallery', GallerySliceVariation>;
+
+/**
  * Primary content in *RichText → Default → Primary*
  */
 export interface RichTextSliceDefaultPrimary {
@@ -391,6 +468,11 @@ declare module '@prismicio/client' {
 			BannerSliceDefaultPrimary,
 			BannerSliceVariation,
 			BannerSliceDefault,
+			GallerySlice,
+			GallerySliceDefaultPrimaryThumbnailItem,
+			GallerySliceDefaultPrimary,
+			GallerySliceVariation,
+			GallerySliceDefault,
 			RichTextSlice,
 			RichTextSliceDefaultPrimary,
 			RichTextSliceVariation,
