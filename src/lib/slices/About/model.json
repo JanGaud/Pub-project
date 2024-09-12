@@ -22,8 +22,16 @@
         "desciption": {
           "type": "Text",
           "config": {
-            "label": "Desciption",
+            "label": "Description",
             "placeholder": ""
+          }
+        },
+        "logo": {
+          "type": "Image",
+          "config": {
+            "label": "Logo",
+            "constraint": {},
+            "thumbnails": []
           }
         }
       },

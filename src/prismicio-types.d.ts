@@ -71,7 +71,7 @@ export type NavDocument<Lang extends string = string> = prismic.PrismicDocumentW
 	Lang
 >;
 
-type PageDocumentDataSlicesSlice = BannerSlice | RichTextSlice;
+type PageDocumentDataSlicesSlice = AboutSlice | BannerSlice | RichTextSlice;
 
 /**
  * Content for Page documents
@@ -163,7 +163,7 @@ export interface AboutSliceDefaultPrimary {
 	title: prismic.KeyTextField;
 
 	/**
-	 * Desciption field in *About → Default → Primary*
+	 * Description field in *About → Default → Primary*
 	 *
 	 * - **Field Type**: Text
 	 * - **Placeholder**: *None*
@@ -171,6 +171,16 @@ export interface AboutSliceDefaultPrimary {
 	 * - **Documentation**: https://prismic.io/docs/field#key-text
 	 */
 	desciption: prismic.KeyTextField;
+
+	/**
+	 * Logo field in *About → Default → Primary*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: about.default.primary.logo
+	 * - **Documentation**: https://prismic.io/docs/field#image
+	 */
+	logo: prismic.ImageField<never>;
 }
 
 /**

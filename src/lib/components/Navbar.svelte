@@ -22,7 +22,7 @@
 </script>
 
 <nav
-	class="h-28 w-full fixed top-0 px-4 pt-4 bg-gold-gradient z-50 flex items-center justify-center md:justify-between drop-shadow-lg"
+	class="h-28 w-full fixed top-0 px-4 pt-4 text-white bg-gold-gradient z-50 flex items-center justify-center md:justify-between drop-shadow-lg"
 >
 	<div class="h-full w-[275px]">
 		<a href="/">
@@ -62,7 +62,7 @@
 		class="flex flex-col items-center justify-center font-bold space-y-8 tracking-wider h-full text-3xl uppercase"
 	>
 		{#each prismicLinks as item}
-			<li class="drop-shadow-lg">
+			<li class="drop-shadow-lg text-white">
 				<PrismicLink field={item.link} on:click={toggleMenu}>
 					{item.label}
 				</PrismicLink>

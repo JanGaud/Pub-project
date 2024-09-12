@@ -32,7 +32,7 @@
 <section
 	data-slice-type={slice.slice_type}
 	data-slice-variation={slice.variation}
-	class="relative overflow-hidden h-screen -mx-2 md:-mx-20 -my-36"
+	class="relative overflow-hidden h-screen -mx-2 md:-mx-20 -my-36 mb-24"
 >
 	{#if slice.primary.slide && slideCount > 0}
 		<div
@@ -51,14 +51,13 @@
 			<hgroup
 				class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-30 text-white text-center"
 			>
-				<PrismicImage class="w-[200px] h-[200px] z-30" field={slice.primary.logo} />
 				<div class="text-left p-4 sm:p-6 md:p-8">
-					<h2
+					<h1
 						class="drop-shadow text-white text-4xl md:text-5xl lg:text-8xl font-semibold font-secondary tracking-widest uppercase mb-4"
 					>
 						{slice.primary.title}
-					</h2>
-					<p class="drop-shadow tracking-wider text-2xl md:text-3xl">{slice.primary.slogan}</p>
+					</h1>
+					<h2 class="drop-shadow tracking-wider text-2xl md:text-3xl">{slice.primary.slogan}</h2>
 					<PrismicLink
 						field={slice.primary.cta[0]?.link}
 						class="mt-6 shadow-xl flex items-center gap-4 w-fit border-4 uppercase backdrop-blur border-gold-second hover:border-gold duration-200 p-4"
