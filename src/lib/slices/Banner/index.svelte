@@ -40,24 +40,36 @@
 			style="transform: translateX(calc(-100% * {$currentSlide}));"
 		>
 			{#each slice.primary.slide as slide, index}
-				<div class="relative min-w-full h-full" key={index}>
+				<div class="relative min-w-full h-full">
 					<PrismicImage field={slide.hero_image} class="w-full h-full object-cover" />
 				</div>
 			{/each}
 		</div>
 
 		<!-- Title and Slogan Overlay -->
-		<hgroup
-			class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-30 text-white text-center"
-		>
-			<div class="text-left p-4 sm:p-6 md:p-8">
-				<h2 class="drop-shadow-xl text-white text-4xl md:text-5xl lg:text-7xl font-semibold font-secondary tracking-widest uppercase mb-4">
-					{slice.primary.title}
-				</h2>
-				<p class="drop-shadow-xl tracking-wider text-xl">{slice.primary.slogan}</p>
-				<PrismicLink field={slice.primary.cta[0]?.link} class="mt-6 flex items-center gap-4 w-fit border-4 uppercase backdrop-blur border-gold-second hover:border-gold duration-200 p-4">{slice.primary.cta[0]?.label}<Icon class="w-6 h-6" icon="material-symbols-light:restaurant" /></PrismicLink>
-			</div>
-		</hgroup>
+		<div class="flex justify-center items-center">
+			<hgroup
+				class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-30 text-white text-center"
+			>
+				<PrismicImage class="w-[200px] h-[200px] z-30" field={slice.primary.logo} />
+				<div class="text-left p-4 sm:p-6 md:p-8">
+					<h2
+						class="drop-shadow text-white text-4xl md:text-5xl lg:text-8xl font-semibold font-secondary tracking-widest uppercase mb-4"
+					>
+						{slice.primary.title}
+					</h2>
+					<p class="drop-shadow tracking-wider text-2xl md:text-3xl">{slice.primary.slogan}</p>
+					<PrismicLink
+						field={slice.primary.cta[0]?.link}
+						class="mt-6 shadow-xl flex items-center gap-4 w-fit border-4 uppercase backdrop-blur border-gold-second hover:border-gold duration-200 p-4"
+						>{slice.primary.cta[0]?.label}<Icon
+							class="w-6 h-6"
+							icon="material-symbols-light:restaurant"
+						/></PrismicLink
+					>
+				</div>
+			</hgroup>
+		</div>
 
 		<!-- Navigation bubbles -->
 		<div class="absolute bottom-5 left-1/2 transform -translate-x-1/2 flex z-20">

@@ -149,6 +149,58 @@ export type PageDocument<Lang extends string = string> = prismic.PrismicDocument
 export type AllDocumentTypes = NavDocument | PageDocument;
 
 /**
+ * Primary content in *About → Default → Primary*
+ */
+export interface AboutSliceDefaultPrimary {
+	/**
+	 * Title field in *About → Default → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: about.default.primary.title
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	title: prismic.KeyTextField;
+
+	/**
+	 * Desciption field in *About → Default → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: about.default.primary.desciption
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	desciption: prismic.KeyTextField;
+}
+
+/**
+ * Default variation for About Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type AboutSliceDefault = prismic.SharedSliceVariation<
+	'default',
+	Simplify<AboutSliceDefaultPrimary>,
+	never
+>;
+
+/**
+ * Slice variation for *About*
+ */
+type AboutSliceVariation = AboutSliceDefault;
+
+/**
+ * About Shared Slice
+ *
+ * - **API ID**: `about`
+ * - **Description**: About
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type AboutSlice = prismic.SharedSlice<'about', AboutSliceVariation>;
+
+/**
  * Item in *Banner → Default → Primary → Slide*
  */
 export interface BannerSliceDefaultPrimarySlideItem {
@@ -319,6 +371,10 @@ declare module '@prismicio/client' {
 			PageDocumentData,
 			PageDocumentDataSlicesSlice,
 			AllDocumentTypes,
+			AboutSlice,
+			AboutSliceDefaultPrimary,
+			AboutSliceVariation,
+			AboutSliceDefault,
 			BannerSlice,
 			BannerSliceDefaultPrimarySlideItem,
 			BannerSliceDefaultPrimaryCtaItem,
