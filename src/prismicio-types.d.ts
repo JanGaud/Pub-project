@@ -71,7 +71,7 @@ export type NavDocument<Lang extends string = string> = prismic.PrismicDocumentW
 	Lang
 >;
 
-type PageDocumentDataSlicesSlice = RichTextSlice;
+type PageDocumentDataSlicesSlice = BannerSlice | RichTextSlice;
 
 /**
  * Content for Page documents
@@ -149,6 +149,118 @@ export type PageDocument<Lang extends string = string> = prismic.PrismicDocument
 export type AllDocumentTypes = NavDocument | PageDocument;
 
 /**
+ * Item in *Banner → Default → Primary → Slide*
+ */
+export interface BannerSliceDefaultPrimarySlideItem {
+	/**
+	 * Hero Image field in *Banner → Default → Primary → Slide*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: banner.default.primary.slide[].hero_image
+	 * - **Documentation**: https://prismic.io/docs/field#image
+	 */
+	hero_image: prismic.ImageField<never>;
+}
+
+/**
+ * Item in *Banner → Default → Primary → CTA*
+ */
+export interface BannerSliceDefaultPrimaryCtaItem {
+	/**
+	 * Label field in *Banner → Default → Primary → CTA*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: Lorem ipsum
+	 * - **API ID Path**: banner.default.primary.cta[].label
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	label: prismic.KeyTextField;
+
+	/**
+	 * Link field in *Banner → Default → Primary → CTA*
+	 *
+	 * - **Field Type**: Link
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: banner.default.primary.cta[].link
+	 * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+	 */
+	link: prismic.LinkField;
+}
+
+/**
+ * Primary content in *Banner → Default → Primary*
+ */
+export interface BannerSliceDefaultPrimary {
+	/**
+	 * Slide field in *Banner → Default → Primary*
+	 *
+	 * - **Field Type**: Group
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: banner.default.primary.slide[]
+	 * - **Documentation**: https://prismic.io/docs/field#group
+	 */
+	slide: prismic.GroupField<Simplify<BannerSliceDefaultPrimarySlideItem>>;
+
+	/**
+	 * CTA field in *Banner → Default → Primary*
+	 *
+	 * - **Field Type**: Group
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: banner.default.primary.cta[]
+	 * - **Documentation**: https://prismic.io/docs/field#group
+	 */
+	cta: prismic.GroupField<Simplify<BannerSliceDefaultPrimaryCtaItem>>;
+
+	/**
+	 * Title field in *Banner → Default → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: banner.default.primary.title
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	title: prismic.KeyTextField;
+
+	/**
+	 * Slogan field in *Banner → Default → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: banner.default.primary.slogan
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	slogan: prismic.KeyTextField;
+}
+
+/**
+ * Default variation for Banner Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type BannerSliceDefault = prismic.SharedSliceVariation<
+	'default',
+	Simplify<BannerSliceDefaultPrimary>,
+	never
+>;
+
+/**
+ * Slice variation for *Banner*
+ */
+type BannerSliceVariation = BannerSliceDefault;
+
+/**
+ * Banner Shared Slice
+ *
+ * - **API ID**: `banner`
+ * - **Description**: Banner
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type BannerSlice = prismic.SharedSlice<'banner', BannerSliceVariation>;
+
+/**
  * Primary content in *RichText → Default → Primary*
  */
 export interface RichTextSliceDefaultPrimary {
@@ -207,6 +319,12 @@ declare module '@prismicio/client' {
 			PageDocumentData,
 			PageDocumentDataSlicesSlice,
 			AllDocumentTypes,
+			BannerSlice,
+			BannerSliceDefaultPrimarySlideItem,
+			BannerSliceDefaultPrimaryCtaItem,
+			BannerSliceDefaultPrimary,
+			BannerSliceVariation,
+			BannerSliceDefault,
 			RichTextSlice,
 			RichTextSliceDefaultPrimary,
 			RichTextSliceVariation,
