@@ -17,6 +17,25 @@ body {
     font-family: 'DM Sans', sans-serif;
 }
 
+/* styles.css */
+@keyframes fadeSlideUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* styles.css */
+.section-animate {
+    opacity: 0;
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
 /* Custom scrollbar styles */
 ::-webkit-scrollbar-track {
     background-color: #ffffff;
