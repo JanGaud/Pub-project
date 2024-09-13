@@ -57,7 +57,7 @@
 					>
 						{slice.primary.title}
 					</h1>
-					<h2 class="drop-shadow tracking-wider text-2xl md:text-3xl">{slice.primary.slogan}</h2>
+					<h2 class="drop-shadow text-white tracking-wider text-2xl md:text-3xl">{slice.primary.slogan}</h2>
 					<PrismicLink
 						field={slice.primary.cta[0]?.link}
 						class="mt-6 shadow-xl flex items-center gap-4 w-fit border-4 uppercase backdrop-blur border-gold-second hover:border-gold duration-200 p-4"

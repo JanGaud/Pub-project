@@ -71,7 +71,12 @@ export type NavDocument<Lang extends string = string> = prismic.PrismicDocumentW
 	Lang
 >;
 
-type PageDocumentDataSlicesSlice = GallerySlice | AboutSlice | BannerSlice | RichTextSlice;
+type PageDocumentDataSlicesSlice =
+	| ContactSlice
+	| GallerySlice
+	| AboutSlice
+	| BannerSlice
+	| RichTextSlice;
 
 /**
  * Content for Page documents
@@ -146,7 +151,104 @@ export type PageDocument<Lang extends string = string> = prismic.PrismicDocument
 	Lang
 >;
 
-export type AllDocumentTypes = NavDocument | PageDocument;
+/**
+ * Content for settings documents
+ */
+interface SettingsDocumentData {
+	/**
+	 * Business Name field in *settings*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: settings.business_name
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	business_name: prismic.KeyTextField;
+
+	/**
+	 * Email field in *settings*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: settings.email
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	email: prismic.KeyTextField;
+
+	/**
+	 * Address field in *settings*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: settings.address
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	address: prismic.KeyTextField;
+
+	/**
+	 * Phone field in *settings*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: settings.phone
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	phone: prismic.KeyTextField;
+
+	/**
+	 * Website field in *settings*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: settings.website
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	website: prismic.KeyTextField;
+
+	/**
+	 * Location field in *settings*
+	 *
+	 * - **Field Type**: GeoPoint
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: settings.location
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#geopoint
+	 */
+	location: prismic.GeoPointField;
+
+	/**
+	 * Google Maps Api Key field in *settings*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: settings.google_maps_api_key
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	google_maps_api_key: prismic.KeyTextField;
+}
+
+/**
+ * settings document from Prismic
+ *
+ * - **API ID**: `settings`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type SettingsDocument<Lang extends string = string> = prismic.PrismicDocumentWithoutUID<
+	Simplify<SettingsDocumentData>,
+	'settings',
+	Lang
+>;
+
+export type AllDocumentTypes = NavDocument | PageDocument | SettingsDocument;
 
 /**
  * Primary content in *About → Default → Primary*
@@ -323,6 +425,183 @@ type BannerSliceVariation = BannerSliceDefault;
 export type BannerSlice = prismic.SharedSlice<'banner', BannerSliceVariation>;
 
 /**
+ * Item in *Contact → Default → Primary → Phone Input*
+ */
+export interface ContactSliceDefaultPrimaryPhoneInputItem {
+	/**
+	 * Label field in *Contact → Default → Primary → Phone Input*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: contact.default.primary.phone_input[].label
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	label: prismic.KeyTextField;
+
+	/**
+	 * Icon field in *Contact → Default → Primary → Phone Input*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: contact.default.primary.phone_input[].icon
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	icon: prismic.KeyTextField;
+}
+
+/**
+ * Item in *Contact → Default → Primary → Adresse Input*
+ */
+export interface ContactSliceDefaultPrimaryAdresseInputItem {
+	/**
+	 * Label field in *Contact → Default → Primary → Adresse Input*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: contact.default.primary.adresse_input[].label
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	label: prismic.KeyTextField;
+
+	/**
+	 * Icon field in *Contact → Default → Primary → Adresse Input*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: contact.default.primary.adresse_input[].icon
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	icon: prismic.KeyTextField;
+}
+
+/**
+ * Item in *Contact → Default → Primary → Email Input*
+ */
+export interface ContactSliceDefaultPrimaryEmailInputItem {
+	/**
+	 * Label field in *Contact → Default → Primary → Email Input*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: contact.default.primary.email_input[].label
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	label: prismic.KeyTextField;
+
+	/**
+	 * Icon field in *Contact → Default → Primary → Email Input*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: contact.default.primary.email_input[].icon
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	icon: prismic.KeyTextField;
+}
+
+/**
+ * Primary content in *Contact → Default → Primary*
+ */
+export interface ContactSliceDefaultPrimary {
+	/**
+	 * Location field in *Contact → Default → Primary*
+	 *
+	 * - **Field Type**: GeoPoint
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: contact.default.primary.location
+	 * - **Documentation**: https://prismic.io/docs/field#geopoint
+	 */
+	location: prismic.GeoPointField;
+
+	/**
+	 * Title field in *Contact → Default → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: contact.default.primary.title
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	title: prismic.KeyTextField;
+
+	/**
+	 * Disclaimer field in *Contact → Default → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: contact.default.primary.disclaimer
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	disclaimer: prismic.KeyTextField;
+
+	/**
+	 * Form Logo field in *Contact → Default → Primary*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: contact.default.primary.form_logo
+	 * - **Documentation**: https://prismic.io/docs/field#image
+	 */
+	form_logo: prismic.ImageField<never>;
+
+	/**
+	 * Phone Input field in *Contact → Default → Primary*
+	 *
+	 * - **Field Type**: Group
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: contact.default.primary.phone_input[]
+	 * - **Documentation**: https://prismic.io/docs/field#group
+	 */
+	phone_input: prismic.GroupField<Simplify<ContactSliceDefaultPrimaryPhoneInputItem>>;
+
+	/**
+	 * Adresse Input field in *Contact → Default → Primary*
+	 *
+	 * - **Field Type**: Group
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: contact.default.primary.adresse_input[]
+	 * - **Documentation**: https://prismic.io/docs/field#group
+	 */
+	adresse_input: prismic.GroupField<Simplify<ContactSliceDefaultPrimaryAdresseInputItem>>;
+
+	/**
+	 * Email Input field in *Contact → Default → Primary*
+	 *
+	 * - **Field Type**: Group
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: contact.default.primary.email_input[]
+	 * - **Documentation**: https://prismic.io/docs/field#group
+	 */
+	email_input: prismic.GroupField<Simplify<ContactSliceDefaultPrimaryEmailInputItem>>;
+}
+
+/**
+ * Default variation for Contact Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ContactSliceDefault = prismic.SharedSliceVariation<
+	'default',
+	Simplify<ContactSliceDefaultPrimary>,
+	never
+>;
+
+/**
+ * Slice variation for *Contact*
+ */
+type ContactSliceVariation = ContactSliceDefault;
+
+/**
+ * Contact Shared Slice
+ *
+ * - **API ID**: `contact`
+ * - **Description**: Contact
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ContactSlice = prismic.SharedSlice<'contact', ContactSliceVariation>;
+
+/**
  * Item in *Gallery → Default → Primary → Thumbnail*
  */
 export interface GallerySliceDefaultPrimaryThumbnailItem {
@@ -457,6 +736,8 @@ declare module '@prismicio/client' {
 			PageDocument,
 			PageDocumentData,
 			PageDocumentDataSlicesSlice,
+			SettingsDocument,
+			SettingsDocumentData,
 			AllDocumentTypes,
 			AboutSlice,
 			AboutSliceDefaultPrimary,
@@ -468,6 +749,13 @@ declare module '@prismicio/client' {
 			BannerSliceDefaultPrimary,
 			BannerSliceVariation,
 			BannerSliceDefault,
+			ContactSlice,
+			ContactSliceDefaultPrimaryPhoneInputItem,
+			ContactSliceDefaultPrimaryAdresseInputItem,
+			ContactSliceDefaultPrimaryEmailInputItem,
+			ContactSliceDefaultPrimary,
+			ContactSliceVariation,
+			ContactSliceDefault,
 			GallerySlice,
 			GallerySliceDefaultPrimaryThumbnailItem,
 			GallerySliceDefaultPrimary,

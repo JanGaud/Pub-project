@@ -15,7 +15,7 @@
 		<h2 class="text-4xl mb-6 font-bold tracking-wide">{slice.primary.title}</h2>
 		<p>{slice.primary.desciption}</p>
 	</div>
-	<div class="flex justify-center items-center w-full h-auto lg:col-span-1 overflow-hidden">
+	<div class="flex justify-center items-center w-full h-auto lg:col-span-1 overflow-hidden shadow-md">
 		<PrismicImage class="w-full h-auto object-contain" field={slice.primary.logo} />
 	</div>
 </section>
