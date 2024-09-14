@@ -214,11 +214,10 @@
 	use:animateOnScroll
 	data-slice-type={slice.slice_type}
 	data-slice-variation={slice.variation}
-	class="relative"
 >
 	<div class="h-fit grid grid-cols-1 lg:grid-cols-2 gap-10 mb-4 lg:-mb-20">
 		<div>
-			<div class="mb-8 w-full p-6 md:p-0 md:w-full">
+			<div class="mb-8 w-full md:w-full">
 				<h2 class="text-4xl font-bold tracking-wide mb-2">{slice.primary.title}</h2>
 				<p>{slice.primary.disclaimer}</p>
 			</div>
@@ -226,14 +225,14 @@
 				<!-- Phone -->
 				{#if slice.primary.phone_input[0]?.icon !== 'null'}
 					<div class="flex items-end gap-2 mb-4">
-						<Icon class="w-8 h-8" icon={slice.primary.phone_input[0]?.icon} />
+						<Icon class="text-gold-second w-8 h-8" icon={slice.primary.phone_input[0]?.icon} />
 						<a href={`tel:${settings.data.phone ?? ''}`} class="text-blue">{settings.data.phone}</a>
 					</div>
 				{/if}
 				<!-- Email -->
 				{#if slice.primary.email_input[0]?.icon !== 'null'}
 					<div class="flex items-end gap-2 mb-4">
-						<Icon class="w-8 h-8" icon={slice.primary.email_input[0]?.icon} />
+						<Icon class="text-gold-second w-8 h-8" icon={slice.primary.email_input[0]?.icon} />
 						<a href={`mailto:${settings.data.email ?? ''}`} class="text-blue"
 							>{settings.data.email}</a
 						>
@@ -242,7 +241,7 @@
 				<!-- Address -->
 				{#if slice.primary.adresse_input[0]?.icon !== 'null'}
 					<div class="flex items-end gap-2 mb-4">
-						<Icon class="w-8 h-8" icon={slice.primary.adresse_input[0]?.icon} />
+						<Icon class="text-gold-second w-8 h-8" icon={slice.primary.adresse_input[0]?.icon} />
 						<p>{settings.data.address}</p>
 					</div>
 				{/if}
@@ -251,7 +250,7 @@
 
 		<!-- Form Container with higher z-index -->
 		<div
-			class="relative bg-[#ffffffad] backdrop-blur-md z-30 border-4 border-gold border-opacity-35 shadow-md rounded-3xl flex flex-col justify-center items-center p-6"
+			class="card bg-[#ffffffad] backdrop-blur-md z-30 border-2 border-gold-second border-opacity-30 shadow-md rounded-3xl flex flex-col justify-center items-center p-6"
 		>
 			<form action="" class="w-full max-w-lg">
 				<div class="grid grid-cols-1 gap-4">
@@ -288,3 +287,7 @@
 	<!-- Google Map Container -->
 	<div id="map" class="relative -mx-2 md:-mx-20 mb-20 md:mb-32 h-[350px] z-10"></div>
 </section>
+
+<style>
+
+</style>

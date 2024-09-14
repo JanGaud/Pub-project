@@ -534,16 +534,6 @@ export interface ContactSliceDefaultPrimary {
 	disclaimer: prismic.KeyTextField;
 
 	/**
-	 * Form Logo field in *Contact → Default → Primary*
-	 *
-	 * - **Field Type**: Image
-	 * - **Placeholder**: *None*
-	 * - **API ID Path**: contact.default.primary.form_logo
-	 * - **Documentation**: https://prismic.io/docs/field#image
-	 */
-	form_logo: prismic.ImageField<never>;
-
-	/**
 	 * Phone Input field in *Contact → Default → Primary*
 	 *
 	 * - **Field Type**: Group

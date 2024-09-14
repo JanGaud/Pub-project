@@ -32,14 +32,6 @@
             "placeholder": ""
           }
         },
-        "form_logo": {
-          "type": "Image",
-          "config": {
-            "label": "Form Logo",
-            "constraint": {},
-            "thumbnails": []
-          }
-        },
         "phone_input": {
           "type": "Group",
           "config": {
