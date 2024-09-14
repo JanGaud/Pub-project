@@ -3,13 +3,13 @@
 import About from './About/index.svelte';
 import Banner from './Banner/index.svelte';
 import Contact from './Contact/index.svelte';
+import Events from './Events/index.svelte';
 import Gallery from './Gallery/index.svelte';
-import RichText from './RichText/index.svelte';
 
 export const components = {
 	about: About,
 	banner: Banner,
 	contact: Contact,
-	gallery: Gallery,
-	rich_text: RichText
+	events: Events,
+	gallery: Gallery
 };

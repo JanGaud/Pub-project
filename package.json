@@ -41,7 +41,12 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@fullcalendar/bootstrap": "^6.1.15",
+		"@fullcalendar/core": "^6.1.15",
+		"@fullcalendar/daygrid": "^6.1.15",
+		"@fullcalendar/luxon": "^6.1.15",
 		"@prismicio/client": "^7.8.1",
-		"@prismicio/svelte": "^1.2.0"
+		"@prismicio/svelte": "^1.2.0",
+		"fullcalendar": "^6.1.15"
 	}
 }

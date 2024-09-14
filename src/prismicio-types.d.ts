@@ -72,11 +72,11 @@ export type NavDocument<Lang extends string = string> = prismic.PrismicDocumentW
 >;
 
 type PageDocumentDataSlicesSlice =
+	| EventsSlice
 	| ContactSlice
 	| GallerySlice
 	| AboutSlice
-	| BannerSlice
-	| RichTextSlice;
+	| BannerSlice;
 
 /**
  * Content for Page documents
@@ -592,6 +592,113 @@ type ContactSliceVariation = ContactSliceDefault;
 export type ContactSlice = prismic.SharedSlice<'contact', ContactSliceVariation>;
 
 /**
+ * Item in *Events → Default → Primary → Event*
+ */
+export interface EventsSliceDefaultPrimaryEventItem {
+	/**
+	 * Thumbnail field in *Events → Default → Primary → Event*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: events.default.primary.event[].thum
+	 * - **Documentation**: https://prismic.io/docs/field#image
+	 */
+	thum: prismic.ImageField<never>;
+
+	/**
+	 * Title field in *Events → Default → Primary → Event*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: events.default.primary.event[].title
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	title: prismic.KeyTextField;
+
+	/**
+	 * Description field in *Events → Default → Primary → Event*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: events.default.primary.event[].description
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	description: prismic.KeyTextField;
+
+	/**
+	 * Date field in *Events → Default → Primary → Event*
+	 *
+	 * - **Field Type**: Timestamp
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: events.default.primary.event[].date
+	 * - **Documentation**: https://prismic.io/docs/field#timestamp
+	 */
+	date: prismic.TimestampField;
+
+	/**
+	 * Date End field in *Events → Default → Primary → Event*
+	 *
+	 * - **Field Type**: Timestamp
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: events.default.primary.event[].date_end
+	 * - **Documentation**: https://prismic.io/docs/field#timestamp
+	 */
+	date_end: prismic.TimestampField;
+}
+
+/**
+ * Primary content in *Events → Default → Primary*
+ */
+export interface EventsSliceDefaultPrimary {
+	/**
+	 * Title field in *Events → Default → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: events.default.primary.title
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	title: prismic.KeyTextField;
+
+	/**
+	 * Event field in *Events → Default → Primary*
+	 *
+	 * - **Field Type**: Group
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: events.default.primary.event[]
+	 * - **Documentation**: https://prismic.io/docs/field#group
+	 */
+	event: prismic.GroupField<Simplify<EventsSliceDefaultPrimaryEventItem>>;
+}
+
+/**
+ * Default variation for Events Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type EventsSliceDefault = prismic.SharedSliceVariation<
+	'default',
+	Simplify<EventsSliceDefaultPrimary>,
+	never
+>;
+
+/**
+ * Slice variation for *Events*
+ */
+type EventsSliceVariation = EventsSliceDefault;
+
+/**
+ * Events Shared Slice
+ *
+ * - **API ID**: `events`
+ * - **Description**: Events
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type EventsSlice = prismic.SharedSlice<'events', EventsSliceVariation>;
+
+/**
  * Item in *Gallery → Default → Primary → Thumbnail*
  */
 export interface GallerySliceDefaultPrimaryThumbnailItem {
@@ -668,48 +775,6 @@ type GallerySliceVariation = GallerySliceDefault;
  */
 export type GallerySlice = prismic.SharedSlice<'gallery', GallerySliceVariation>;
 
-/**
- * Primary content in *RichText → Default → Primary*
- */
-export interface RichTextSliceDefaultPrimary {
-	/**
-	 * Content field in *RichText → Default → Primary*
-	 *
-	 * - **Field Type**: Rich Text
-	 * - **Placeholder**: Lorem ipsum...
-	 * - **API ID Path**: rich_text.default.primary.content
-	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
-	 */
-	content: prismic.RichTextField;
-}
-
-/**
- * Default variation for RichText Slice
- *
- * - **API ID**: `default`
- * - **Description**: RichText
- * - **Documentation**: https://prismic.io/docs/slice
- */
-export type RichTextSliceDefault = prismic.SharedSliceVariation<
-	'default',
-	Simplify<RichTextSliceDefaultPrimary>,
-	never
->;
-
-/**
- * Slice variation for *RichText*
- */
-type RichTextSliceVariation = RichTextSliceDefault;
-
-/**
- * RichText Shared Slice
- *
- * - **API ID**: `rich_text`
- * - **Description**: RichText
- * - **Documentation**: https://prismic.io/docs/slice
- */
-export type RichTextSlice = prismic.SharedSlice<'rich_text', RichTextSliceVariation>;
-
 declare module '@prismicio/client' {
 	interface CreateClient {
 		(
@@ -746,15 +811,16 @@ declare module '@prismicio/client' {
 			ContactSliceDefaultPrimary,
 			ContactSliceVariation,
 			ContactSliceDefault,
+			EventsSlice,
+			EventsSliceDefaultPrimaryEventItem,
+			EventsSliceDefaultPrimary,
+			EventsSliceVariation,
+			EventsSliceDefault,
 			GallerySlice,
 			GallerySliceDefaultPrimaryThumbnailItem,
 			GallerySliceDefaultPrimary,
 			GallerySliceVariation,
-			GallerySliceDefault,
-			RichTextSlice,
-			RichTextSliceDefaultPrimary,
-			RichTextSliceVariation,
-			RichTextSliceDefault
+			GallerySliceDefault
 		};
 	}
 }
