@@ -66,11 +66,6 @@
 						]
 					}
 				]
-			},
-			"section_id": {
-				"__TYPE__": "FieldContent",
-				"value": "tank",
-				"type": "Text"
 			}
 		},
 		"items": []

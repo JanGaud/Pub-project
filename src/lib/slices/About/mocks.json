@@ -35,11 +35,6 @@
 				"alt": null,
 				"__TYPE__": "ImageContent",
 				"thumbnails": {}
-			},
-			"section_id": {
-				"__TYPE__": "FieldContent",
-				"value": "three",
-				"type": "Text"
 			}
 		},
 		"items": []
