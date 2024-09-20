@@ -40,9 +40,9 @@
 <div class="fixed top-4 left-2 z-50">
     <button class="flex items-center justify-center" on:click={toggleDropdown}>
         {#if $selectedLocale === 'fr-ca'}
-            <img src="/static/france.png" alt="France Flag" class="w-6 h-auto" />
+            <img src="./static/france.png" alt="France Flag" class="w-6 h-auto" />
         {:else}
-            <img src="/static/united-kingdom.png" alt="UK Flag" class="w-6 h-auto" />
+            <img src="./static/united-kingdom.png" alt="UK Flag" class="w-6 h-auto" />
         {/if}
     </button>
 
@@ -52,14 +52,14 @@
             <!-- French Locale -->
             {#if $selectedLocale !== 'fr-ca'}
                 <button class="dropdown-item flex items-center" on:click={() => changeLocale('fr-ca')}>
-                    <img src="./static/france.png" alt="France Flag" class="w-4 h-auto mr-2" />
+                    <img src="./france.png" alt="France Flag" class="w-4 h-auto mr-2" />
                     Français
                 </button>
             {/if}
             <!-- English Locale -->
             {#if $selectedLocale !== 'en-us'}
                 <button class="dropdown-item flex items-center" on:click={() => changeLocale('en-us')}>
-                    <img src="./static/united-kingdom.png" alt="UK Flag" class="w-4 h-auto mr-2" />
+                    <img src="./united-kingdom.png" alt="UK Flag" class="w-4 h-auto mr-2" />
                     English
                 </button>
             {/if}
