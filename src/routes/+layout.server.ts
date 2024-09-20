@@ -15,6 +15,7 @@ export async function load({ fetch, url }: { fetch: any, url: any }) {
         // Fetch navigation data from Prismic using the determined language
         nav = await client.getSingle('nav', { lang });
     } catch (error) {
+        console.error('Failed to fetch navigation data from Prismic:', error);
         nav = null;
     }
 
@@ -22,6 +23,7 @@ export async function load({ fetch, url }: { fetch: any, url: any }) {
         // Fetch settings data from Prismic using the determined language
         settings = await client.getSingle('settings', { lang });
     } catch (error) {
+        console.error('Failed to fetch settings data from Prismic:', error);
         settings = null;
     }
 
