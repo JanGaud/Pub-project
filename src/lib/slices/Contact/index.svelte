@@ -211,7 +211,7 @@
 </script>
 
 <section
-	{...slice.primary.section_id && { id: slice.primary.section_id }}
+	id={slice.primary.section_id ? slice.primary.section_id : undefined}
 	use:animateOnScroll
 	data-slice-type={slice.slice_type}
 	data-slice-variation={slice.variation}
@@ -288,4 +288,3 @@
 	<!-- Google Map Container -->
 	<div id="map" class="relative -mx-2 md:-mx-20 mb-20 md:mb-32 h-[350px] z-10"></div>
 </section>
-
