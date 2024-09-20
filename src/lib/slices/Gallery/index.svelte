@@ -6,6 +6,7 @@
 </script>
 
 <section
+	id={slice.primary.section_id}
 	class="shadow-inner py-10 -mx-2 md:-mx-20 mb-20 md:mb-32 min-h-[600px]"
 	data-slice-type={slice.slice_type}
 	data-slice-variation={slice.variation}
