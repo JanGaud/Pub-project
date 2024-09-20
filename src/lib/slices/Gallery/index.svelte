@@ -1,7 +1,6 @@
 <script lang="ts">
 	import type { Content } from '@prismicio/client';
 	import { PrismicImage } from '@prismicio/svelte';
-
 	export let slice: Content.GallerySlice;
 </script>
 

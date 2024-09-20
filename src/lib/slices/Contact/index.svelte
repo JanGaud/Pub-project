@@ -4,7 +4,6 @@
 	import Icon from '@iconify/svelte';
 	import { page } from '$app/stores';
 	import type { Content } from '@prismicio/client';
-	import { PrismicImage } from '@prismicio/svelte';
 
 	export let slice: Content.ContactSlice;
 	let settings = $page.data.settings;
