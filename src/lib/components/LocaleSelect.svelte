@@ -52,14 +52,12 @@
 			<!-- French Locale -->
 			{#if $selectedLocale !== 'fr-ca'}
 				<button class="dropdown-item flex items-center" on:click={() => changeLocale('fr-ca')}>
-					<!-- <img src="france.png" alt="France Flag" class="w-4 h-auto mr-2" /> -->
 					Français
 				</button>
 			{/if}
 			<!-- English Locale -->
 			{#if $selectedLocale !== 'en-us'}
 				<button class="dropdown-item flex items-center" on:click={() => changeLocale('en-us')}>
-					<!-- <img src="united-kingdom.png" alt="UK Flag" class="w-4 h-auto mr-2" /> -->
 					English
 				</button>
 			{/if}
