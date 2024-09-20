@@ -97,6 +97,56 @@
 						]
 					}
 				]
+			},
+			"form_inputs": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"name",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "welcome",
+									"type": "Text"
+								}
+							],
+							[
+								"email",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "scared",
+									"type": "Text"
+								}
+							],
+							[
+								"subject",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "hide",
+									"type": "Text"
+								}
+							],
+							[
+								"message",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "leg",
+									"type": "Text"
+								}
+							],
+							[
+								"send_button",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "listen",
+									"type": "Text"
+								}
+							]
+						]
+					}
+				]
 			}
 		},
 		"items": []

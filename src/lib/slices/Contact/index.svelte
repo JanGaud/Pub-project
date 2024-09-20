@@ -256,28 +256,28 @@
 				<div class="grid grid-cols-1 gap-4">
 					<input
 						type="text"
-						placeholder="Nom"
+						placeholder={slice.primary.form_inputs[0]?.name}
 						class="w-full p-3 border-b border-gray-300 rounded-md focus:outline-none focus:border-gold"
 					/>
 					<input
 						type="email"
-						placeholder="Email"
+						placeholder={slice.primary.form_inputs[0]?.email}
 						class="w-full p-3 border-b border-gray-300 rounded-md focus:outline-none focus:border-gold"
 					/>
 					<input
 						type="text"
-						placeholder="Sujet"
+						placeholder={slice.primary.form_inputs[0]?.subject}
 						class="w-full p-3 border-b border-gray-300 rounded-md focus:outline-none focus:border-gold"
 					/>
 					<textarea
-						placeholder="Message"
+						placeholder={slice.primary.form_inputs[0]?.message}
 						class="w-full p-3 border-b border-gray-300 rounded-md focus:outline-none focus:border-gold h-32 resize-none"
 					></textarea>
 					<button
 						type="submit"
 						class="mt-6 shadow-xl flex items-center justify-center gap-4 w-full border-4 uppercase bg-background text-white backdrop-blur border-gold-second hover:border-gold duration-200 p-4"
 					>
-						Envoyer
+						{slice.primary.form_inputs[0]?.send_button}
 					</button>
 				</div>
 			</form>
@@ -288,6 +288,3 @@
 	<div id="map" class="relative -mx-2 md:-mx-20 mb-20 md:mb-32 h-[350px] z-10"></div>
 </section>
 
-<style>
-
-</style>

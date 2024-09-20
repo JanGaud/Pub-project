@@ -100,6 +100,50 @@
               }
             }
           }
+        },
+        "form_inputs": {
+          "type": "Group",
+          "config": {
+            "label": "Form Inputs",
+            "repeat": false,
+            "fields": {
+              "name": {
+                "type": "Text",
+                "config": {
+                  "label": "Name",
+                  "placeholder": ""
+                }
+              },
+              "email": {
+                "type": "Text",
+                "config": {
+                  "label": "Email",
+                  "placeholder": ""
+                }
+              },
+              "subject": {
+                "type": "Text",
+                "config": {
+                  "label": "Subject",
+                  "placeholder": ""
+                }
+              },
+              "message": {
+                "type": "Text",
+                "config": {
+                  "label": "Message",
+                  "placeholder": ""
+                }
+              },
+              "send_button": {
+                "type": "Text",
+                "config": {
+                  "label": "Send Button",
+                  "placeholder": ""
+                }
+              }
+            }
+          }
         }
       },
       "items": {}
