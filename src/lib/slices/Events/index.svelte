@@ -130,7 +130,7 @@
 
 <section
 	use:animateOnScroll
-	class="mb-32"
+	class="mb-20 md:mb-32"
 	data-slice-type={slice.slice_type}
 	data-slice-variation={slice.variation}
 >
