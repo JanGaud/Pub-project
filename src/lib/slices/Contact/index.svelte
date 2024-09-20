@@ -211,7 +211,7 @@
 </script>
 
 <section
-	id={slice.primary.section_id}
+	{...slice.primary.section_id && { id: slice.primary.section_id }}
 	use:animateOnScroll
 	data-slice-type={slice.slice_type}
 	data-slice-variation={slice.variation}
