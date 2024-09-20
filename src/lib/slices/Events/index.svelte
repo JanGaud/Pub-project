@@ -129,7 +129,6 @@
 </script>
 
 <section
-	id={slice.primary.section_id ? slice.primary.section_id : undefined}
 	use:animateOnScroll
 	class="mb-20 md:mb-32"
 	data-slice-type={slice.slice_type}

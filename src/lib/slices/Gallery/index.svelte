@@ -6,7 +6,6 @@
 </script>
 
 <section
-	id={slice.primary.section_id ? slice.primary.section_id : undefined}
 	class="shadow-inner py-10 -mx-2 md:-mx-20 mb-20 md:mb-32 min-h-[600px]"
 	data-slice-type={slice.slice_type}
 	data-slice-variation={slice.variation}
@@ -15,11 +14,7 @@
 	<div class="relative w-full h-[375px] mb-8">
 		<!-- Overlay with Centered Text -->
 		<div class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50">
-			<h2
-				class="text-white text-center text-3xl sm:text-4xl lg:text-7xl drop-shadow-md uppercase tracking-widest"
-			>
-				{slice.primary.title}
-			</h2>
+			<h2 class="text-white text-center text-3xl sm:text-4xl lg:text-7xl drop-shadow-md uppercase tracking-widest">{slice.primary.title}</h2>
 		</div>
 		<!-- Main Image -->
 		<PrismicImage field={slice.primary.image} class="w-full h-96 object-cover" />

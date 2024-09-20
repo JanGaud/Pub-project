@@ -211,7 +211,6 @@
 </script>
 
 <section
-	id={slice.primary.section_id ? slice.primary.section_id : undefined}
 	use:animateOnScroll
 	data-slice-type={slice.slice_type}
 	data-slice-variation={slice.variation}

@@ -6,7 +6,6 @@
 </script>
 
 <section
-	id={slice.primary.section_id ? slice.primary.section_id : undefined}
 	use:animateOnScroll
 	class="text-left grid grid-cols-1 lg:grid-cols-3 gap-10 mb-20 md:mb-32 items-center"
 	data-slice-type={slice.slice_type}
