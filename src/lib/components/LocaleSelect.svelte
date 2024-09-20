@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { writable } from 'svelte/store';
 	import { page } from '$app/stores';
-	import franceFlag from '../../../static/france.png';
-	import ukFlag from '../../../static/united-kingdom.png';
+	import franceFlag from '$lib/assets/france.png';
+	import ukFlag from '$lib/assets/united-kingdom.png';
 
 	// Set initial locale based on the current URL
 	const initialLocale = $page.url.pathname.startsWith('/en-us') ? 'en-us' : 'fr-ca';
@@ -42,9 +42,9 @@
 <div class="fixed top-4 left-2 z-50">
 	<button class="flex items-center justify-center" on:click={toggleDropdown}>
 		{#if $selectedLocale === 'fr-ca'}
-			 <img src={franceFlag} alt="France Flag" class="w-6 h-auto" />
+			<img src="/france.png" alt="France Flag" class="w-6 h-auto" />
 		{:else}
-			<img src={ukFlag} alt="UK Flag" class="w-6 h-auto" />
+			<img src="/united-kingdom.png" alt="UK Flag" class="w-6 h-auto" />
 		{/if}
 	</button>
 
