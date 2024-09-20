@@ -2,45 +2,86 @@
     import { writable } from 'svelte/store';
     import { page } from '$app/stores';
 
+    // Set initial locale based on the current URL
     const initialLocale = $page.url.pathname.startsWith('/en-us') ? 'en-us' : 'fr-ca';
-    const selectedLocale = writable(initialLocale); 
+    const selectedLocale = writable(initialLocale);
 
-    const changeLocale = (event: Event) => {
-        const selectElement = event.currentTarget as HTMLSelectElement;
+    // Variable to control dropdown visibility
+    let dropdownVisible = false;
 
-        if (!selectElement) {
-            return;
-        }
+    const toggleDropdown = () => {
+        dropdownVisible = !dropdownVisible; // Toggle the dropdown visibility
+    };
 
-        const locale = selectElement.value;
-        if (locale) {
-            selectedLocale.set(locale);
+    const changeLocale = (locale: string) => {
+        selectedLocale.set(locale); // Set the selected locale
+        dropdownVisible = false; // Close the dropdown after selection
 
-            let currentPath = window.location.pathname;
-            let newPath = '';
+        let currentPath = window.location.pathname;
+        let newPath = '';
 
-            if (locale === 'en-us') {
-                if (!currentPath.startsWith('/en-us')) {
-                    newPath = `/en-us${currentPath !== '/' ? currentPath : ''}`;
-                }
-            } else {
-                if (currentPath.startsWith('/en-us')) {
-                    newPath = currentPath.replace('/en-us', '');
-                } else {
-                    newPath = currentPath;
-                }
-                newPath = newPath === '' ? '/' : newPath;
+        if (locale === 'en-us') {
+            if (!currentPath.startsWith('/en-us')) {
+                newPath = `/en-us${currentPath !== '/' ? currentPath : ''}`;
             }
-            window.location.href = newPath;
+        } else {
+            if (currentPath.startsWith('/en-us')) {
+                newPath = currentPath.replace('/en-us', '');
+            } else {
+                newPath = currentPath;
+            }
+            newPath = newPath === '' ? '/' : newPath;
         }
+        window.location.href = newPath; // Redirect to the new locale path
     };
 </script>
 
-<select
-    class="fixed bg-transparent font-semibold tracking-widest z-30 pointer-events-auto bottom-4 right-4"
-    bind:value={$selectedLocale}
-    on:change={changeLocale}
->
-    <option class="bg-white dark:bg-davys_gray-100" value="fr-ca">Fr</option>
-    <option class="bg-white dark:bg-davys_gray-100" value="en-us">En</option>
-</select>
+<!-- Selected language flag that toggles the dropdown -->
+<div class="fixed top-4 left-2 z-50">
+    <button class="flex items-center justify-center" on:click={toggleDropdown}>
+        {#if $selectedLocale === 'fr-ca'}
+            <img src="./static/france.png" alt="France Flag" class="w-6 h-auto" />
+        {:else}
+            <img src="./static/united-kingdom.png" alt="UK Flag" class="w-6 h-auto" />
+        {/if}
+    </button>
+
+    <!-- Dropdown that shows when the flag is clicked -->
+    {#if dropdownVisible}
+        <div class="dropdown bg-white border border-gray-300 rounded shadow-md mt-2">
+            <!-- French Locale -->
+            {#if $selectedLocale !== 'fr-ca'}
+                <button class="dropdown-item flex items-center" on:click={() => changeLocale('fr-ca')}>
+                    <img src="./static/france.png" alt="France Flag" class="w-4 h-auto mr-2" />
+                    Français
+                </button>
+            {/if}
+            <!-- English Locale -->
+            {#if $selectedLocale !== 'en-us'}
+                <button class="dropdown-item flex items-center" on:click={() => changeLocale('en-us')}>
+                    <img src="./static/united-kingdom.png" alt="UK Flag" class="w-4 h-auto mr-2" />
+                    English
+                </button>
+            {/if}
+        </div>
+    {/if}
+</div>
+
+<style>
+    .dropdown {
+        position: absolute;
+        top: 100%; /* Positioned below the selected flag */
+        left: 0;
+        min-width: 120px;
+    }
+    .dropdown-item {
+        padding: 8px;
+        background-color: white;
+        cursor: pointer;
+        width: 100%;
+        text-align: left;
+    }
+    .dropdown-item:hover {
+        background-color: #f0f0f0;
+    }
+</style>
