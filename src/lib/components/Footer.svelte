@@ -18,7 +18,7 @@
 		<div class="w-full flex justify-around lg:justify-start">
 			<a
 				href="/"
-				class="z-50 border border-gold rounded-full shadow-md w-[125px] h-auto object-contain"
+				class="z-30 border border-gold rounded-full shadow-md w-[125px] h-auto object-contain"
 			>
 				<PrismicImage field={footer.logo} class="w-full h-full" />
 			</a>

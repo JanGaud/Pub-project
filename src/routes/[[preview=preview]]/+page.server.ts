@@ -19,6 +19,7 @@ export async function load({ fetch, cookies, params }) {
 			meta_title: page.data.meta_title,
 			meta_image: page.data.meta_image.url
 		};
+		
 	} catch (err) {
 		error(404, String(err));
 	}
