@@ -7,8 +7,6 @@
 	const social = $page.data.settings.data.social_media || [];
 	const prismicLinks = $page.data.nav.data.link || [];
 	const openingHours = $page.data.openingHours[0].data.day || [];
-
-	console.log(openingHours);
 </script>
 
 <footer class="bg-background flex flex-col items-center -mt-36 px-1 lg:px-4">
