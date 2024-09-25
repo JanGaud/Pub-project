@@ -27,7 +27,7 @@
 		<!-- Opening hours section -->
 		<div class="flex flex-col items-center space-y-4">
 			<h3 class="text-gold tracking-wider uppercase text-lg font-bold drop-shadow-lg">
-				Heures d'ouverture
+				{$page.data.openingHours[0].data.title}
 			</h3>
 			<ul class="text-center">
 				{#each openingHours as item}
@@ -54,9 +54,9 @@
 	<div
 		class="flex flex-col-reverse lg:flex-row justify-center lg:justify-between items-center border-t py-1 text-gold-second w-full"
 	>
-		<p class="py-1 text-base lg:w-[500px] text-center lg:text-left">
+		<small class="py-1 text-sm lg:w-[500px] text-center lg:text-left">
 			{footer.policy}
-		</p>
+        </small>
 		<nav class="w-full lg:w-auto hidden lg:block">
 			<ul
 				class="flex flex-col lg:flex-row items-center justify-center lg:justify-end space-y-2 lg:space-y-0 lg:space-x-6"

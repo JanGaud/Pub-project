@@ -143,17 +143,6 @@ export interface OpeningHoursDocumentDataDayItem {
  */
 interface OpeningHoursDocumentData {
 	/**
-	 * Day field in *opening Hours*
-	 *
-	 * - **Field Type**: Group
-	 * - **Placeholder**: *None*
-	 * - **API ID Path**: opening_hours.day[]
-	 * - **Tab**: Main
-	 * - **Documentation**: https://prismic.io/docs/field#group
-	 */
-	day: prismic.GroupField<Simplify<OpeningHoursDocumentDataDayItem>>;
-
-	/**
 	 * Title field in *opening Hours*
 	 *
 	 * - **Field Type**: Text
@@ -163,6 +152,17 @@ interface OpeningHoursDocumentData {
 	 * - **Documentation**: https://prismic.io/docs/field#key-text
 	 */
 	title: prismic.KeyTextField;
+
+	/**
+	 * Day field in *opening Hours*
+	 *
+	 * - **Field Type**: Group
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: opening_hours.day[]
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#group
+	 */
+	day: prismic.GroupField<Simplify<OpeningHoursDocumentDataDayItem>>;
 }
 
 /**

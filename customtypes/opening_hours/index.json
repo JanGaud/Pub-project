@@ -12,6 +12,13 @@
 					"label": "UID"
 				}
 			},
+			"title": {
+				"type": "Text",
+				"config": {
+					"label": "Title",
+					"placeholder": ""
+				}
+			},
 			"day": {
 				"type": "Group",
 				"config": {
@@ -33,13 +40,6 @@
 							}
 						}
 					}
-				}
-			},
-			"title": {
-				"type": "Text",
-				"config": {
-					"label": "Title",
-					"placeholder": ""
 				}
 			}
 		}
