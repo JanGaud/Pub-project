@@ -1,6 +1,6 @@
 import { createClient } from "$lib/prismicio";
 
-export const prerender = 'true';
+export const prerender = 'auto';
 
 export async function load({ fetch, url }: { fetch: any, url: any }) {
     const client = createClient({ fetch });
@@ -10,6 +10,8 @@ export async function load({ fetch, url }: { fetch: any, url: any }) {
 
     let nav;
     let settings;
+    let footer;
+    let openingHours;
 
     try {
         // Fetch navigation data from Prismic using the determined language
@@ -27,10 +29,28 @@ export async function load({ fetch, url }: { fetch: any, url: any }) {
         settings = null;
     }
 
+    try {
+        footer = await client.getSingle('footer', { lang });
+    } catch (error) {
+        console.error('Failed to fetch footer data from Prismic:', error);
+        footer = null;
+    }
+
+
+    try {
+        // Fetch opening hours data from Prismic using the determined language
+        openingHours = await client.getAllByType('opening_hours', { lang });
+    } catch (error) {
+        console.error('Failed to fetch navigation data from Prismic:', error);
+        openingHours = null;
+    }
+
     // Return the fetched data to be accessible in +layout.svelte
     return {
         nav,
         settings,
+        footer,
+        openingHours,
         lang, // Include the language to use it in your layout
     };
 }

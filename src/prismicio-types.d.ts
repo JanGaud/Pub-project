@@ -5,6 +5,48 @@ import type * as prismic from '@prismicio/client';
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
 /**
+ * Content for footer documents
+ */
+interface FooterDocumentData {
+	/**
+	 * Policy field in *footer*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: All rights reserved
+	 * - **API ID Path**: footer.policy
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	policy: prismic.KeyTextField;
+
+	/**
+	 * Logo field in *footer*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: footer.logo
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#image
+	 */
+	logo: prismic.ImageField<never>;
+}
+
+/**
+ * footer document from Prismic
+ *
+ * - **API ID**: `footer`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type FooterDocument<Lang extends string = string> = prismic.PrismicDocumentWithoutUID<
+	Simplify<FooterDocumentData>,
+	'footer',
+	Lang
+>;
+
+/**
  * Item in *nav → Link*
  */
 export interface NavDocumentDataLinkItem {
@@ -68,6 +110,73 @@ interface NavDocumentData {
 export type NavDocument<Lang extends string = string> = prismic.PrismicDocumentWithoutUID<
 	Simplify<NavDocumentData>,
 	'nav',
+	Lang
+>;
+
+/**
+ * Item in *opening Hours → Day*
+ */
+export interface OpeningHoursDocumentDataDayItem {
+	/**
+	 * Title field in *opening Hours → Day*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: Monday
+	 * - **API ID Path**: opening_hours.day[].title
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	title: prismic.KeyTextField;
+
+	/**
+	 * Hours field in *opening Hours → Day*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: 11h00 - 2h00
+	 * - **API ID Path**: opening_hours.day[].hours
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	hours: prismic.KeyTextField;
+}
+
+/**
+ * Content for opening Hours documents
+ */
+interface OpeningHoursDocumentData {
+	/**
+	 * Day field in *opening Hours*
+	 *
+	 * - **Field Type**: Group
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: opening_hours.day[]
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#group
+	 */
+	day: prismic.GroupField<Simplify<OpeningHoursDocumentDataDayItem>>;
+
+	/**
+	 * Title field in *opening Hours*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: opening_hours.title
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	title: prismic.KeyTextField;
+}
+
+/**
+ * opening Hours document from Prismic
+ *
+ * - **API ID**: `opening_hours`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type OpeningHoursDocument<Lang extends string = string> = prismic.PrismicDocumentWithUID<
+	Simplify<OpeningHoursDocumentData>,
+	'opening_hours',
 	Lang
 >;
 
@@ -152,6 +261,31 @@ export type PageDocument<Lang extends string = string> = prismic.PrismicDocument
 >;
 
 /**
+ * Item in *settings → Social Media*
+ */
+export interface SettingsDocumentDataSocialMediaItem {
+	/**
+	 * Icon field in *settings → Social Media*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: settings.social_media[].icon
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	icon: prismic.KeyTextField;
+
+	/**
+	 * Link field in *settings → Social Media*
+	 *
+	 * - **Field Type**: Link
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: settings.social_media[].link
+	 * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+	 */
+	link: prismic.LinkField;
+}
+
+/**
  * Content for settings documents
  */
 interface SettingsDocumentData {
@@ -231,6 +365,17 @@ interface SettingsDocumentData {
 	 * - **Documentation**: https://prismic.io/docs/field#key-text
 	 */
 	google_maps_api_key: prismic.KeyTextField;
+
+	/**
+	 * Social Media field in *settings*
+	 *
+	 * - **Field Type**: Group
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: settings.social_media[]
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#group
+	 */
+	social_media: prismic.GroupField<Simplify<SettingsDocumentDataSocialMediaItem>>;
 }
 
 /**
@@ -248,7 +393,12 @@ export type SettingsDocument<Lang extends string = string> = prismic.PrismicDocu
 	Lang
 >;
 
-export type AllDocumentTypes = NavDocument | PageDocument | SettingsDocument;
+export type AllDocumentTypes =
+	| FooterDocument
+	| NavDocument
+	| OpeningHoursDocument
+	| PageDocument
+	| SettingsDocument;
 
 /**
  * Primary content in *About → Default → Primary*
@@ -850,14 +1000,20 @@ declare module '@prismicio/client' {
 
 	namespace Content {
 		export type {
+			FooterDocument,
+			FooterDocumentData,
 			NavDocument,
 			NavDocumentData,
 			NavDocumentDataLinkItem,
+			OpeningHoursDocument,
+			OpeningHoursDocumentData,
+			OpeningHoursDocumentDataDayItem,
 			PageDocument,
 			PageDocumentData,
 			PageDocumentDataSlicesSlice,
 			SettingsDocument,
 			SettingsDocumentData,
+			SettingsDocumentDataSocialMediaItem,
 			AllDocumentTypes,
 			AboutSlice,
 			AboutSliceDefaultPrimary,

@@ -192,7 +192,7 @@
 	function loadGoogleMapsScript(callback: () => void) {
 		if (!document.querySelector('script[src*="maps.googleapis.com/maps/api/js"]')) {
 			const script = document.createElement('script');
-			script.src = `https://maps.googleapis.com/maps/api/js?key=${settings.data.google_maps_api_key}`;
+			script.src = `https://maps.googleapis.com/maps/api/js?key=${settings.data.google_maps_api_key}&language=en`;
 			script.async = true;
 			script.defer = true;
 			script.onload = callback;

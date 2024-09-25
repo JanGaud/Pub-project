@@ -1,0 +1,26 @@
+{
+	"format": "custom",
+	"id": "footer",
+	"label": "footer",
+	"repeatable": false,
+	"status": true,
+	"json": {
+		"Main": {
+			"policy": {
+				"type": "Text",
+				"config": {
+					"label": "Policy",
+					"placeholder": "All rights reserved"
+				}
+			},
+			"logo": {
+				"type": "Image",
+				"config": {
+					"label": "Logo",
+					"constraint": {},
+					"thumbnails": []
+				}
+			}
+		}
+	}
+}

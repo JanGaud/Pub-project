@@ -53,6 +53,31 @@
 					"label": "Google Maps Api Key",
 					"placeholder": ""
 				}
+			},
+			"social_media": {
+				"type": "Group",
+				"config": {
+					"label": "Social Media",
+					"repeat": true,
+					"fields": {
+						"icon": {
+							"type": "Text",
+							"config": {
+								"label": "Icon",
+								"placeholder": ""
+							}
+						},
+						"link": {
+							"type": "Link",
+							"config": {
+								"label": "Link",
+								"placeholder": "",
+								"allowTargetBlank": true,
+								"select": null
+							}
+						}
+					}
+				}
 			}
 		}
 	}
