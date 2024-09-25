@@ -249,7 +249,7 @@
 
 		<!-- Form Container with higher z-index -->
 		<div
-			class="card bg-[#ffffffad] backdrop-blur-md z-30 border-2 border-gold-second border-opacity-30 shadow-md rounded-3xl flex flex-col justify-center items-center p-6"
+			class="card bg-[#ffffffad] backdrop-blur-md z-30 border-2 border-gold-second lg:border-opacity-30 shadow-md rounded-3xl flex flex-col justify-center items-center p-6"
 		>
 			<form action="" class="w-full max-w-lg">
 				<div class="grid grid-cols-1 gap-4">
