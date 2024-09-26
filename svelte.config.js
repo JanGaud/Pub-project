@@ -1,12 +1,14 @@
+import preprocess from 'svelte-preprocess'; // Ensure this import is included
 import adapter from '@sveltejs/adapter-auto';
-import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
+
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
 	kit: {
 		adapter: adapter(),
 	},
-	preprocess: preprocess({
-		typescript: true // Enable TypeScript support
-	})
+	preprocess: preprocess({ // Use the imported preprocess here
+		typescript: true,
+	}),
 };
+
 export default config;
