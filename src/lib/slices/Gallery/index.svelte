@@ -6,7 +6,7 @@
 
 <section
 	id="{slice.primary.section_id}"
-	class="shadow-inner py-10 -mx-2 md:-mx-20 mb-20 md:mb-32 min-h-[600px] bg-[#dcbe5b22]"
+	class="shadow-inner py-10 -mx-2 md:-mx-20 mb-20 md:mb-32 min-h-[600px] bg-[#dcbe5b12]"
 	data-slice-type={slice.slice_type}
 	data-slice-variation={slice.variation}
 >
@@ -33,3 +33,4 @@
 		{/each}
 	</div>
 </section>
+

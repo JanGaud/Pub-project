@@ -5,6 +5,8 @@
 	import Icon from '@iconify/svelte';
 	import type { Content } from '@prismicio/client';
 
+	const initialLocale = $page.url.pathname.split('/')[1].slice(0, 2);
+
 	export let slice: Content.ContactSlice;
 	let settings = $page.data.settings;
 	let location = settings.data.location;
@@ -210,7 +212,7 @@
 	function loadGoogleMapsScript(callback: () => void) {
 		if (!document.querySelector('script[src*="maps.googleapis.com/maps/api/js"]')) {
 			const script = document.createElement('script');
-			script.src = `https://maps.googleapis.com/maps/api/js?key=${settings.data.google_maps_api_key}&language=en`;
+			script.src = `https://maps.googleapis.com/maps/api/js?key=${settings.data.google_maps_api_key}&language=${initialLocale}`;
 			script.async = true;
 			script.defer = true;
 			script.onload = callback;

@@ -1,48 +1,29 @@
 <script lang="ts">
-	import { writable } from 'svelte/store';
-	import { page } from '$app/stores';
-
-	// Set initial locale based on the current URL
-	const initialLocale = $page.url.pathname.startsWith('/en-us') ? 'en-us' : 'fr-ca';
-	const selectedLocale = writable(initialLocale);
+	import { selectedLocale, changeLocale } from '$lib/stores/lang';
+	import { onMount } from 'svelte';
 
 	// Variable to control dropdown visibility
 	let dropdownVisible = false;
 
+	// Toggle the dropdown visibility
 	const toggleDropdown = () => {
-		dropdownVisible = !dropdownVisible; // Toggle the dropdown visibility
+		dropdownVisible = !dropdownVisible;
 	};
 
-	const changeLocale = (locale: string) => {
-		selectedLocale.set(locale); // Set the selected locale
-		dropdownVisible = false; // Close the dropdown after selection
-
-		let currentPath = window.location.pathname;
-		let newPath = '';
-
-		if (locale === 'en-us') {
-			if (!currentPath.startsWith('/en-us')) {
-				newPath = `/en-us${currentPath !== '/' ? currentPath : ''}`;
-			}
-		} else {
-			if (currentPath.startsWith('/en-us')) {
-				newPath = currentPath.replace('/en-us', '');
-			} else {
-				newPath = currentPath;
-			}
-			newPath = newPath === '' ? '/' : newPath;
-		}
-		window.location.href = newPath; // Redirect to the new locale path
-	};
+	onMount(() => {
+		selectedLocale.subscribe((value) => {
+			console.log(`Current locale: ${value}`); // Log current locale for feedback
+		});
+	});
 </script>
 
 <!-- Selected language flag that toggles the dropdown -->
 <div class="fixed top-4 left-2 z-50">
 	<button class="flex items-center justify-center gap-1" on:click={toggleDropdown}>
 		{#if $selectedLocale === 'fr-ca'}
-			<img src="france.png" alt="France Flag" class="w-6 h-auto" /><span>FR</span>
+			<img src="/france.png" alt="France Flag" class="w-6 h-auto" /><span>FR</span>
 		{:else}
-			<img src="united-kingdom.png" alt="UK Flag" class="w-6 h-auto" /><span>EN</span>
+			<img src="/united-kingdom.png" alt="UK Flag" class="w-6 h-auto" /><span>EN</span>
 		{/if}
 	</button>
 
@@ -71,6 +52,11 @@
 		top: 100%; /* Positioned below the selected flag */
 		left: 0;
 		min-width: 120px;
+		z-index: 1000; /* Ensure it is above other elements */
+		background-color: white;
+		border: 1px solid #ccc;
+		border-radius: 0.25rem;
+		box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 	}
 	.dropdown-item {
 		padding: 8px;

@@ -78,6 +78,15 @@
 						}
 					}
 				}
+			},
+			"root_link": {
+				"type": "Link",
+				"config": {
+					"label": "Root Link",
+					"placeholder": "",
+					"allowTargetBlank": false,
+					"select": null
+				}
 			}
 		}
 	}

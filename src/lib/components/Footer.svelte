@@ -7,6 +7,7 @@
 	const social = $page.data.settings.data.social_media || [];
 	const prismicLinks = $page.data.nav.data.link || [];
 	const openingHours = $page.data.openingHours[0].data.day || [];
+	const rootLink = $page.data.settings.data.root_link;
 </script>
 
 <footer class="bg-background flex flex-col items-center -mt-36 px-1 lg:px-4">
@@ -14,12 +15,12 @@
 		class="px-4 py-12 grid lg:grid-cols-3 justify-center items-center gap-y-8 lg:gap-y-0 gap-x-4 w-full"
 	>
 		<div class="w-full flex justify-around lg:justify-start">
-			<a
-				href="/"
+			<PrismicLink
+				field={rootLink}
 				class="z-30 border border-gold rounded-full shadow-md w-[125px] h-auto object-contain"
 			>
 				<PrismicImage field={footer.logo} class="w-full h-full" />
-			</a>
+			</PrismicLink>
 		</div>
 
 		<!-- Opening hours section -->
@@ -54,7 +55,7 @@
 	>
 		<small class="py-1 text-sm lg:w-[500px] text-center lg:text-left">
 			{footer.policy}
-        </small>
+		</small>
 		<nav class="w-full lg:w-auto hidden lg:block">
 			<ul
 				class="flex flex-col lg:flex-row items-center justify-center lg:justify-end space-y-2 lg:space-y-0 lg:space-x-6"

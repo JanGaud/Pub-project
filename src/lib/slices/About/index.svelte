@@ -8,11 +8,11 @@
 <section
 	use:animateOnScroll
 	id={slice.primary.section_id}
-	class="text-left grid grid-cols-1 lg:grid-cols-3 gap-10 mb-20 md:mb-32 items-center"
+	class="text-left grid grid-cols-1 lg:grid-cols-2 gap-10 mb-20 md:mb-32 items-center"
 	data-slice-type={slice.slice_type}
 	data-slice-variation={slice.variation}
 >
-	<div class="lg:col-span-2">
+	<div class="lg:col-span-1">
 		<h2 class="text-4xl mb-6 font-bold tracking-wide">{slice.primary.title}</h2>
 		<p>{slice.primary.desciption}</p>
 	</div>

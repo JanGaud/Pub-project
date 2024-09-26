@@ -6,6 +6,7 @@
     // Reactive declarations to use $page store
     const logo = $page.data.nav.data.logo;
     const prismicLinks = $page.data.nav.data.link || [];
+    const rootLink = $page.data.settings.data.root_link;
 
     let isMenuOpen = false;
 
@@ -22,11 +23,11 @@
 
 <nav class="h-28 w-full fixed top-0 px-4 pt-4 text-white bg-gold-gradient z-50 flex items-center justify-center md:justify-between drop-shadow-lg">
     <div class="h-full w-[275px]">
-        <a href="/">
+        <PrismicLink field={rootLink}>
             {#if logo}
                 <PrismicImage field={logo} class="object-contain h-full drop-shadow-xl" />
             {/if}
-        </a>
+        </PrismicLink>
     </div>
     <button class="md:hidden absolute top-2 right-2" on:click={toggleMenu}>
         {#if isMenuOpen}

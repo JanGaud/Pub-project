@@ -376,6 +376,17 @@ interface SettingsDocumentData {
 	 * - **Documentation**: https://prismic.io/docs/field#group
 	 */
 	social_media: prismic.GroupField<Simplify<SettingsDocumentDataSocialMediaItem>>;
+
+	/**
+	 * Root Link field in *settings*
+	 *
+	 * - **Field Type**: Link
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: settings.root_link
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+	 */
+	root_link: prismic.LinkField;
 }
 
 /**
