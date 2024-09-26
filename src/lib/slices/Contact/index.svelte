@@ -1,25 +1,26 @@
 <script lang="ts">
-    import { onMount } from 'svelte';
-    import { page } from '$app/stores';
-    import Icon from '@iconify/svelte';
-    import type { Content } from '@prismicio/client';
+	import { animateOnScroll } from '$lib/actions/animateOnScroll';
+	import { onMount } from 'svelte';
+	import { page } from '$app/stores';
+	import Icon from '@iconify/svelte';
+	import type { Content } from '@prismicio/client';
 
-    export let slice: Content.ContactSlice;
-    let settings = $page.data.settings;
-    let location = settings.data.location;
+	export let slice: Content.ContactSlice;
+	let settings = $page.data.settings;
+	let location = settings.data.location;
 
-    let isVisible = false;
+	let isVisible = false;
 
-    // Function to check if the section is in view
-    function handleScroll() {
-        const section = document.getElementById('form-section');
-        const sectionRect = section?.getBoundingClientRect();
-        if (sectionRect?.top < window.innerHeight && sectionRect?.bottom >= 0) {
-            isVisible = true;
-        }
-    }
+	// Function to check if the section is in view
+	function handleScroll() {
+		const section = document.getElementById('form-section');
+		const sectionRect = section?.getBoundingClientRect();
+		if (sectionRect?.top < window.innerHeight && sectionRect?.bottom >= 0) {
+			isVisible = true;
+		}
+	}
 
-    // Snazzy Maps styles array (Map styling can be adjusted to your needs)
+	// Snazzy Maps styles array (Map styling can be adjusted to your needs)
 	// Snazzy Maps styles array
 	const mapStyles = [
 		{
@@ -181,133 +182,146 @@
 		}
 	];
 
-    // Initialize Google Maps
-    function initMap() {
-        const mapOptions = {
-            center: { lat: location.latitude, lng: location.longitude },
-            zoom: 14,
-            styles: mapStyles
-        };
+	// Initialize Google Maps
+	function initMap() {
+		const mapOptions = {
+			center: { lat: location.latitude, lng: location.longitude },
+			zoom: 14,
+			styles: mapStyles
+		};
 
-        if (typeof google !== 'undefined') {
-            const map = new google.maps.Map(document.getElementById('map') as HTMLElement, mapOptions);
+		if (typeof google !== 'undefined') {
+			const map = new google.maps.Map(document.getElementById('map') as HTMLElement, mapOptions);
 
-            // Add a marker at the specified location
-            new google.maps.Marker({
-                position: { lat: location.latitude, lng: location.longitude },
-                map: map,
-                title: 'Location'
-            });
-        }
-    }
+			// Add a marker at the specified location
+			new google.maps.Marker({
+				position: { lat: location.latitude, lng: location.longitude },
+				map: map,
+				title: 'Location'
+			});
+		}
+	}
 
-    // Load Google Maps script
-    function loadGoogleMapsScript(callback: () => void) {
-        if (!document.querySelector('script[src*="maps.googleapis.com/maps/api/js"]')) {
-            const script = document.createElement('script');
-            script.src = `https://maps.googleapis.com/maps/api/js?key=${settings.data.google_maps_api_key}&language=en`;
-            script.async = true;
-            script.defer = true;
-            script.onload = callback;
-            document.head.appendChild(script);
-        } else {
-            callback();
-        }
-    }
+	// Load Google Maps script
+	function loadGoogleMapsScript(callback: () => void) {
+		if (!document.querySelector('script[src*="maps.googleapis.com/maps/api/js"]')) {
+			const script = document.createElement('script');
+			script.src = `https://maps.googleapis.com/maps/api/js?key=${settings.data.google_maps_api_key}&language=en`;
+			script.async = true;
+			script.defer = true;
+			script.onload = callback;
+			document.head.appendChild(script);
+		} else {
+			callback();
+		}
+	}
 
-    // Mounting the Google Maps and scroll listener
-    onMount(() => {
-        // Initialize Google Maps
-        loadGoogleMapsScript(() => {
-            initMap();
-        });
+	// Mounting the Google Maps and scroll listener
+	onMount(() => {
+		// Initialize Google Maps
+		loadGoogleMapsScript(() => {
+			initMap();
+		});
 
-        // Add scroll event listener for sliding in the form
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
-    });
+		// Add scroll event listener for sliding in the form
+		window.addEventListener('scroll', handleScroll);
+		return () => window.removeEventListener('scroll', handleScroll);
+	});
 </script>
 
-<section id="form-section" data-slice-type={slice.slice_type} data-slice-variation={slice.variation}>
-    <div class="h-fit grid grid-cols-1 lg:grid-cols-2 gap-10 mb-4 lg:-mb-20 overflow-x-hidden">
-        <div>
-            <div class="mb-8 w-full md:w-full">
-                <h2 class="text-4xl font-bold tracking-wide mb-2">{slice.primary.title}</h2>
-                <p>{slice.primary.disclaimer}</p>
-            </div>
-            <div>
-                <!-- Phone -->
-                {#if slice.primary.phone_input[0]?.icon !== 'null'}
-                    <div class="flex items-end gap-2 mb-4">
-                        <Icon class="text-gold-second w-8 h-8" icon={slice.primary.phone_input[0]?.icon} />
-                        <a href={`tel:${settings.data.phone ?? ''}`} class="text-blue">{settings.data.phone}</a>
-                    </div>
-                {/if}
-                <!-- Email -->
-                {#if slice.primary.email_input[0]?.icon !== 'null'}
-                    <div class="flex items-end gap-2 mb-4">
-                        <Icon class="text-gold-second w-8 h-8" icon={slice.primary.email_input[0]?.icon} />
-                        <a href={`mailto:${settings.data.email ?? ''}`} class="text-blue">{settings.data.email}</a>
-                    </div>
-                {/if}
-                <!-- Address -->
-                {#if slice.primary.adresse_input[0]?.icon !== 'null'}
-                    <div class="flex items-end gap-2 mb-4">
-                        <Icon class="text-gold-second w-8 h-8" icon={slice.primary.adresse_input[0]?.icon} />
-                        <p>{settings.data.address}</p>
-                    </div>
-                {/if}
-            </div>
-        </div>
+<section
+	use:animateOnScroll
+	id="form-section"
+	data-slice-type={slice.slice_type}
+	data-slice-variation={slice.variation}
+>
+	<div class="h-fit grid grid-cols-1 lg:grid-cols-2 gap-10 mb-4 lg:-mb-20 overflow-x-hidden">
+		<div>
+			<div class="mb-8 w-full md:w-full">
+				<h2 class="text-4xl font-bold tracking-wide mb-2">{slice.primary.title}</h2>
+				<p>{slice.primary.disclaimer}</p>
+			</div>
+			<div>
+				<!-- Phone -->
+				{#if slice.primary.phone_input[0]?.icon !== 'null'}
+					<div class="flex items-end gap-2 mb-4">
+						<Icon class="text-gold-second w-8 h-8" icon={slice.primary.phone_input[0]?.icon} />
+						<a href={`tel:${settings.data.phone ?? ''}`} class="text-blue">{settings.data.phone}</a>
+					</div>
+				{/if}
+				<!-- Email -->
+				{#if slice.primary.email_input[0]?.icon !== 'null'}
+					<div class="flex items-end gap-2 mb-4">
+						<Icon class="text-gold-second w-8 h-8" icon={slice.primary.email_input[0]?.icon} />
+						<a href={`mailto:${settings.data.email ?? ''}`} class="text-blue"
+							>{settings.data.email}</a
+						>
+					</div>
+				{/if}
+				<!-- Address -->
+				{#if slice.primary.adresse_input[0]?.icon !== 'null'}
+					<div class="flex items-end gap-2 mb-4">
+						<Icon class="text-gold-second w-8 h-8" icon={slice.primary.adresse_input[0]?.icon} />
+						<p>{settings.data.address}</p>
+					</div>
+				{/if}
+			</div>
+		</div>
 
-        <!-- Form Container with sliding animation -->
-        <div class="card bg-[#ffffffad] backdrop-blur-md z-30 border-2 border-gold-second lg:border-opacity-30 shadow-md rounded-3xl flex flex-col justify-center items-center p-6 {isVisible ? 'slide-in visible' : 'slide-in'}">
-            <form action="" class="w-full max-w-lg">
-                <div class="grid grid-cols-1 gap-4">
-                    <input
-                        type="text"
-                        placeholder={slice.primary.form_inputs[0]?.name}
-                        class="w-full p-3 border-b border-gray-300 rounded-md focus:outline-none focus:border-gold"
-                    />
-                    <input
-                        type="email"
-                        placeholder={slice.primary.form_inputs[0]?.email}
-                        class="w-full p-3 border-b border-gray-300 rounded-md focus:outline-none focus:border-gold"
-                    />
-                    <input
-                        type="text"
-                        placeholder={slice.primary.form_inputs[0]?.subject}
-                        class="w-full p-3 border-b border-gray-300 rounded-md focus:outline-none focus:border-gold"
-                    />
-                    <textarea
-                        placeholder={slice.primary.form_inputs[0]?.message}
-                        class="w-full p-3 border-b border-gray-300 rounded-md focus:outline-none focus:border-gold h-32 resize-none"
-                    ></textarea>
-                    <button
-                        type="submit"
-                        class="mt-6 shadow-xl flex items-center justify-center gap-4 w-full border-4 uppercase bg-background text-white backdrop-blur border-gold-second hover:border-gold duration-200 p-4"
-                    >
-                        {slice.primary.form_inputs[0]?.send_button}
-                    </button>
-                </div>
-            </form>
-        </div>
-    </div>
+		<!-- Form Container with sliding animation -->
+		<div
+			class="card bg-[#ffffffad] backdrop-blur-md z-30 border-2 border-gold-second lg:border-opacity-30 shadow-md rounded-3xl flex flex-col justify-center items-center p-6 {isVisible
+				? 'slide-in visible'
+				: 'slide-in'}"
+		>
+			<form action="" class="w-full max-w-lg">
+				<div class="grid grid-cols-1 gap-4">
+					<input
+						type="text"
+						placeholder={slice.primary.form_inputs[0]?.name}
+						class="w-full p-3 border-b border-gray-300 rounded-md focus:outline-none focus:border-gold"
+					/>
+					<input
+						type="email"
+						placeholder={slice.primary.form_inputs[0]?.email}
+						class="w-full p-3 border-b border-gray-300 rounded-md focus:outline-none focus:border-gold"
+					/>
+					<input
+						type="text"
+						placeholder={slice.primary.form_inputs[0]?.subject}
+						class="w-full p-3 border-b border-gray-300 rounded-md focus:outline-none focus:border-gold"
+					/>
+					<textarea
+						placeholder={slice.primary.form_inputs[0]?.message}
+						class="w-full p-3 border-b border-gray-300 rounded-md focus:outline-none focus:border-gold h-32 resize-none"
+					></textarea>
+					<button
+						type="submit"
+						class="mt-6 shadow-xl flex items-center justify-center gap-4 w-full border-4 uppercase bg-background text-white backdrop-blur border-gold-second hover:border-gold duration-200 p-4"
+					>
+						{slice.primary.form_inputs[0]?.send_button}
+					</button>
+				</div>
+			</form>
+		</div>
+	</div>
 
-    <!-- Google Map Container -->
-    <div id="map" class="relative -mx-2 md:-mx-20 mb-20 md:mb-32 h-[350px] z-10"></div>
+	<!-- Google Map Container -->
+	<div id="map" class="relative -mx-2 md:-mx-20 mb-20 md:mb-32 h-[350px] z-10"></div>
 </section>
 
 <style>
-    /* Define the initial state and animation for the sliding effect */
-    .slide-in {
-        transform: translateX(100%);
-        opacity: 0;
-        transition: transform 0.9s ease-in-out, opacity 0.9s ease-in-out;
-    }
+	/* Define the initial state and animation for the sliding effect */
+	.slide-in {
+		transform: translateX(100%);
+		opacity: 0;
+		transition:
+			transform 0.9s ease-in-out,
+			opacity 0.9s ease-in-out;
+	}
 
-    .slide-in.visible {
-        transform: translateX(0);
-        opacity: 1;
-    }
+	.slide-in.visible {
+		transform: translateX(0);
+		opacity: 1;
+	}
 </style>
