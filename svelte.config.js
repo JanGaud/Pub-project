@@ -1,11 +1,12 @@
 import adapter from '@sveltejs/adapter-auto';
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 /** @type {import('@sveltejs/kit').Config} */
-export default {
+const config = {
 	kit: {
 		adapter: adapter(),
-		prerender: {
-			handleMissingId: 'ignore' // or 'warn' or 'fail'
-		}
-	}
+	},
+	preprocess: preprocess({
+		typescript: true // Enable TypeScript support
+	})
 };
+export default config;

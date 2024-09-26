@@ -68,7 +68,7 @@
 <style>
 	.dropdown {
 		position: absolute;
-		top: 100%;
+		top: 100%; /* Positioned below the selected flag */
 		left: 0;
 		min-width: 120px;
 	}
