@@ -13,10 +13,14 @@
 
 	// Function to check if the section is in view
 	function handleScroll() {
-		const section = document.getElementById('form-section');
-		const sectionRect = section?.getBoundingClientRect();
-		if (sectionRect?.top < window.innerHeight && sectionRect?.bottom >= 0) {
-			isVisible = true;
+		const section = document.querySelector('.form-section');
+		if (section) {
+			const sectionRect = section.getBoundingClientRect();
+			if (sectionRect.top < window.innerHeight && sectionRect.bottom >= 0) {
+				isVisible = true;
+			} else {
+				isVisible = false;
+			}
 		}
 	}
 
@@ -231,7 +235,8 @@
 
 <section
 	use:animateOnScroll
-	id="form-section"
+	id={slice.primary.section_id}
+	class="form-section"
 	data-slice-type={slice.slice_type}
 	data-slice-variation={slice.variation}
 >

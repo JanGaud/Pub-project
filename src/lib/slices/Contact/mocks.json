@@ -147,6 +147,11 @@
 						]
 					}
 				]
+			},
+			"section_id": {
+				"__TYPE__": "FieldContent",
+				"value": "friendly",
+				"type": "Text"
 			}
 		},
 		"items": []

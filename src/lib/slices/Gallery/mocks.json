@@ -66,6 +66,11 @@
 						]
 					}
 				]
+			},
+			"section_id": {
+				"__TYPE__": "FieldContent",
+				"value": "chapter",
+				"type": "Text"
 			}
 		},
 		"items": []

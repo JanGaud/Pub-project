@@ -405,6 +405,16 @@ export type AllDocumentTypes =
  */
 export interface AboutSliceDefaultPrimary {
 	/**
+	 * Section Id field in *About → Default → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: about.default.primary.section_id
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	section_id: prismic.KeyTextField;
+
+	/**
 	 * Title field in *About → Default → Primary*
 	 *
 	 * - **Field Type**: Text
@@ -709,6 +719,16 @@ export interface ContactSliceDefaultPrimaryFormInputsItem {
  */
 export interface ContactSliceDefaultPrimary {
 	/**
+	 * Section Id field in *Contact → Default → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: contact.default.primary.section_id
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	section_id: prismic.KeyTextField;
+
+	/**
 	 * Location field in *Contact → Default → Primary*
 	 *
 	 * - **Field Type**: GeoPoint
@@ -933,6 +953,16 @@ export interface GallerySliceDefaultPrimaryThumbnailItem {
  */
 export interface GallerySliceDefaultPrimary {
 	/**
+	 * Section Id field in *Gallery → Default → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: gallery.default.primary.section_id
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	section_id: prismic.KeyTextField;
+
+	/**
 	 * Title field in *Gallery → Default → Primary*
 	 *
 	 * - **Field Type**: Text
@@ -996,6 +1026,17 @@ declare module '@prismicio/client' {
 			repositoryNameOrEndpoint: string,
 			options?: prismic.ClientConfig
 		): prismic.Client<AllDocumentTypes>;
+	}
+
+	interface CreateWriteClient {
+		(
+			repositoryNameOrEndpoint: string,
+			options: prismic.WriteClientConfig
+		): prismic.WriteClient<AllDocumentTypes>;
+	}
+
+	interface CreateMigration {
+		(): prismic.Migration<AllDocumentTypes>;
 	}
 
 	namespace Content {
