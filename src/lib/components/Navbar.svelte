@@ -2,6 +2,7 @@
     import Icon from '@iconify/svelte';
     import { page } from '$app/stores';
     import { PrismicImage, PrismicLink } from '@prismicio/svelte';
+    import { onMount, onDestroy } from 'svelte';
 
     // Reactive declarations to use $page store
     const logo = $page.data.nav.data.logo;
@@ -9,6 +10,7 @@
     const rootLink = $page.data.settings.data.root_link;
 
     let isMenuOpen = false;
+    let isScrolled = false;
 
     // Function to toggle the mobile menu
     function toggleMenu() {
@@ -19,13 +21,36 @@
             document.body.classList.remove('overflow-hidden');
         }
     }
+
+    // Function to handle the scroll event
+    function handleScroll() {
+        isScrolled = window.scrollY > 50; // Adjust value as needed
+    }
+
+    // Ensure this code only runs on the client-side
+    onMount(() => {
+        if (typeof window !== 'undefined') {
+            window.addEventListener('scroll', handleScroll);
+        }
+    });
+
+    // Remove the scroll event listener on component destroy
+    onDestroy(() => {
+        if (typeof window !== 'undefined') {
+            window.removeEventListener('scroll', handleScroll);
+        }
+    });
 </script>
 
-<nav class="h-28 w-full fixed top-0 px-4 pt-4 text-white bg-gold-gradient z-50 flex items-center justify-center md:justify-between drop-shadow-lg">
-    <div class="h-full w-[275px]">
+<nav class="h-28 w-full fixed top-0 px-4 pt-4 text-white bg-gold-gradient z-50 flex items-center justify-center md:justify-between drop-shadow-lg transition-all duration-300 ease-in-out">
+    <div class="h-full w-[300px]">
         <PrismicLink field={rootLink}>
             {#if logo}
-                <PrismicImage field={logo} class="object-contain h-full drop-shadow-xl" />
+                <!-- Add dynamic classes based on scroll position -->
+                <PrismicImage
+                    field={logo}
+                    class={`object-contain drop-shadow-xl transition-transform duration-300 ease-in-out ${isScrolled ? 'scale-75 -translate-y-4 transform-origin-center' : 'scale-110 translate-y-0 transform-origin-center'} h-full`}
+                />
             {/if}
         </PrismicLink>
     </div>
