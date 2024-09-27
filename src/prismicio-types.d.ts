@@ -181,6 +181,7 @@ export type OpeningHoursDocument<Lang extends string = string> = prismic.Prismic
 >;
 
 type PageDocumentDataSlicesSlice =
+	| MenuBannerSlice
 	| EventsSlice
 	| ContactSlice
 	| GallerySlice
@@ -1031,6 +1032,103 @@ type GallerySliceVariation = GallerySliceDefault;
  */
 export type GallerySlice = prismic.SharedSlice<'gallery', GallerySliceVariation>;
 
+/**
+ * Item in *MenuBanner → Default → Primary → Promo*
+ */
+export interface MenuBannerSliceDefaultPrimaryPromoItem {
+	/**
+	 * Title field in *MenuBanner → Default → Primary → Promo*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: menu_banner.default.primary.promo[].title
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	title: prismic.KeyTextField;
+
+	/**
+	 * Description field in *MenuBanner → Default → Primary → Promo*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: menu_banner.default.primary.promo[].description
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	description: prismic.KeyTextField;
+}
+
+/**
+ * Primary content in *MenuBanner → Default → Primary*
+ */
+export interface MenuBannerSliceDefaultPrimary {
+	/**
+	 * Image field in *MenuBanner → Default → Primary*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: menu_banner.default.primary.image
+	 * - **Documentation**: https://prismic.io/docs/field#image
+	 */
+	image: prismic.ImageField<never>;
+
+	/**
+	 * Title field in *MenuBanner → Default → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: menu_banner.default.primary.title
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	title: prismic.KeyTextField;
+
+	/**
+	 * Description field in *MenuBanner → Default → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: menu_banner.default.primary.description
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	description: prismic.KeyTextField;
+
+	/**
+	 * Promo field in *MenuBanner → Default → Primary*
+	 *
+	 * - **Field Type**: Group
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: menu_banner.default.primary.promo[]
+	 * - **Documentation**: https://prismic.io/docs/field#group
+	 */
+	promo: prismic.GroupField<Simplify<MenuBannerSliceDefaultPrimaryPromoItem>>;
+}
+
+/**
+ * Default variation for MenuBanner Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type MenuBannerSliceDefault = prismic.SharedSliceVariation<
+	'default',
+	Simplify<MenuBannerSliceDefaultPrimary>,
+	never
+>;
+
+/**
+ * Slice variation for *MenuBanner*
+ */
+type MenuBannerSliceVariation = MenuBannerSliceDefault;
+
+/**
+ * MenuBanner Shared Slice
+ *
+ * - **API ID**: `menu_banner`
+ * - **Description**: MenuBanner
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type MenuBannerSlice = prismic.SharedSlice<'menu_banner', MenuBannerSliceVariation>;
+
 declare module '@prismicio/client' {
 	interface CreateClient {
 		(
@@ -1094,7 +1192,12 @@ declare module '@prismicio/client' {
 			GallerySliceDefaultPrimaryThumbnailItem,
 			GallerySliceDefaultPrimary,
 			GallerySliceVariation,
-			GallerySliceDefault
+			GallerySliceDefault,
+			MenuBannerSlice,
+			MenuBannerSliceDefaultPrimaryPromoItem,
+			MenuBannerSliceDefaultPrimary,
+			MenuBannerSliceVariation,
+			MenuBannerSliceDefault
 		};
 	}
 }

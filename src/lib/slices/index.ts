@@ -5,11 +5,13 @@ import Banner from './Banner/index.svelte';
 import Contact from './Contact/index.svelte';
 import Events from './Events/index.svelte';
 import Gallery from './Gallery/index.svelte';
+import MenuBanner from './MenuBanner/index.svelte';
 
 export const components = {
 	about: About,
 	banner: Banner,
 	contact: Contact,
 	events: Events,
-	gallery: Gallery
+	gallery: Gallery,
+	menu_banner: MenuBanner
 };
