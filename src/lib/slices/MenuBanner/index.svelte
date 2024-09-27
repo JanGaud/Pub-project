@@ -24,8 +24,30 @@
 				{slice.primary.description}
 			</h2>
 		</div>
-		<div class="mt-24 px-4 sm:px-16 lg:px-24 hidden md:flex justify-center items-center">
-			<div class="bg-[#00000046] backdrop-blur-md rounded-lg w-full h-[250px]"></div>
+		<div class="mt-24 px-4 sm:px-16 lg:px-24 hidden md:flex justify-center items-center relative">
+			<!-- Left Arrow -->
+			<button
+				class="absolute left-4 lg:left-16 z-10 text-white text-6xl hover:text-gold duration-200 p-2 rounded-full"
+				aria-label="Previous Slide"
+			>
+				‹
+			</button>
+
+			<!-- Inner Carousel Container -->
+			<div
+				class="bg-[#00000046] backdrop-blur-md rounded-lg w-full h-[250px] flex justify-center items-center"
+			>
+				<!-- Carousel content goes here -->
+				<p class="text-white text-xl">Carousel Content</p>
+			</div>
+
+			<!-- Right Arrow -->
+			<button
+				class="absolute right-4 lg:right-16 z-10 text-white text-6xl hover:text-gold duration-200 p-2 rounded-full"
+				aria-label="Next Slide"
+			>
+				›
+			</button>
 		</div>
 	</div>
 	<PrismicImage field={slice.primary.image} class="w-full h-full object-cover" />
