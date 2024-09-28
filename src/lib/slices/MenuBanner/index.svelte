@@ -110,12 +110,12 @@
 
 		<!-- Inner Carousel Container -->
 		<div
-			class="bg-[#00000059] px-10 backdrop-blur-md rounded-lg w-full h-[250px] flex flex-col justify-center items-center p-4"
+			class="bg-[#0000007e] px-10 backdrop-blur-md rounded-lg w-full h-[250px] flex flex-col justify-center items-center p-4"
 		>
-			<h3 class="text-white text-2xl mb-2 font-bold">
+			<h3 class="text-white drop-shadow-md text-2xl mb-2 font-bold">
 				{slice.primary.promo[currentSlideIndex]?.title}
 			</h3>
-			<p class="text-black text-lg">{slice.primary.promo[currentSlideIndex]?.description}</p>
+			<p class="text-white text-lg drop-shadow">{slice.primary.promo[currentSlideIndex]?.description}</p>
 		</div>
 
 		<!-- Right Arrow, visible only when more than one promo -->
