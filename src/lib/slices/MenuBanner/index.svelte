@@ -55,78 +55,85 @@
 					{slice.primary.description}
 				</h2>
 			</div>
-
-			<!-- Carousel Section -->
-			<div class="mt-24 px-4 sm:px-16 lg:px-24 hidden md:flex justify-center items-center relative">
-				<!-- Left Arrow, visible only when more than one promo -->
-				{#if slice.primary.promo.length > 1}
-					<button
-						class="absolute left-4 lg:left-16 z-10 text-white text-6xl hover:text-gold duration-200 p-2 rounded-full"
-						aria-label="Previous Slide"
-						on:click={showPreviousSlide}
-					>
-						‹
-					</button>
-				{/if}
-
-				<!-- Inner Carousel Container -->
+			{#if slice.primary.promo.length > 0}
+				<!-- Carousel Section -->
 				<div
-					class="bg-[#00000046] backdrop-blur-md rounded-lg w-full h-[250px] flex flex-col justify-center items-center p-4"
+					class="mt-24 px-4 sm:px-16 lg:px-24 hidden md:flex justify-center items-center relative"
 				>
-					<h3 class="text-white text-2xl mb-2 font-bold">
-						{slice.primary.promo[currentSlideIndex]?.title}
-					</h3>
-					<p class="text-white text-lg">{slice.primary.promo[currentSlideIndex]?.description}</p>
-				</div>
+					<!-- Left Arrow, visible only when more than one promo -->
+					{#if slice.primary.promo.length > 1}
+						<button
+							class="absolute left-4 lg:left-16 z-10 text-white text-6xl hover:text-gold duration-200 p-2 rounded-full"
+							aria-label="Previous Slide"
+							on:click={showPreviousSlide}
+						>
+							‹
+						</button>
+					{/if}
 
-				<!-- Right Arrow, visible only when more than one promo -->
-				{#if slice.primary.promo.length > 1}
-					<button
-						class="absolute right-4 lg:right-16 z-10 text-white text-6xl hover:text-gold duration-200 p-2 rounded-full"
-						aria-label="Next Slide"
-						on:click={showNextSlide}
+					<!-- Inner Carousel Container -->
+					<div
+						class="bg-[#00000046] backdrop-blur-md rounded-lg w-full h-[250px] flex flex-col justify-center items-center p-4"
 					>
-						›
-					</button>
-				{/if}
-			</div>
+						<h3 class="text-white text-2xl mb-2 font-bold">
+							{slice.primary.promo[currentSlideIndex]?.title}
+						</h3>
+						<p class="text-white text-lg">{slice.primary.promo[currentSlideIndex]?.description}</p>
+					</div>
+
+					<!-- Right Arrow, visible only when more than one promo -->
+					{#if slice.primary.promo.length > 1}
+						<button
+							class="absolute right-4 lg:right-16 z-10 text-white text-6xl hover:text-gold duration-200 p-2 rounded-full"
+							aria-label="Next Slide"
+							on:click={showNextSlide}
+						>
+							›
+						</button>
+					{/if}
+				</div>
+			{/if}
 		</div>
 
 		<PrismicImage field={slice.primary.image} class="w-full h-full object-cover" />
 	</div>
 
-	<!-- Mobile Carousel Section -->
-	<div class="-mt-32 px-2 flex justify-center items-center relative md:hidden">
-		<!-- Left Arrow, visible only when more than one promo -->
-		{#if slice.primary.promo.length > 1}
-			<button
-				class="absolute left-2 lg:left-16 z-10 text-black text-7xl hover:text-gold duration-200 p-2 rounded-full"
-				aria-label="Previous Slide"
-				on:click={showPreviousSlide}
-			>
-				‹
-			</button>
-		{/if}
+	{#if slice.primary.promo.length > 0}
+		<!-- Mobile Carousel Section -->
+		<div class="-mt-32 px-2 flex justify-center items-center relative md:hidden">
+			<!-- Left Arrow, visible only when more than one promo -->
+			{#if slice.primary.promo.length > 1}
+				<button
+					class="absolute left-2 lg:left-16 z-10 text-black text-7xl hover:text-gold duration-200 p-2 rounded-full"
+					aria-label="Previous Slide"
+					on:click={showPreviousSlide}
+				>
+					‹
+				</button>
+			{/if}
 
-		<!-- Inner Carousel Container -->
-		<div
-			class="bg-[#0000007e] px-10 backdrop-blur-md rounded-lg w-full h-[250px] flex flex-col justify-center items-center p-4"
-		>
-			<h3 class="text-white drop-shadow-md text-2xl mb-2 font-bold">
-				{slice.primary.promo[currentSlideIndex]?.title}
-			</h3>
-			<p class="text-white text-lg drop-shadow">{slice.primary.promo[currentSlideIndex]?.description}</p>
+			<!-- Inner Carousel Container -->
+			<div
+				class="bg-[#0000007e] px-10 backdrop-blur-md rounded-lg w-full h-[250px] flex flex-col justify-center items-center p-4"
+			>
+				<h3 class="text-white drop-shadow-md text-2xl mb-2 font-bold">
+					{slice.primary.promo[currentSlideIndex]?.title}
+				</h3>
+				<p class="text-white text-lg drop-shadow">
+					{slice.primary.promo[currentSlideIndex]?.description}
+				</p>
+			</div>
+
+			<!-- Right Arrow, visible only when more than one promo -->
+			{#if slice.primary.promo.length > 1}
+				<button
+					class="absolute right-2 lg:right-16 z-10 text-black text-7xl hover:text-gold duration-200 p-2 rounded-full"
+					aria-label="Next Slide"
+					on:click={showNextSlide}
+				>
+					›
+				</button>
+			{/if}
 		</div>
-
-		<!-- Right Arrow, visible only when more than one promo -->
-		{#if slice.primary.promo.length > 1}
-			<button
-				class="absolute right-2 lg:right-16 z-10 text-black text-7xl hover:text-gold duration-200 p-2 rounded-full"
-				aria-label="Next Slide"
-				on:click={showNextSlide}
-			>
-				›
-			</button>
-		{/if}
-	</div>
+	{/if}
 </section>
