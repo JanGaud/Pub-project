@@ -73,7 +73,7 @@
 
 					<!-- Inner Carousel Container -->
 					<div
-						class="bg-[#00000046] backdrop-blur-md rounded-lg w-full h-[250px] flex flex-col justify-center items-center p-4"
+						class="bg-[#00000046] backdrop-blur-md rounded-lg w-full min-h-[250px] flex flex-col justify-center items-center p-4"
 					>
 						<h3 class="text-white text-2xl mb-2 font-bold">
 							{slice.primary.promo[currentSlideIndex]?.title}
@@ -114,7 +114,7 @@
 
 			<!-- Inner Carousel Container -->
 			<div
-				class="bg-[#0000007e] px-10 backdrop-blur-md rounded-lg w-full h-[250px] flex flex-col justify-center items-center p-4"
+				class="bg-[#0000007e] px-10 backdrop-blur-md rounded-lg w-full min-h-[250px] flex flex-col justify-center items-center p-4"
 			>
 				<h3 class="text-white drop-shadow-md text-2xl mb-2 font-bold">
 					{slice.primary.promo[currentSlideIndex]?.title}
