@@ -1,8 +1,14 @@
 <script lang="ts">
 	import { page } from '$app/stores';
-	import { writable, get } from 'svelte/store';
+	import { writable } from 'svelte/store';
 	import type { Content } from '@prismicio/client';
 	import Icon from '@iconify/svelte';
+
+	// Import menu components
+	import Food from '$lib/components/menu/Food.svelte';
+	import Cocktails from '$lib/components/menu/Cocktails.svelte';
+	import Beers from '$lib/components/menu/Beers.svelte';
+	import Wines from '$lib/components/menu/Wines.svelte';
 
 	// Props for Prismic slice content
 	export let slice: Content.MenuSlice;
@@ -25,11 +31,21 @@
 		selectedSection.set(sectionType);
 	}
 
-	// Function to get menu items based on the currently selected section
-	function getMenuItems() {
-		// Use `get` to access the current value of `selectedSection`
-		return menu[get(selectedSection)]?.[0]?.data?.item || [];
-	}
+	// Determine the component to display based on the selected section
+	$: currentMenuComponent = (() => {
+		switch ($selectedSection) {
+			case 'food':
+				return Food;
+			case 'beer':
+				return Beers;
+			case 'cocktail':
+				return Cocktails;
+			case 'wine':
+				return Wines;
+			default:
+				return Food;
+		}
+	})();
 </script>
 
 <!-- Tailwind CSS Styles for navigation and menu -->
@@ -38,13 +54,27 @@
 	<nav class="grid grid-cols-4 md:grid-cols-2 lg:grid-cols-4 items-center gap-2 md:gap-4 mb-8">
 		{#each navItems as navItem}
 			<button
-				class="h-16 aspect-square md:h-24 md:w-full md:aspect-auto bg-background rounded-full text-white flex items-center justify-center gap-4 p-4 shadow-lg hover:bg-gold hover:shadow-inner hover:text-black transition-all"
+				class="h-16 aspect-square md:h-24 md:w-full md:aspect-auto rounded-full flex items-center justify-center gap-4 p-4 shadow-lg transition-all
+					hover:bg-gold hover:shadow-inner hover:text-black
+					{(navItem.type === $selectedSection) ? 'bg-gold text-black shadow-inner' : 'bg-background text-white'}"
 				on:click={() => selectSection(navItem.type)}
 			>
 				<!-- Display the icon and title for each navigation item -->
-				<Icon class=" min-w-[40px] text-[50px] md:text-[75px]" icon={navItem.icon} />
+				<Icon class="min-w-[40px] text-[50px] md:text-[75px]" icon={navItem.icon} />
 				<span class="text-md lg:text-xl text-center font-medium hidden md:block">{navItem.title}</span>
 			</button>
 		{/each}
 	</nav>
+
+	<!-- Display the content of the currently selected menu section -->
+	<div class="p-4">
+		<!-- Dynamic component rendering based on the selected menu section -->
+		<svelte:component
+			this={currentMenuComponent}
+			foodMenu={menu.food}
+			beerMenu={menu.beer}
+			cocktailMenu={menu.cocktail}
+			wineMenu={menu.wine}
+		/>
+	</div>
 </section>
