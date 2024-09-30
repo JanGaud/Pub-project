@@ -12,7 +12,7 @@
 	<!-- Render the beer items with the beer color indicator and out-of-stock styling -->
 	<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
 		{#each items as item}
-			<div class="flex items-start h-64 md:h-40">
+			<div class="flex items-start min-h-64 md:min-h-44">
 				<!-- Beer Color Indicator (Circle) -->
 				{#if item.beer_color}
 					<div class="h-full w-8" style="background-color: {item.beer_color};"></div>
