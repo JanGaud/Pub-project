@@ -38,8 +38,8 @@
 	});
 </script>
 
-<section class="mb-32" data-slice-type={slice.slice_type} data-slice-variation={slice.variation}>
-	<div class="relative overflow-hidden h-[450px] -mx-2 md:-mx-20 -my-36 mb-20 md:mb-32">
+<section data-slice-type={slice.slice_type} data-slice-variation={slice.variation}>
+	<div class="relative overflow-hidden h-[450px] -mx-2 md:-mx-20 -my-36 mb-20 md:mb-0">
 		<div
 			class="absolute inset-0 grid md:grid-cols-2 gap-4 lg:gap-10 items-center bg-black bg-opacity-80 text-white text-center"
 		>

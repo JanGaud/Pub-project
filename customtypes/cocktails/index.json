@@ -1,0 +1,86 @@
+{
+	"format": "custom",
+	"id": "cocktails",
+	"label": "drink",
+	"repeatable": true,
+	"status": true,
+	"json": {
+		"Main": {
+			"uid": {
+				"type": "UID",
+				"config": {
+					"label": "UID"
+				}
+			},
+			"title": {
+				"type": "Text",
+				"config": {
+					"label": "Title",
+					"placeholder": "Cocktails"
+				}
+			},
+			"notes": {
+				"type": "Text",
+				"config": {
+					"label": "Notes",
+					"placeholder": "Premium liquors cost an additional $2.50, and d"
+				}
+			},
+			"icon": {
+				"type": "Text",
+				"config": {
+					"label": "Icon",
+					"placeholder": ""
+				}
+			},
+			"item": {
+				"type": "Group",
+				"config": {
+					"label": "Item",
+					"repeat": true,
+					"fields": {
+						"soft": {
+							"type": "Boolean",
+							"config": {
+								"label": "soft",
+								"placeholder_false": "false",
+								"placeholder_true": "true",
+								"default_value": false
+							}
+						},
+						"label": {
+							"type": "Text",
+							"config": {
+								"label": "Label",
+								"placeholder": "Bloody Mary"
+							}
+						},
+						"ingredients": {
+							"type": "Text",
+							"config": {
+								"label": "Ingredients",
+								"placeholder": "Vodka - Tomato juice - Spice blend"
+							}
+						},
+						"price": {
+							"type": "Number",
+							"config": {
+								"label": "Price",
+								"placeholder": ""
+							}
+						},
+						"out_of_stock": {
+							"type": "Boolean",
+							"config": {
+								"label": "Out of stock",
+								"placeholder_false": "false",
+								"placeholder_true": "true",
+								"default_value": false
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

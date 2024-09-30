@@ -25,7 +25,7 @@
 
 <Navbar />
 <LocaleSelect />
-<main class="mx-auto mt-36 px-2 md:px-20 max-w-screen-2xl min-h-screen">
+<main class="mx-auto mt-36 px-2 md:px-20 max-w-screen-2xl">
 	<slot />
 </main>
 <Footer />

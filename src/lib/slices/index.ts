@@ -5,6 +5,7 @@ import Banner from './Banner/index.svelte';
 import Contact from './Contact/index.svelte';
 import Events from './Events/index.svelte';
 import Gallery from './Gallery/index.svelte';
+import Menu from './Menu/index.svelte';
 import MenuBanner from './MenuBanner/index.svelte';
 
 export const components = {
@@ -13,5 +14,6 @@ export const components = {
 	contact: Contact,
 	events: Events,
 	gallery: Gallery,
+	menu: Menu,
 	menu_banner: MenuBanner
 };

@@ -1,6 +1,5 @@
 import { error } from '@sveltejs/kit';
 import { asText } from '@prismicio/client';
-
 import { createClient } from '$lib/prismicio';
 
 // @ts-ignore
@@ -11,7 +10,6 @@ export async function load({ fetch, cookies, params }) {
 		const page = await client.getByUID('page', 'accueil', {
 			lang: params.lang || 'fr-ca'
 		});
-
 		return {
 			page,
 			title: asText(page.data.title),
@@ -19,8 +17,8 @@ export async function load({ fetch, cookies, params }) {
 			meta_title: page.data.meta_title,
 			meta_image: page.data.meta_image.url
 		};
-		
+
 	} catch (err) {
-		error(404, String(err));
+		throw error(404, String(err));
 	}
 }

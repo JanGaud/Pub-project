@@ -5,6 +5,366 @@ import type * as prismic from '@prismicio/client';
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
 /**
+ * Item in *beer → Item*
+ */
+export interface BeerDocumentDataItemItem {
+	/**
+	 * Label field in *beer → Item*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: Corona
+	 * - **API ID Path**: beer.item[].label
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	label: prismic.KeyTextField;
+
+	/**
+	 * Beer Color field in *beer → Item*
+	 *
+	 * - **Field Type**: Color
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: beer.item[].beer_color
+	 * - **Documentation**: https://prismic.io/docs/field#color
+	 */
+	beer_color: prismic.ColorField;
+
+	/**
+	 * Beer Description field in *beer → Item*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: Pale Lager: Light, refreshing, and often mild in flavor. Examples include Pilsner and Helles.
+	 * - **API ID Path**: beer.item[].beer_description
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	beer_description: prismic.KeyTextField;
+
+	/**
+	 * Price Glass field in *beer → Item*
+	 *
+	 * - **Field Type**: Number
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: beer.item[].price_glass
+	 * - **Documentation**: https://prismic.io/docs/field#number
+	 */
+	price_glass: prismic.NumberField;
+
+	/**
+	 * Price Pint field in *beer → Item*
+	 *
+	 * - **Field Type**: Number
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: beer.item[].price_pint
+	 * - **Documentation**: https://prismic.io/docs/field#number
+	 */
+	price_pint: prismic.NumberField;
+
+	/**
+	 * Out of stock field in *beer → Item*
+	 *
+	 * - **Field Type**: Boolean
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: false
+	 * - **API ID Path**: beer.item[].out_of_stock
+	 * - **Documentation**: https://prismic.io/docs/field#boolean
+	 */
+	out_of_stock: prismic.BooleanField;
+}
+
+/**
+ * Content for beer documents
+ */
+interface BeerDocumentData {
+	/**
+	 * Title field in *beer*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: Beers
+	 * - **API ID Path**: beer.title
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	title: prismic.KeyTextField;
+
+	/**
+	 * Icon field in *beer*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: beer.icon
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	icon: prismic.KeyTextField;
+
+	/**
+	 * Item field in *beer*
+	 *
+	 * - **Field Type**: Group
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: beer.item[]
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#group
+	 */
+	item: prismic.GroupField<Simplify<BeerDocumentDataItemItem>>;
+}
+
+/**
+ * beer document from Prismic
+ *
+ * - **API ID**: `beer`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type BeerDocument<Lang extends string = string> = prismic.PrismicDocumentWithUID<
+	Simplify<BeerDocumentData>,
+	'beer',
+	Lang
+>;
+
+/**
+ * Item in *drink → Item*
+ */
+export interface CocktailsDocumentDataItemItem {
+	/**
+	 * soft field in *drink → Item*
+	 *
+	 * - **Field Type**: Boolean
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: false
+	 * - **API ID Path**: cocktails.item[].soft
+	 * - **Documentation**: https://prismic.io/docs/field#boolean
+	 */
+	soft: prismic.BooleanField;
+
+	/**
+	 * Label field in *drink → Item*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: Bloody Mary
+	 * - **API ID Path**: cocktails.item[].label
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	label: prismic.KeyTextField;
+
+	/**
+	 * Ingredients field in *drink → Item*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: Vodka - Tomato juice - Spice blend
+	 * - **API ID Path**: cocktails.item[].ingredients
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	ingredients: prismic.KeyTextField;
+
+	/**
+	 * Price field in *drink → Item*
+	 *
+	 * - **Field Type**: Number
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: cocktails.item[].price
+	 * - **Documentation**: https://prismic.io/docs/field#number
+	 */
+	price: prismic.NumberField;
+
+	/**
+	 * Out of stock field in *drink → Item*
+	 *
+	 * - **Field Type**: Boolean
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: false
+	 * - **API ID Path**: cocktails.item[].out_of_stock
+	 * - **Documentation**: https://prismic.io/docs/field#boolean
+	 */
+	out_of_stock: prismic.BooleanField;
+}
+
+/**
+ * Content for drink documents
+ */
+interface CocktailsDocumentData {
+	/**
+	 * Title field in *drink*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: Cocktails
+	 * - **API ID Path**: cocktails.title
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	title: prismic.KeyTextField;
+
+	/**
+	 * Notes field in *drink*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: Premium liquors cost an additional $2.50, and d
+	 * - **API ID Path**: cocktails.notes
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	notes: prismic.KeyTextField;
+
+	/**
+	 * Icon field in *drink*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: cocktails.icon
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	icon: prismic.KeyTextField;
+
+	/**
+	 * Item field in *drink*
+	 *
+	 * - **Field Type**: Group
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: cocktails.item[]
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#group
+	 */
+	item: prismic.GroupField<Simplify<CocktailsDocumentDataItemItem>>;
+}
+
+/**
+ * drink document from Prismic
+ *
+ * - **API ID**: `cocktails`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type CocktailsDocument<Lang extends string = string> = prismic.PrismicDocumentWithUID<
+	Simplify<CocktailsDocumentData>,
+	'cocktails',
+	Lang
+>;
+
+/**
+ * Item in *food → Item*
+ */
+export interface FoodDocumentDataItemItem {
+	/**
+	 * appetizer field in *food → Item*
+	 *
+	 * - **Field Type**: Boolean
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: false
+	 * - **API ID Path**: food.item[].appetizer
+	 * - **Documentation**: https://prismic.io/docs/field#boolean
+	 */
+	appetizer: prismic.BooleanField;
+
+	/**
+	 * Label field in *food → Item*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: Steak & Fries
+	 * - **API ID Path**: food.item[].title
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	title: prismic.KeyTextField;
+
+	/**
+	 * Ingredients field in *food → Item*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: Steak angus - Frites - Salade césar
+	 * - **API ID Path**: food.item[].ingredients
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	ingredients: prismic.KeyTextField;
+
+	/**
+	 * Price field in *food → Item*
+	 *
+	 * - **Field Type**: Number
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: food.item[].price
+	 * - **Documentation**: https://prismic.io/docs/field#number
+	 */
+	price: prismic.NumberField;
+
+	/**
+	 * Price Variant field in *food → Item*
+	 *
+	 * - **Field Type**: Number
+	 * - **Placeholder**:
+	 * - **API ID Path**: food.item[].price_variant
+	 * - **Documentation**: https://prismic.io/docs/field#number
+	 */
+	price_variant: prismic.NumberField;
+
+	/**
+	 * Out of stock field in *food → Item*
+	 *
+	 * - **Field Type**: Boolean
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: false
+	 * - **API ID Path**: food.item[].out_of_stock
+	 * - **Documentation**: https://prismic.io/docs/field#boolean
+	 */
+	out_of_stock: prismic.BooleanField;
+}
+
+/**
+ * Content for food documents
+ */
+interface FoodDocumentData {
+	/**
+	 * Title field in *food*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: Nourriture
+	 * - **API ID Path**: food.title
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	title: prismic.KeyTextField;
+
+	/**
+	 * Icon field in *food*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: food.icon
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	icon: prismic.KeyTextField;
+
+	/**
+	 * Item field in *food*
+	 *
+	 * - **Field Type**: Group
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: food.item[]
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#group
+	 */
+	item: prismic.GroupField<Simplify<FoodDocumentDataItemItem>>;
+}
+
+/**
+ * food document from Prismic
+ *
+ * - **API ID**: `food`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type FoodDocument<Lang extends string = string> = prismic.PrismicDocumentWithUID<
+	Simplify<FoodDocumentData>,
+	'food',
+	Lang
+>;
+
+/**
  * Content for footer documents
  */
 interface FooterDocumentData {
@@ -181,6 +541,7 @@ export type OpeningHoursDocument<Lang extends string = string> = prismic.Prismic
 >;
 
 type PageDocumentDataSlicesSlice =
+	| MenuSlice
 	| MenuBannerSlice
 	| EventsSlice
 	| ContactSlice
@@ -405,12 +766,135 @@ export type SettingsDocument<Lang extends string = string> = prismic.PrismicDocu
 	Lang
 >;
 
+/**
+ * Item in *wine → Item*
+ */
+export interface WineDocumentDataItemItem {
+	/**
+	 * Label field in *wine → Item*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: wine.item[].label
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	label: prismic.KeyTextField;
+
+	/**
+	 * Wine Color field in *wine → Item*
+	 *
+	 * - **Field Type**: Color
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: wine.item[].wine_color
+	 * - **Documentation**: https://prismic.io/docs/field#color
+	 */
+	wine_color: prismic.ColorField;
+
+	/**
+	 * Description field in *wine → Item*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: wine.item[].description
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	description: prismic.KeyTextField;
+
+	/**
+	 * Price Glass field in *wine → Item*
+	 *
+	 * - **Field Type**: Number
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: wine.item[].price
+	 * - **Documentation**: https://prismic.io/docs/field#number
+	 */
+	price: prismic.NumberField;
+
+	/**
+	 * Price Bottle field in *wine → Item*
+	 *
+	 * - **Field Type**: Number
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: wine.item[].price_bottle
+	 * - **Documentation**: https://prismic.io/docs/field#number
+	 */
+	price_bottle: prismic.NumberField;
+
+	/**
+	 * Out of stock field in *wine → Item*
+	 *
+	 * - **Field Type**: Boolean
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: false
+	 * - **API ID Path**: wine.item[].out_of_stock
+	 * - **Documentation**: https://prismic.io/docs/field#boolean
+	 */
+	out_of_stock: prismic.BooleanField;
+}
+
+/**
+ * Content for wine documents
+ */
+interface WineDocumentData {
+	/**
+	 * Title field in *wine*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: Wines
+	 * - **API ID Path**: wine.title
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	title: prismic.KeyTextField;
+
+	/**
+	 * Icon field in *wine*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: wine.icon
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	icon: prismic.KeyTextField;
+
+	/**
+	 * Item field in *wine*
+	 *
+	 * - **Field Type**: Group
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: wine.item[]
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#group
+	 */
+	item: prismic.GroupField<Simplify<WineDocumentDataItemItem>>;
+}
+
+/**
+ * wine document from Prismic
+ *
+ * - **API ID**: `wine`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type WineDocument<Lang extends string = string> = prismic.PrismicDocumentWithUID<
+	Simplify<WineDocumentData>,
+	'wine',
+	Lang
+>;
+
 export type AllDocumentTypes =
+	| BeerDocument
+	| CocktailsDocument
+	| FoodDocument
 	| FooterDocument
 	| NavDocument
 	| OpeningHoursDocument
 	| PageDocument
-	| SettingsDocument;
+	| SettingsDocument
+	| WineDocument;
 
 /**
  * Primary content in *About → Default → Primary*
@@ -1033,6 +1517,33 @@ type GallerySliceVariation = GallerySliceDefault;
 export type GallerySlice = prismic.SharedSlice<'gallery', GallerySliceVariation>;
 
 /**
+ * Default variation for Menu Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type MenuSliceDefault = prismic.SharedSliceVariation<
+	'default',
+	Record<string, never>,
+	never
+>;
+
+/**
+ * Slice variation for *Menu*
+ */
+type MenuSliceVariation = MenuSliceDefault;
+
+/**
+ * Menu Shared Slice
+ *
+ * - **API ID**: `menu`
+ * - **Description**: Menu
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type MenuSlice = prismic.SharedSlice<'menu', MenuSliceVariation>;
+
+/**
  * Item in *MenuBanner → Default → Primary → Promo*
  */
 export interface MenuBannerSliceDefaultPrimaryPromoItem {
@@ -1150,6 +1661,15 @@ declare module '@prismicio/client' {
 
 	namespace Content {
 		export type {
+			BeerDocument,
+			BeerDocumentData,
+			BeerDocumentDataItemItem,
+			CocktailsDocument,
+			CocktailsDocumentData,
+			CocktailsDocumentDataItemItem,
+			FoodDocument,
+			FoodDocumentData,
+			FoodDocumentDataItemItem,
 			FooterDocument,
 			FooterDocumentData,
 			NavDocument,
@@ -1164,6 +1684,9 @@ declare module '@prismicio/client' {
 			SettingsDocument,
 			SettingsDocumentData,
 			SettingsDocumentDataSocialMediaItem,
+			WineDocument,
+			WineDocumentData,
+			WineDocumentDataItemItem,
 			AllDocumentTypes,
 			AboutSlice,
 			AboutSliceDefaultPrimary,
@@ -1193,6 +1716,9 @@ declare module '@prismicio/client' {
 			GallerySliceDefaultPrimary,
 			GallerySliceVariation,
 			GallerySliceDefault,
+			MenuSlice,
+			MenuSliceVariation,
+			MenuSliceDefault,
 			MenuBannerSlice,
 			MenuBannerSliceDefaultPrimaryPromoItem,
 			MenuBannerSliceDefaultPrimary,

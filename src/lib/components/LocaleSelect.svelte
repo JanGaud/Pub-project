@@ -12,7 +12,7 @@
 
 	onMount(() => {
 		selectedLocale.subscribe((value) => {
-			console.log(`Current locale: ${value}`); // Log current locale for feedback
+			console.log(`Current locale: ${value}`);
 		});
 	});
 </script>

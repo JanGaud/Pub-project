@@ -1,0 +1,84 @@
+{
+	"format": "custom",
+	"id": "beer",
+	"label": "beer",
+	"repeatable": true,
+	"status": true,
+	"json": {
+		"Main": {
+			"uid": {
+				"type": "UID",
+				"config": {
+					"label": "UID"
+				}
+			},
+			"title": {
+				"type": "Text",
+				"config": {
+					"label": "Title",
+					"placeholder": "Beers"
+				}
+			},
+			"icon": {
+				"type": "Text",
+				"config": {
+					"label": "Icon",
+					"placeholder": ""
+				}
+			},
+			"item": {
+				"type": "Group",
+				"config": {
+					"label": "Item",
+					"repeat": true,
+					"fields": {
+						"label": {
+							"type": "Text",
+							"config": {
+								"label": "Label",
+								"placeholder": "Corona"
+							}
+						},
+						"beer_color": {
+							"type": "Color",
+							"config": {
+								"label": "Beer Color",
+								"placeholder": ""
+							}
+						},
+						"beer_description": {
+							"type": "Text",
+							"config": {
+								"label": "Beer Description",
+								"placeholder": "Pale Lager: Light, refreshing, and often mild in flavor. Examples include Pilsner and Helles."
+							}
+						},
+						"price_glass": {
+							"type": "Number",
+							"config": {
+								"label": "Price Glass",
+								"placeholder": ""
+							}
+						},
+						"price_pint": {
+							"type": "Number",
+							"config": {
+								"label": "Price Pint",
+								"placeholder": ""
+							}
+						},
+						"out_of_stock": {
+							"type": "Boolean",
+							"config": {
+								"label": "Out of stock",
+								"placeholder_false": "false",
+								"placeholder_true": "true",
+								"default_value": false
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
