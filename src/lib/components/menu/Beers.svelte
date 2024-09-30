@@ -1,6 +1,5 @@
-<!-- src/lib/components/menu/Beers.svelte -->
 <script lang="ts">
-	import MenuContainer from "./MenuContainer.svelte";
+	import MenuContainer from './MenuContainer.svelte';
 
 	// Define a prop to accept the beer menu data
 	export let beerMenu: any[];
@@ -10,11 +9,46 @@
 </script>
 
 <MenuContainer>
-	{#each items as item}
-		<div class="p-4 border rounded-lg bg-white shadow-md">
-			<h3 class="text-xl font-semibold">{item.label}</h3>
-			<p class="text-gray-600">{item.beer_description}</p>
-			<p class="font-medium text-gray-800">${item.price_glass} / ${item.price_pint}</p>
-		</div>
-	{/each}
+	<!-- Render the beer items with the beer color indicator and out-of-stock styling -->
+	<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+		{#each items as item}
+			<div class="flex items-start h-64 md:h-40">
+				<!-- Beer Color Indicator (Circle) -->
+				{#if item.beer_color}
+					<div class="h-full w-8" style="background-color: {item.beer_color};"></div>
+				{:else}
+					<!-- Placeholder circle if no beer color is defined -->
+                     <div class="h-full w-8 bg-gray-300"></div>
+
+				{/if}
+
+				<!-- Beer Information Section -->
+				<div class="flex-1  p-4">
+					<!-- Apply conditional class for out_of_stock -->
+					<div class="flex justify-between gap-2">
+						<h3
+							class="text-xl font-semibold {item.out_of_stock ? 'line-through text-red-500' : ''}"
+						>
+							{item.label}
+						</h3>
+						<!-- Pricing Information -->
+						<div class="flex items-center text-lg gap-2 h-fit">
+							<small class="font-medium text-gray-800 {item.out_of_stock ? 'text-black/25' : ''}">
+								${item.price_glass}
+							</small>
+							{#if item.price_pint != null}
+								<span>|</span>
+								<small class="font-medium text-gray-800 {item.out_of_stock ? 'text-black/25' : ''}">
+									${item.price_pint}
+								</small>
+							{/if}
+						</div>
+					</div>
+					<p class="text-gray-600 {item.out_of_stock ? 'text-black/25' : ''}">
+						{item.beer_description}
+					</p>
+				</div>
+			</div>
+		{/each}
+	</div>
 </MenuContainer>
