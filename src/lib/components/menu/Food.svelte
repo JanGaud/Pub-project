@@ -22,17 +22,29 @@
 					<div class="flex gap-2">
 						<div>
 							<!-- Apply conditional class for out_of_stock -->
-							<h3 class="text-xl font-semibold {item.out_of_stock ? 'line-through text-red-500' : ''}">
-								{item.title}
-							</h3>
-							<p class="text-gray-600 {item.out_of_stock ? 'text-black/25' : ''}">{item.ingredients}</p>
-						</div>
-						<div class="flex items-center text-lg gap-2 h-fit">
-							<small class="font-medium text-gray-800 {item.out_of_stock ? 'text-black/25' : ''}">${item.price}</small>
+							<div class="flex justify-between gap-2">
+								<h3
+									class="text-xl font-semibold {item.out_of_stock
+										? 'line-through text-red-500'
+										: ''}"
+								>
+									{item.title}
+								</h3>
+                                						<div class="flex items-center text-lg gap-2 h-fit">
+							<small class="font-medium text-gray-800 {item.out_of_stock ? 'text-black/25' : ''}"
+								>${item.price}</small
+							>
 							{#if item.price_variant != null}
 								<span>|</span>
-								<small class="font-medium text-gray-800 {item.out_of_stock ? 'text-black/25' : ''}">${item.price_variant}</small>
+								<small class="font-medium text-gray-800 {item.out_of_stock ? 'text-black/25' : ''}"
+									>${item.price_variant}</small
+								>
 							{/if}
+						</div>
+							</div>
+							<p class="text-gray-600 {item.out_of_stock ? 'text-black/25' : ''}">
+								{item.ingredients}
+							</p>
 						</div>
 					</div>
 				{/each}
@@ -46,17 +58,29 @@
 					<div class="flex gap-2">
 						<div>
 							<!-- Apply conditional class for out_of_stock -->
-							<h3 class="text-xl font-semibold {item.out_of_stock ? 'line-through text-red-500' : ''}">
-								{item.title}
-							</h3>
-							<p class="text-gray-600 {item.out_of_stock ? 'text-black/25' : ''}">{item.ingredients}</p>
-						</div>
-						<div class="flex items-center text-lg gap-2 h-fit">
-							<small class="font-medium text-gray-800 {item.out_of_stock ? 'text-black/25' : ''}">${item.price}</small>
+							<div class="flex justify-between gap-2">
+								<h3
+									class="text-xl font-semibold {item.out_of_stock
+										? 'line-through text-red-500'
+										: ''}"
+								>
+									{item.title}
+								</h3>
+                                						<div class="flex items-center text-lg gap-2 h-fit">
+							<small class="font-medium text-gray-800 {item.out_of_stock ? 'text-black/25' : ''}"
+								>${item.price}</small
+							>
 							{#if item.price_variant != null}
 								<span>|</span>
-								<small class="font-medium text-gray-800 {item.out_of_stock ? 'text-black/25' : ''}">${item.price_variant}</small>
+								<small class="font-medium text-gray-800 {item.out_of_stock ? 'text-black/25' : ''}"
+									>${item.price_variant}</small
+								>
 							{/if}
+						</div>
+							</div>
+							<p class="text-gray-600 {item.out_of_stock ? 'text-black/25' : ''}">
+								{item.ingredients}
+							</p>
 						</div>
 					</div>
 				{/each}
