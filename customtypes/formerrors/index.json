@@ -1,0 +1,142 @@
+{
+	"format": "custom",
+	"id": "formerrors",
+	"label": "form Errors",
+	"repeatable": false,
+	"status": true,
+	"json": {
+		"Main": {
+			"name": {
+				"type": "Group",
+				"config": {
+					"label": "Name",
+					"repeat": false,
+					"fields": {
+						"required": {
+							"type": "Text",
+							"config": {
+								"label": "Required",
+								"placeholder": ""
+							}
+						},
+						"minimum": {
+							"type": "Text",
+							"config": {
+								"label": "Minimum",
+								"placeholder": ""
+							}
+						}
+					}
+				}
+			},
+			"email": {
+				"type": "Group",
+				"config": {
+					"label": "Email",
+					"repeat": false,
+					"fields": {
+						"required": {
+							"type": "Text",
+							"config": {
+								"label": "Required",
+								"placeholder": ""
+							}
+						},
+						"invalid": {
+							"type": "Text",
+							"config": {
+								"label": "Invalid",
+								"placeholder": ""
+							}
+						}
+					}
+				}
+			},
+			"phone": {
+				"type": "Group",
+				"config": {
+					"label": "Phone",
+					"repeat": false,
+					"fields": {
+						"required": {
+							"type": "Text",
+							"config": {
+								"label": "Required",
+								"placeholder": ""
+							}
+						},
+						"minimum": {
+							"type": "Text",
+							"config": {
+								"label": "Minimum",
+								"placeholder": ""
+							}
+						}
+					}
+				}
+			},
+			"subject": {
+				"type": "Group",
+				"config": {
+					"label": "Subject",
+					"repeat": false,
+					"fields": {
+						"required": {
+							"type": "Text",
+							"config": {
+								"label": "Required",
+								"placeholder": ""
+							}
+						}
+					}
+				}
+			},
+			"message": {
+				"type": "Group",
+				"config": {
+					"label": "Message",
+					"repeat": false,
+					"fields": {
+						"required": {
+							"type": "Text",
+							"config": {
+								"label": "Required",
+								"placeholder": ""
+							}
+						},
+						"minimum": {
+							"type": "Text",
+							"config": {
+								"label": "Minimum",
+								"placeholder": ""
+							}
+						}
+					}
+				}
+			},
+			"date": {
+				"type": "Group",
+				"config": {
+					"label": "Date",
+					"repeat": false,
+					"fields": {
+						"required_date": {
+							"type": "Text",
+							"config": {
+								"label": "Required_date",
+								"placeholder": ""
+							}
+						},
+						"required_time": {
+							"type": "Text",
+							"config": {
+								"label": "Required_time",
+								"placeholder": ""
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

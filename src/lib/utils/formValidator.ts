@@ -17,7 +17,7 @@ export function validateForm(
   if (!formData.name.trim()) {
     errors.name = "Name is required.";
   } else if (formData.name.trim().length < 3) {
-    errors.name = "Name must be at least 3 characters long.";
+    errors.name = "3 characters minimum.";
   } else {
     success.name = true;
   }
@@ -31,7 +31,7 @@ export function validateForm(
 
   // Validate phone number (only if provided, 10 digits minimum)
   if (formData.phone.trim() && !/^\d{10,}$/.test(formData.phone.replace(/\D/g, ''))) {
-    errors.phone = "Phone number must be at least 10 digits long.";
+    errors.phone = "10 digits minimum.";
   } else if (formData.phone.trim()) {
     success.phone = true;
   }
@@ -53,7 +53,7 @@ export function validateForm(
   if (!formData.message.trim()) {
     errors.message = "Message is required.";
   } else if (formData.message.split(' ').length < 5) {
-    errors.message = "Message must be at least 5 words.";
+    errors.message = "5 words minimum.";
   } else {
     success.message = true;
   }

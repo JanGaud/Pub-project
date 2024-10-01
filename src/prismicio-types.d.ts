@@ -427,6 +427,232 @@ export type FooterDocument<Lang extends string = string> = prismic.PrismicDocume
 >;
 
 /**
+ * Item in *form Errors → Name*
+ */
+export interface FormerrorsDocumentDataNameItem {
+	/**
+	 * Required field in *form Errors → Name*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: formerrors.name[].required
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	required: prismic.KeyTextField;
+
+	/**
+	 * Minimum field in *form Errors → Name*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: formerrors.name[].minimum
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	minimum: prismic.KeyTextField;
+}
+
+/**
+ * Item in *form Errors → Email*
+ */
+export interface FormerrorsDocumentDataEmailItem {
+	/**
+	 * Required field in *form Errors → Email*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: formerrors.email[].required
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	required: prismic.KeyTextField;
+
+	/**
+	 * Invalid field in *form Errors → Email*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: formerrors.email[].invalid
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	invalid: prismic.KeyTextField;
+}
+
+/**
+ * Item in *form Errors → Phone*
+ */
+export interface FormerrorsDocumentDataPhoneItem {
+	/**
+	 * Required field in *form Errors → Phone*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: formerrors.phone[].required
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	required: prismic.KeyTextField;
+
+	/**
+	 * Minimum field in *form Errors → Phone*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: formerrors.phone[].minimum
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	minimum: prismic.KeyTextField;
+}
+
+/**
+ * Item in *form Errors → Subject*
+ */
+export interface FormerrorsDocumentDataSubjectItem {
+	/**
+	 * Required field in *form Errors → Subject*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: formerrors.subject[].required
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	required: prismic.KeyTextField;
+}
+
+/**
+ * Item in *form Errors → Message*
+ */
+export interface FormerrorsDocumentDataMessageItem {
+	/**
+	 * Required field in *form Errors → Message*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: formerrors.message[].required
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	required: prismic.KeyTextField;
+
+	/**
+	 * Minimum field in *form Errors → Message*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: formerrors.message[].minimum
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	minimum: prismic.KeyTextField;
+}
+
+/**
+ * Item in *form Errors → Date*
+ */
+export interface FormerrorsDocumentDataDateItem {
+	/**
+	 * Required_date field in *form Errors → Date*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: formerrors.date[].required_date
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	required_date: prismic.KeyTextField;
+
+	/**
+	 * Required_time field in *form Errors → Date*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: formerrors.date[].required_time
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	required_time: prismic.KeyTextField;
+}
+
+/**
+ * Content for form Errors documents
+ */
+interface FormerrorsDocumentData {
+	/**
+	 * Name field in *form Errors*
+	 *
+	 * - **Field Type**: Group
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: formerrors.name[]
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#group
+	 */
+	name: prismic.GroupField<Simplify<FormerrorsDocumentDataNameItem>>;
+
+	/**
+	 * Email field in *form Errors*
+	 *
+	 * - **Field Type**: Group
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: formerrors.email[]
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#group
+	 */
+	email: prismic.GroupField<Simplify<FormerrorsDocumentDataEmailItem>>;
+
+	/**
+	 * Phone field in *form Errors*
+	 *
+	 * - **Field Type**: Group
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: formerrors.phone[]
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#group
+	 */
+	phone: prismic.GroupField<Simplify<FormerrorsDocumentDataPhoneItem>>;
+
+	/**
+	 * Subject field in *form Errors*
+	 *
+	 * - **Field Type**: Group
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: formerrors.subject[]
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#group
+	 */
+	subject: prismic.GroupField<Simplify<FormerrorsDocumentDataSubjectItem>>;
+
+	/**
+	 * Message field in *form Errors*
+	 *
+	 * - **Field Type**: Group
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: formerrors.message[]
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#group
+	 */
+	message: prismic.GroupField<Simplify<FormerrorsDocumentDataMessageItem>>;
+
+	/**
+	 * Date field in *form Errors*
+	 *
+	 * - **Field Type**: Group
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: formerrors.date[]
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#group
+	 */
+	date: prismic.GroupField<Simplify<FormerrorsDocumentDataDateItem>>;
+}
+
+/**
+ * form Errors document from Prismic
+ *
+ * - **API ID**: `formerrors`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type FormerrorsDocument<Lang extends string = string> = prismic.PrismicDocumentWithoutUID<
+	Simplify<FormerrorsDocumentData>,
+	'formerrors',
+	Lang
+>;
+
+/**
  * Item in *nav → Link*
  */
 export interface NavDocumentDataLinkItem {
@@ -910,6 +1136,7 @@ export type AllDocumentTypes =
 	| CocktailsDocument
 	| FoodDocument
 	| FooterDocument
+	| FormerrorsDocument
 	| NavDocument
 	| OpeningHoursDocument
 	| PageDocument
@@ -1712,6 +1939,14 @@ declare module '@prismicio/client' {
 			FoodDocumentDataItemItem,
 			FooterDocument,
 			FooterDocumentData,
+			FormerrorsDocument,
+			FormerrorsDocumentData,
+			FormerrorsDocumentDataNameItem,
+			FormerrorsDocumentDataEmailItem,
+			FormerrorsDocumentDataPhoneItem,
+			FormerrorsDocumentDataSubjectItem,
+			FormerrorsDocumentDataMessageItem,
+			FormerrorsDocumentDataDateItem,
 			NavDocument,
 			NavDocumentData,
 			NavDocumentDataLinkItem,
