@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { animateOnScroll } from '$lib/actions/animateOnScroll';
 	import MenuContainer from './MenuContainer.svelte';
 
 	// Define a prop to accept the food menu data structure
@@ -19,7 +20,7 @@
 		<div class="flex flex-col gap-4 p-2 md:p-4 bg-gold bg-opacity-25">
 			{#if appetizerItems.length > 0}
 				{#each appetizerItems as item}
-					<div class="flex gap-2">
+					<div use:animateOnScroll class="flex gap-2">
 						<div>
 							<!-- Apply conditional class for out_of_stock -->
 							<div class="flex justify-between gap-2">
@@ -57,7 +58,7 @@
 		<div class="flex flex-col gap-4 p-2 md:p-4">
 			{#if mainItems.length > 0}
 				{#each mainItems as item}
-					<div class="flex gap-2">
+					<div use:animateOnScroll class="flex gap-2">
 						<div>
 							<!-- Apply conditional class for out_of_stock -->
 							<div class="flex justify-between gap-2">
