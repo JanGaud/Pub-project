@@ -7,6 +7,9 @@
 	import Navbar from '$lib/components/Navbar.svelte';
 	import LocaleSelect from '$lib/components/LocaleSelect.svelte';
 	import Footer from '$lib/components/Footer.svelte';
+	import { injectSpeedInsights } from '@vercel/speed-insights/sveltekit';
+
+	injectSpeedInsights();
 </script>
 
 <svelte:head>
