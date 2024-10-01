@@ -13,7 +13,7 @@
 	data-slice-variation={slice.variation}
 >
 	<div class="lg:col-span-1">
-		<h2 class="text-4xl mb-6 font-bold tracking-wide">{slice.primary.title}</h2>
+		<h2 class="text-4xl mb-6 font-bold tracking-wide uppercase">{slice.primary.title}</h2>
 		<p>{slice.primary.desciption}</p>
 	</div>
 	<div
