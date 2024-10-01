@@ -8,8 +8,6 @@
 
 	// Extract the `item` array from the first element in `wineMenu`
 	let items = wineMenu?.[0]?.data?.item || [];
-
-	console.log(items);
 </script>
 
 <MenuContainer>

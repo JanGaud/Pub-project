@@ -19,12 +19,11 @@
 					<div class="h-full w-8" style="background-color: {item.beer_color};"></div>
 				{:else}
 					<!-- Placeholder circle if no beer color is defined -->
-                     <div class="h-full w-8 bg-gray-300"></div>
-
+					<div class="h-full w-8 bg-gray-300"></div>
 				{/if}
 
 				<!-- Beer Information Section -->
-				<div class="flex-1  p-4">
+				<div class="flex-1 p-4">
 					<!-- Apply conditional class for out_of_stock -->
 					<div class="flex justify-between gap-2">
 						<h3
@@ -43,9 +42,15 @@
 									${item.price_pint}
 								</small>
 							{/if}
+							{#if item.price_pitcher != null}
+								<span>|</span>
+								<small class="font-medium {item.out_of_stock ? 'text-black/25' : ''}">
+									${item.price_pitcher}
+								</small>
+							{/if}
 						</div>
 					</div>
-					<p class="{item.out_of_stock ? 'text-black/25' : ''}">
+					<p class={item.out_of_stock ? 'text-black/25' : ''}>
 						{item.beer_description}
 					</p>
 				</div>

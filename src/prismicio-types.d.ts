@@ -59,6 +59,16 @@ export interface BeerDocumentDataItemItem {
 	price_pint: prismic.NumberField;
 
 	/**
+	 * Price Pitcher field in *beer → Item*
+	 *
+	 * - **Field Type**: Number
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: beer.item[].price_pitcher
+	 * - **Documentation**: https://prismic.io/docs/field#number
+	 */
+	price_pitcher: prismic.NumberField;
+
+	/**
 	 * Out of stock field in *beer → Item*
 	 *
 	 * - **Field Type**: Boolean
@@ -167,6 +177,16 @@ export interface CocktailsDocumentDataItemItem {
 	 * - **Documentation**: https://prismic.io/docs/field#number
 	 */
 	price: prismic.NumberField;
+
+	/**
+	 * Price Pitcher field in *drink → Item*
+	 *
+	 * - **Field Type**: Number
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: cocktails.item[].price_p
+	 * - **Documentation**: https://prismic.io/docs/field#number
+	 */
+	price_p: prismic.NumberField;
 
 	/**
 	 * Out of stock field in *drink → Item*

@@ -67,6 +67,13 @@
 								"placeholder": ""
 							}
 						},
+						"price_pitcher": {
+							"type": "Number",
+							"config": {
+								"label": "Price Pitcher",
+								"placeholder": ""
+							}
+						},
 						"out_of_stock": {
 							"type": "Boolean",
 							"config": {
