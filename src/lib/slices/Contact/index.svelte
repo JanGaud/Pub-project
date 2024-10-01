@@ -15,16 +15,18 @@
 
 	let isVisible = false;
 
-	// Form data and errors state
+	// Form data, errors, and success states
 	let formData = {
 		name: '',
 		email: '',
+		phone: '', // Add phone number field
 		subject: '',
 		message: '',
 		appointmentDate: '',
 		appointmentTime: ''
 	};
 	let errors: Record<string, string> = {};
+	let success: Record<string, boolean> = {};
 
 	// State to track whether support option is selected
 	let isSupportSelected = false;
@@ -33,9 +35,12 @@
 	let minDate: string = '';
 	let minTime: string = '';
 
+	// Function to handle form submission
 	const handleSubmit = (event: Event) => {
 		event.preventDefault(); // Prevent default form submission
-		errors = validateForm(formData, isSupportSelected); // Validate form using the imported function
+		const validation = validateForm(formData, isSupportSelected); // Validate the entire form before submission
+		errors = validation.errors;
+		success = validation.success;
 
 		// If no errors, submit the form
 		if (Object.keys(errors).length === 0) {
@@ -46,9 +51,16 @@
 		}
 	};
 
-	// Function to handle input changes
+	// Function to handle input changes and validate fields on keyup
 	const handleInputChange = (field: keyof typeof formData, value: string) => {
 		formData[field] = value;
+
+		// Validate field as the user types
+		const { errors: newErrors, success: newSuccess } = validateForm(formData, isSupportSelected);
+
+		// Update errors and success states
+		errors = newErrors;
+		success = newSuccess;
 
 		// If the subject is changed, check if 'reservation' is selected
 		if (field === 'subject') {
@@ -160,12 +172,12 @@
 				<h2 class="text-4xl font-bold tracking-wide mb-2 uppercase">{slice.primary.title}</h2>
 				<p>{slice.primary.disclaimer}</p>
 			</div>
-			<div>
+			<div class="flex flex-col gap-6">
 				<!-- Phone -->
 				{#if slice.primary.phone_input[0]?.icon !== 'null'}
-					<div class="flex items-end gap-2 mb-4">
+					<div class="flex items-center gap-2 mb-4 text-xl">
 						<Icon
-							class="text-gold-second w-8 h-8"
+							class="text-gold-second w-12 h-12"
 							icon={slice.primary.phone_input[0]?.icon ?? ''}
 						/>
 						<a href={`tel:${settings.data.phone ?? ''}`} class="text-blue">{settings.data.phone}</a>
@@ -173,9 +185,9 @@
 				{/if}
 				<!-- Email -->
 				{#if slice.primary.email_input[0]?.icon !== 'null'}
-					<div class="flex items-end gap-2 mb-4">
+					<div class="flex items-center gap-2 mb-4 text-xl">
 						<Icon
-							class="text-gold-second w-8 h-8"
+							class="text-gold-second w-12 h-12"
 							icon={slice.primary.email_input[0]?.icon ?? ''}
 						/>
 						<a href={`mailto:${settings.data.email ?? ''}`} class="text-blue"
@@ -185,8 +197,8 @@
 				{/if}
 				<!-- Address -->
 				{#if slice.primary.adresse_input[0]?.icon !== 'null'}
-					<div class="flex items-end gap-2 mb-4">
-						<Icon class="text-gold-second w-8 h-8" icon={slice.primary.adresse_input[0]?.icon} />
+					<div class="flex items-center gap-2 mb-4 text-xl">
+						<Icon class="text-gold-second w-12 h-12" icon={slice.primary.adresse_input[0]?.icon} />
 						<p>{settings.data.address}</p>
 					</div>
 				{/if}
@@ -199,57 +211,82 @@
 				? 'slide-in visible'
 				: 'slide-in'}"
 		>
-			<form action="" class="w-full max-w-lg" on:submit={handleSubmit}>
+			<form action="" class="w-full max-w-lg" on:submit={handleSubmit} novalidate>
 				<div class="grid grid-cols-1 gap-4">
 					<!-- Name input -->
-					<div class="relative">
+					<div class="relative py-2">
 						<input
 							type="text"
 							placeholder={slice.primary.form_inputs[0]?.name}
 							class="w-full p-3 border-b border-gray-300 rounded-md focus:outline-none focus:border-gold"
 							bind:value={formData.name}
-							on:input={(e) => handleInputChange('name', e.target.value)}
+							on:keyup={(e) => handleInputChange('name', e.target.value)}
 						/>
 						{#if errors.name}
 							<span class="absolute top-0 right-0 text-red-500">{errors.name}</span>
 						{/if}
+						{#if success.name}
+							<span class="absolute top-0 right-0 text-green-500">✓</span> <!-- Green check mark -->
+						{/if}
 					</div>
+
 					<!-- Email input -->
-					<div class="relative">
+					<div class="relative py-2">
 						<input
-							type="email"
+							type="text"
 							placeholder={slice.primary.form_inputs[0]?.email}
 							class="w-full p-3 border-b border-gray-300 rounded-md focus:outline-none focus:border-gold"
 							bind:value={formData.email}
-							on:input={(e) => handleInputChange('email', e.target.value)}
+							on:keyup={(e) => handleInputChange('email', e.target.value)}
 						/>
 						{#if errors.email}
 							<span class="absolute top-0 right-0 text-red-500">{errors.email}</span>
 						{/if}
+						{#if success.email}
+							<span class="absolute top-0 right-0 text-green-500">✓</span> <!-- Green check mark -->
+						{/if}
+					</div>
+
+					<!-- Phone number input -->
+					<div class="relative py-2">
+						<input
+							type="tel"
+							placeholder={slice.primary.form_inputs[0]?.phone ?? 'Phone Number'}
+							class="w-full p-3 border-b border-gray-300 rounded-md focus:outline-none focus:border-gold"
+							bind:value={formData.phone}
+							on:keyup={(e) => handleInputChange('phone', e.target.value)}
+						/>
+						{#if errors.phone}
+							<span class="absolute top-0 right-0 text-red-500">{errors.phone}</span>
+						{/if}
+						{#if success.phone}
+							<span class="absolute top-0 right-0 text-green-500">✓</span> <!-- Green check mark -->
+						{/if}
 					</div>
 
 					<!-- Subject dropdown -->
-					<div class="relative py-1">
+					<div class="relative py-2">
 						<select
 							placeholder={slice.primary.form_inputs[0]?.subject}
 							class="w-full p-3 border-b border-gray-300 rounded-md focus:outline-none focus:border-gold"
 							bind:value={formData.subject}
-							on:input={(e) => handleInputChange('subject', e.target.value)}
+							on:change={(e) => handleInputChange('subject', e.target.value)}
 						>
-							<option value="" disabled selected>
-								{slice.primary.form_inputs[0]?.subject}
-							</option>
+							<option value="" disabled selected>{slice.primary.form_inputs[0]?.subject}</option>
 							<option value="reservation">{slice.primary.form_inputs[0]?.subject_option_1}</option>
 							<option value="other">{slice.primary.form_inputs[0]?.subject_option_2}</option>
 						</select>
 						{#if errors.subject}
 							<span class="absolute top-0 right-0 text-red-500">{errors.subject}</span>
 						{/if}
+						{#if success.subject}
+							<span class="absolute top-0 right-0 text-green-500">✓</span> <!-- Green check mark -->
+						{/if}
 					</div>
 
-					<!-- Date and Time inputs -->
+					<!-- Date and Time inputs (only if reservation is selected) -->
 					{#if isSupportSelected}
-						<div class="grid grid-cols-2 gap-4 py-2">
+						<div class="grid grid-cols-2 gap-4">
 							<div class="relative py-2">
 								<input
 									type="date"
@@ -257,10 +294,14 @@
 									min={minDate}
 									class="w-full p-3 border-b border-gray-300 rounded-md focus:outline-none focus:border-gold"
 									bind:value={formData.appointmentDate}
-									on:input={(e) => handleInputChange('appointmentDate', e.target.value)}
+									on:change={(e) => handleInputChange('appointmentDate', e.target.value)}
 								/>
 								{#if errors.appointmentDate}
 									<span class="absolute top-0 right-0 text-red-500">{errors.appointmentDate}</span>
+								{/if}
+								{#if success.appointmentDate}
+									<span class="absolute top-0 right-0 text-green-500">✓</span>
+									<!-- Green check mark -->
 								{/if}
 							</div>
 							<div class="relative py-2">
@@ -270,25 +311,32 @@
 									min={minTime}
 									class="w-full p-3 border-b border-gray-300 rounded-md focus:outline-none focus:border-gold"
 									bind:value={formData.appointmentTime}
-									on:input={(e) => handleInputChange('appointmentTime', e.target.value)}
+									on:change={(e) => handleInputChange('appointmentTime', e.target.value)}
 								/>
 								{#if errors.appointmentTime}
 									<span class="absolute top-0 right-0 text-red-500">{errors.appointmentTime}</span>
+								{/if}
+								{#if success.appointmentTime}
+									<span class="absolute top-0 right-0 text-green-500">✓</span>
+									<!-- Green check mark -->
 								{/if}
 							</div>
 						</div>
 					{/if}
 
 					<!-- Message textarea -->
-					<div class="relative">
+					<div class="relative py-2">
 						<textarea
 							placeholder={slice.primary.form_inputs[0]?.message}
 							class="w-full p-3 border-b border-gray-300 rounded-md focus:outline-none focus:border-gold h-32 resize-none"
 							bind:value={formData.message}
-							on:input={(e) => handleInputChange('message', e.target.value)}
+							on:keyup={(e) => handleInputChange('message', e.target.value)}
 						></textarea>
 						{#if errors.message}
 							<span class="absolute top-0 right-0 text-red-500">{errors.message}</span>
+						{/if}
+						{#if success.message}
+							<span class="absolute top-0 right-0 text-green-500">✓</span> <!-- Green check mark -->
 						{/if}
 					</div>
 
@@ -321,5 +369,13 @@
 	.slide-in.visible {
 		transform: translateX(0);
 		opacity: 1;
+	}
+
+	.text-green-500 {
+		color: #48bb78; /* TailwindCSS green */
+	}
+
+	.text-red-500 {
+		color: #f56565; /* TailwindCSS red */
 	}
 </style>
