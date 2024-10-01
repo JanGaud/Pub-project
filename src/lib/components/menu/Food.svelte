@@ -20,8 +20,8 @@
 		<div class="flex flex-col gap-4 p-2 md:p-4 bg-gold bg-opacity-25">
 			{#if appetizerItems.length > 0}
 				{#each appetizerItems as item}
-					<div use:animateOnScroll class="flex gap-2">
-						<div>
+					<div use:animateOnScroll class="flex w-full gap-2">
+						<div class="flex flex-col justify-between w-full">
 							<!-- Apply conditional class for out_of_stock -->
 							<div class="flex justify-between gap-2">
 								<h3
@@ -32,22 +32,22 @@
 									{item.title}
 								</h3>
 								<div class="flex items-center text-lg gap-2 h-fit">
-									<small
-										class="font-medium {item.out_of_stock ? 'text-black/25' : ''}"
+									<small class="font-medium {item.out_of_stock ? 'text-black/25' : ''}"
 										>${item.price}</small
 									>
 									{#if item.price_variant != null}
 										<span>|</span>
-										<small
-											class="font-medium {item.out_of_stock ? 'text-black/25' : ''}"
+										<small class="font-medium {item.out_of_stock ? 'text-black/25' : ''}"
 											>${item.price_variant}</small
 										>
 									{/if}
 								</div>
 							</div>
-							<p class="{item.out_of_stock ? 'text-black/25' : ''}">
-								{item.ingredients}
-							</p>
+							{#if item.ingredients}
+								<p class={item.out_of_stock ? 'text-black/25' : ''}>
+									{item.ingredients}
+								</p>
+							{/if}
 						</div>
 					</div>
 				{/each}
@@ -58,8 +58,8 @@
 		<div class="flex flex-col gap-4 p-2 md:p-4">
 			{#if mainItems.length > 0}
 				{#each mainItems as item}
-					<div use:animateOnScroll class="flex gap-2">
-						<div>
+					<div use:animateOnScroll class="flex w-full gap-2">
+						<div class="flex flex-col justify-between w-full">
 							<!-- Apply conditional class for out_of_stock -->
 							<div class="flex justify-between gap-2">
 								<h3
@@ -70,22 +70,22 @@
 									{item.title}
 								</h3>
 								<div class="flex items-center text-lg gap-2 h-fit">
-									<small
-										class="font-medium {item.out_of_stock ? 'text-black/25' : ''}"
+									<small class="font-medium {item.out_of_stock ? 'text-black/25' : ''}"
 										>${item.price}</small
 									>
 									{#if item.price_variant != null}
 										<span>|</span>
-										<small
-											class="font-medium {item.out_of_stock ? 'text-black/25' : ''}"
+										<small class="font-medium {item.out_of_stock ? 'text-black/25' : ''}"
 											>${item.price_variant}</small
 										>
 									{/if}
 								</div>
 							</div>
-							<p class="{item.out_of_stock ? 'text-black/25' : ''}">
-								{item.ingredients}
-							</p>
+							{#if item.ingredients}
+								<p class={item.out_of_stock ? 'text-black/25' : ''}>
+									{item.ingredients}
+								</p>
+							{/if}
 						</div>
 					</div>
 				{/each}
