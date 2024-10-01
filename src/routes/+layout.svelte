@@ -8,9 +8,11 @@
 	import LocaleSelect from '$lib/components/LocaleSelect.svelte';
 	import Footer from '$lib/components/Footer.svelte';
 	import { injectSpeedInsights } from '@vercel/speed-insights/sveltekit';
-	import { inject } from '@vercel/analytics'
+	import { dev } from '$app/environment';
+	import { inject } from '@vercel/analytics';
 
 	injectSpeedInsights();
+	inject({ mode: dev ? 'development' : 'production' });
 </script>
 
 <svelte:head>

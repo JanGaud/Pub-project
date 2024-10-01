@@ -1210,6 +1210,26 @@ export interface ContactSliceDefaultPrimaryFormInputsItem {
 	subject: prismic.KeyTextField;
 
 	/**
+	 * Subject Option 1 field in *Contact → Default → Primary → Form Inputs*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: contact.default.primary.form_inputs[].subject_option_1
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	subject_option_1: prismic.KeyTextField;
+
+	/**
+	 * Subject Option 2 field in *Contact → Default → Primary → Form Inputs*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: contact.default.primary.form_inputs[].subject_option_2
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	subject_option_2: prismic.KeyTextField;
+
+	/**
 	 * Message field in *Contact → Default → Primary → Form Inputs*
 	 *
 	 * - **Field Type**: Text

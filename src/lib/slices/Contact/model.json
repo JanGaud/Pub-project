@@ -135,6 +135,20 @@
                   "placeholder": ""
                 }
               },
+              "subject_option_1": {
+                "type": "Text",
+                "config": {
+                  "label": "Subject Option 1",
+                  "placeholder": ""
+                }
+              },
+              "subject_option_2": {
+                "type": "Text",
+                "config": {
+                  "label": "Subject Option 2",
+                  "placeholder": ""
+                }
+              },
               "message": {
                 "type": "Text",
                 "config": {
