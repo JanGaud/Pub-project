@@ -33,19 +33,19 @@
 								</h3>
 								<div class="flex items-center text-lg gap-2 h-fit">
 									<small
-										class="font-medium text-gray-800 {item.out_of_stock ? 'text-black/25' : ''}"
+										class="font-medium {item.out_of_stock ? 'text-black/25' : ''}"
 										>${item.price}</small
 									>
 									{#if item.price_variant != null}
 										<span>|</span>
 										<small
-											class="font-medium text-gray-800 {item.out_of_stock ? 'text-black/25' : ''}"
+											class="font-medium {item.out_of_stock ? 'text-black/25' : ''}"
 											>${item.price_variant}</small
 										>
 									{/if}
 								</div>
 							</div>
-							<p class="text-gray-600 {item.out_of_stock ? 'text-black/25' : ''}">
+							<p class="{item.out_of_stock ? 'text-black/25' : ''}">
 								{item.ingredients}
 							</p>
 						</div>
@@ -71,19 +71,19 @@
 								</h3>
 								<div class="flex items-center text-lg gap-2 h-fit">
 									<small
-										class="font-medium text-gray-800 {item.out_of_stock ? 'text-black/25' : ''}"
+										class="font-medium {item.out_of_stock ? 'text-black/25' : ''}"
 										>${item.price}</small
 									>
 									{#if item.price_variant != null}
 										<span>|</span>
 										<small
-											class="font-medium text-gray-800 {item.out_of_stock ? 'text-black/25' : ''}"
+											class="font-medium {item.out_of_stock ? 'text-black/25' : ''}"
 											>${item.price_variant}</small
 										>
 									{/if}
 								</div>
 							</div>
-							<p class="text-gray-600 {item.out_of_stock ? 'text-black/25' : ''}">
+							<p class="{item.out_of_stock ? 'text-black/25' : ''}">
 								{item.ingredients}
 							</p>
 						</div>

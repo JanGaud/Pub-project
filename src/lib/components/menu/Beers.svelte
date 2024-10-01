@@ -34,18 +34,18 @@
 						</h3>
 						<!-- Pricing Information -->
 						<div class="flex items-center text-lg gap-2 h-fit">
-							<small class="font-medium text-gray-800 {item.out_of_stock ? 'text-black/25' : ''}">
+							<small class="font-medium {item.out_of_stock ? 'text-black/25' : ''}">
 								${item.price_glass}
 							</small>
 							{#if item.price_pint != null}
 								<span>|</span>
-								<small class="font-medium text-gray-800 {item.out_of_stock ? 'text-black/25' : ''}">
+								<small class="font-medium {item.out_of_stock ? 'text-black/25' : ''}">
 									${item.price_pint}
 								</small>
 							{/if}
 						</div>
 					</div>
-					<p class="text-gray-600 {item.out_of_stock ? 'text-black/25' : ''}">
+					<p class="{item.out_of_stock ? 'text-black/25' : ''}">
 						{item.beer_description}
 					</p>
 				</div>
