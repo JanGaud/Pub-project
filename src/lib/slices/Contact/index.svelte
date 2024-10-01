@@ -19,7 +19,7 @@
 	let formData = {
 		name: '',
 		email: '',
-		phone: '', // Add phone number field
+		phone: '',
 		subject: '',
 		message: '',
 		appointmentDate: '',
