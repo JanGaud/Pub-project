@@ -1,162 +1,192 @@
 <script lang="ts">
-	import { animateOnScroll } from '$lib/actions/animateOnScroll';
-	import { onMount } from 'svelte';
-	import { page } from '$app/stores';
-	import Icon from '@iconify/svelte';
-	import type { Content } from '@prismicio/client';
+  import { animateOnScroll } from '$lib/actions/animateOnScroll';
+  import { onMount } from 'svelte';
+  import { page } from '$app/stores';
+  import Icon from '@iconify/svelte';
+  import type { Content } from '@prismicio/client';
+  import { validateForm } from '$lib/utils/formValidator';
 	import mapStyles from '$lib/utils/mapStyles';
-	import { validateForm } from '$lib/utils/formValidator';
 
-	const initialLocale = $page.url.pathname.split('/')[1].slice(0, 2);
+  const initialLocale = $page.url.pathname.split('/')[1].slice(0, 2);
 
-	export let slice: Content.ContactSlice;
-	let settings = $page.data.settings;
-	let location = settings.data.location;
+  export let slice: Content.ContactSlice;
+  let settings = $page.data.settings;
+  let location = settings.data.location;
 
-	let isVisible = false;
+  let isVisible = false;
+  let submissionMessage = ''; // For displaying success or error messages
 
-	// Form data, errors, and success states
-	let formData = {
-		name: '',
-		email: '',
-		phone: '',
-		subject: '',
-		message: '',
-		appointmentDate: '',
-		appointmentTime: ''
-	};
-	let errors: Record<string, string> = {};
-	let success: Record<string, boolean> = {};
+  // Form data, errors, and success states
+  let formData = {
+    name: '',
+    email: '',
+    phone: '',
+    subject: '',
+    message: '',
+    appointmentDate: '',
+    appointmentTime: ''
+  };
+  let errors: Record<string, string> = {};
+  let success: Record<string, boolean> = {};
 
-	// State to track whether support option is selected
-	let isSupportSelected = false;
+  // State to track whether reservation option is selected
+  let isReservationSelected = false;
 
-	// Minimum values for date and time pickers
-	let minDate: string = '';
-	let minTime: string = '';
+  // Minimum values for date and time pickers
+  let minDate: string = '';
+  let minTime: string = '';
 
-	// Function to handle form submission
-	const handleSubmit = (event: Event) => {
-		event.preventDefault(); // Prevent default form submission
-		const validation = validateForm(formData, isSupportSelected); // Validate the entire form before submission
-		errors = validation.errors;
-		success = validation.success;
+  // Function to handle form submission
+  const handleSubmit = async (event: Event) => {
+    event.preventDefault(); // Prevent default form submission
+    const validation = validateForm(formData, isReservationSelected); // Validate the entire form before submission
+    errors = validation.errors;
+    success = validation.success;
 
-		// If no errors, submit the form
-		if (Object.keys(errors).length === 0) {
-			console.log('Form submitted successfully', formData);
-			// You can add code here to submit the form data to a server or perform other actions
-		} else {
-			console.error('Form has validation errors:', errors);
-		}
-	};
+    // If no errors, submit the form
+    if (Object.keys(errors).length === 0) {
+      try {
+        // Send the form data to the server endpoint
+        const response = await fetch('/api/mail', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(formData)
+        });
 
-	// Function to handle input changes and validate fields on keyup
-	const handleInputChange = (field: keyof typeof formData, value: string) => {
-		formData[field] = value;
+        const result = await response.json();
 
-		// Validate field as the user types
-		const { errors: newErrors, success: newSuccess } = validateForm(formData, isSupportSelected);
+        if (response.ok) {
+          submissionMessage = 'Form submitted successfully. Thank you!';
+          // Optionally, reset the form data after successful submission
+          formData = {
+            name: '',
+            email: '',
+            phone: '',
+            subject: '',
+            message: '',
+            appointmentDate: '',
+            appointmentTime: ''
+          };
+          success = {}; // Reset success state
+        } else {
+          submissionMessage = `Failed to submit form: ${result.message}`;
+        }
+      } catch (error) {
+        console.error('Error submitting form:', error);
+        submissionMessage = 'An error occurred while submitting the form. Please try again later.';
+      }
+    } else {
+      submissionMessage = 'Please fix the errors in the form before submitting.';
+      console.error('Form has validation errors:', errors);
+    }
+  };
 
-		// Update errors and success states
-		errors = newErrors;
-		success = newSuccess;
+  // Function to handle input changes and validate fields on keyup
+  const handleInputChange = (field: keyof typeof formData, value: string) => {
+    formData[field] = value;
 
-		// If the subject is changed, check if 'reservation' is selected
-		if (field === 'subject') {
-			isSupportSelected = value === 'reservation';
-		}
+    // Validate field as the user types
+    const { errors: newErrors, success: newSuccess } = validateForm(formData, isReservationSelected);
 
-		// If appointmentDate changes, update minTime only if the date is today
-		if (field === 'appointmentDate') {
-			updateMinTime();
-		}
-	};
+    // Update errors and success states
+    errors = newErrors;
+    success = newSuccess;
 
-	// Function to get the current date and time in the format required for input elements
-	function getCurrentDateAndTime() {
-		const now = new Date();
-		const year = now.getFullYear();
-		const month = String(now.getMonth() + 1).padStart(2, '0'); // Months are zero-based
-		const day = String(now.getDate()).padStart(2, '0');
-		const hours = String(now.getHours()).padStart(2, '0');
-		const minutes = String(now.getMinutes()).padStart(2, '0');
+    // If the subject is changed, check if 'reservation' is selected
+    if (field === 'subject') {
+      isReservationSelected = value.toLowerCase() === 'reservation';
+    }
 
-		minDate = `${year}-${month}-${day}`; // Format: YYYY-MM-DD
-		minTime = `${hours}:${minutes}`; // Format: HH:MM
-	}
+    // If appointmentDate changes, update minTime only if the date is today
+    if (field === 'appointmentDate') {
+      updateMinTime();
+    }
+  };
 
-	// Function to update minTime based on the selected date
-	function updateMinTime() {
-		const today = new Date().toISOString().split('T')[0]; // Get current date in YYYY-MM-DD format
-		if (formData.appointmentDate === today) {
-			getCurrentDateAndTime();
-		} else {
-			minTime = '00:00'; // If it's not today, reset minTime to midnight
-		}
-	}
+  // Function to get the current date and time in the format required for input elements
+  function getCurrentDateAndTime() {
+    const now = new Date();
+    const year = now.getFullYear();
+    const month = String(now.getMonth() + 1).padStart(2, '0'); // Months are zero-based
+    const day = String(now.getDate()).padStart(2, '0');
+    const hours = String(now.getHours()).padStart(2, '0');
+    const minutes = String(now.getMinutes()).padStart(2, '0');
 
-	// Function to check if the section is in view
-	function handleScroll() {
-		const section = document.querySelector('.form-section');
-		if (section) {
-			const sectionRect = section.getBoundingClientRect();
-			if (sectionRect.top < window.innerHeight && sectionRect.bottom >= 0) {
-				isVisible = true;
-			} else {
-				isVisible = false;
-			}
-		}
-	}
+    minDate = `${year}-${month}-${day}`; // Format: YYYY-MM-DD
+    minTime = `${hours}:${minutes}`; // Format: HH:MM
+  }
 
-	// Initialize Google Maps
-	function initMap() {
-		const mapOptions = {
-			center: { lat: location.latitude, lng: location.longitude },
-			zoom: 14,
-			styles: mapStyles
-		};
+  // Function to update minTime based on the selected date
+  function updateMinTime() {
+    const today = new Date().toISOString().split('T')[0]; // Get current date in YYYY-MM-DD format
+    if (formData.appointmentDate === today) {
+      getCurrentDateAndTime();
+    } else {
+      minTime = '00:00'; // If it's not today, reset minTime to midnight
+    }
+  }
 
-		if (typeof google !== 'undefined') {
-			const map = new google.maps.Map(document.getElementById('map') as HTMLElement, mapOptions);
+  // Function to check if the section is in view
+  function handleScroll() {
+    const section = document.querySelector('.form-section');
+    if (section) {
+      const sectionRect = section.getBoundingClientRect();
+      if (sectionRect.top < window.innerHeight && sectionRect.bottom >= 0) {
+        isVisible = true;
+      } else {
+        isVisible = false;
+      }
+    }
+  }
 
-			// Add a marker at the specified location
-			new google.maps.Marker({
-				position: { lat: location.latitude, lng: location.longitude },
-				map: map,
-				title: 'Location'
-			});
-		}
-	}
+  // Initialize Google Maps
+  function initMap() {
+    const mapOptions = {
+      center: { lat: location.latitude, lng: location.longitude },
+      zoom: 14,
+      styles: mapStyles
+    };
 
-	// Load Google Maps script
-	function loadGoogleMapsScript(callback: () => void) {
-		if (!document.querySelector('script[src*="maps.googleapis.com/maps/api/js"]')) {
-			const script = document.createElement('script');
-			script.src = `https://maps.googleapis.com/maps/api/js?key=${settings.data.google_maps_api_key}&language=${initialLocale}`;
-			script.async = true;
-			script.defer = true;
-			script.onload = callback;
-			document.head.appendChild(script);
-		} else {
-			callback();
-		}
-	}
+    if (typeof google !== 'undefined') {
+      const map = new google.maps.Map(document.getElementById('map') as HTMLElement, mapOptions);
 
-	// Mounting the Google Maps and scroll listener
-	onMount(() => {
-		// Initialize Google Maps
-		loadGoogleMapsScript(() => {
-			initMap();
-		});
+      // Add a marker at the specified location
+      new google.maps.Marker({
+        position: { lat: location.latitude, lng: location.longitude },
+        map: map,
+        title: 'Location'
+      });
+    }
+  }
 
-		// Get current date and time for min values
-		getCurrentDateAndTime();
+  // Load Google Maps script
+  function loadGoogleMapsScript(callback: () => void) {
+    if (!document.querySelector('script[src*="maps.googleapis.com/maps/api/js"]')) {
+      const script = document.createElement('script');
+      script.src = `https://maps.googleapis.com/maps/api/js?key=${settings.data.google_maps_api_key}&language=${initialLocale}`;
+      script.async = true;
+      script.defer = true;
+      script.onload = callback;
+      document.head.appendChild(script);
+    } else {
+      callback();
+    }
+  }
 
-		// Add scroll event listener for sliding in the form
-		window.addEventListener('scroll', handleScroll);
-		return () => window.removeEventListener('scroll', handleScroll);
-	});
+  // Mounting the Google Maps and scroll listener
+  onMount(() => {
+    // Initialize Google Maps
+    loadGoogleMapsScript(() => {
+      initMap();
+    });
+
+    // Get current date and time for min values
+    getCurrentDateAndTime();
+
+    // Add scroll event listener for sliding in the form
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  });
 </script>
 
 <section
@@ -285,7 +315,7 @@
 					</div>
 
 					<!-- Date and Time inputs (only if reservation is selected) -->
-					{#if isSupportSelected}
+					{#if isReservationSelected}
 						<div class="grid grid-cols-2 gap-4">
 							<div class="relative py-2">
 								<input
