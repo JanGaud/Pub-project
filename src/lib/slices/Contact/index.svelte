@@ -256,7 +256,7 @@
 							on:keyup={(e) => handleInputChange('name', e.target.value)}
 						/>
 						{#if errors.name}
-							<span class="absolute top-0 right-0 text-red-500">{errors.name}</span>
+							<span class="absolute top-0 right-0 text-red-500 cursor-none">{errors.name}</span>
 						{/if}
 						{#if success.name}
 							<span class="absolute top-0 right-0 text-green-500">✓</span> <!-- Green check mark -->
@@ -273,7 +273,7 @@
 							on:keyup={(e) => handleInputChange('email', e.target.value)}
 						/>
 						{#if errors.email}
-							<span class="absolute top-0 right-0 text-red-500">{errors.email}</span>
+							<span class="absolute top-0 right-0 text-red-500 cursor-none">{errors.email}</span>
 						{/if}
 						{#if success.email}
 							<span class="absolute top-0 right-0 text-green-500">✓</span> <!-- Green check mark -->
@@ -290,7 +290,7 @@
 							on:keyup={(e) => handleInputChange('phone', e.target.value)}
 						/>
 						{#if errors.phone}
-							<span class="absolute top-0 right-0 text-red-500">{errors.phone}</span>
+							<span class="absolute top-0 right-0 text-red-500 cursor-none">{errors.phone}</span>
 						{/if}
 						{#if success.phone}
 							<span class="absolute top-0 right-0 text-green-500">✓</span> <!-- Green check mark -->
@@ -310,7 +310,7 @@
 							<option value="other">{slice.primary.form_inputs[0]?.subject_option_2}</option>
 						</select>
 						{#if errors.subject}
-							<span class="absolute top-0 right-0 text-red-500">{errors.subject}</span>
+							<span class="absolute top-0 right-0 text-red-500 cursor-none">{errors.subject}</span>
 						{/if}
 						{#if success.subject}
 							<span class="absolute top-0 right-0 text-green-500">✓</span> <!-- Green check mark -->
@@ -330,7 +330,7 @@
 									on:change={(e) => handleInputChange('appointmentDate', e.target.value)}
 								/>
 								{#if errors.appointmentDate}
-									<span class="absolute top-0 right-0 text-red-500">{errors.appointmentDate}</span>
+									<span class="absolute top-0 right-0 text-red-500 cursor-none">{errors.appointmentDate}</span>
 								{/if}
 								{#if success.appointmentDate}
 									<span class="absolute top-0 right-0 text-green-500">✓</span>
@@ -347,7 +347,7 @@
 									on:change={(e) => handleInputChange('appointmentTime', e.target.value)}
 								/>
 								{#if errors.appointmentTime}
-									<span class="absolute top-0 right-0 text-red-500">{errors.appointmentTime}</span>
+									<span class="absolute top-0 right-0 text-red-500 cursor-none">{errors.appointmentTime}</span>
 								{/if}
 								{#if success.appointmentTime}
 									<span class="absolute top-0 right-0 text-green-500">✓</span>
@@ -367,7 +367,7 @@
 							on:keyup={(e) => handleInputChange('message', e.target.value)}
 						></textarea>
 						{#if errors.message}
-							<span class="absolute top-0 right-0 text-red-500">{errors.message}</span>
+							<span class="absolute top-0 right-0 text-red-500 cursor-none">{errors.message}</span>
 						{/if}
 						{#if success.message}
 							<span class="absolute top-0 right-0 text-green-500">✓</span> <!-- Green check mark -->
