@@ -24,7 +24,7 @@ export async function POST({ request }: RequestEvent) {
             },
         });
         // Attach the logo image using Content-ID (CID)
-        const logoPath = path.join('static', 'circleLogo.png');
+        const logoPath = path.join(process.cwd(), 'static', 'circleLogo.png');
         const logoCid = 'logo@100genies';
 
         // Reservation Template
