@@ -88,6 +88,59 @@
 					"select": null
 				}
 			}
+		},
+		"Meta": {
+			"food_type": {
+				"type": "Text",
+				"config": {
+					"label": "Food Type",
+					"placeholder": ""
+				}
+			},
+			"addresslocality": {
+				"type": "Text",
+				"config": {
+					"label": "addressLocality",
+					"placeholder": ""
+				}
+			},
+			"adressregion": {
+				"type": "Text",
+				"config": {
+					"label": "adressRegion",
+					"placeholder": ""
+				}
+			},
+			"postalcode": {
+				"type": "Text",
+				"config": {
+					"label": "PostalCode",
+					"placeholder": ""
+				}
+			},
+			"streetadress": {
+				"type": "Text",
+				"config": {
+					"label": "StreetAdress",
+					"placeholder": ""
+				}
+			},
+			"opening_hours": {
+				"type": "Group",
+				"config": {
+					"label": "OpeningHours",
+					"repeat": true,
+					"fields": {
+						"dayshours": {
+							"type": "Text",
+							"config": {
+								"label": "DaysHours",
+								"placeholder": ""
+							}
+						}
+					}
+				}
+			}
 		}
 	}
 }

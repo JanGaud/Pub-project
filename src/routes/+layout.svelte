@@ -13,6 +13,8 @@
 
 	injectSpeedInsights();
 	inject({ mode: dev ? 'development' : 'production' });
+
+	const businessInfo = $page.data.settings.data;
 </script>
 
 <svelte:head>
@@ -37,3 +39,31 @@
 <Footer />
 
 <PrismicPreview {repositoryName} />
+
+{@html `<script type="application/ld+json">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Restaurant",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "${businessInfo.addresslocality}",
+    "addressRegion": "${businessInfo.adressregion}",
+    "postalCode": "${businessInfo.postalcode}",
+    "streetAddress": "${businessInfo.streetadress}"
+  },
+  "name": "${businessInfo.business_name}",
+  "openingHours": [
+    "${businessInfo.opening_hours[0].dayshours}",
+    "${businessInfo.opening_hours[1].dayshours}",
+    "${businessInfo.opening_hours[2].dayshours}"
+  ],
+  "priceRange": "$",
+  "servesCuisine": [
+    "${businessInfo.food_type}",
+  ],
+  "telephone": "${businessInfo.phone}",
+  "url": "${businessInfo.website}"
+}
+</script>
+`}

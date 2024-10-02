@@ -894,6 +894,21 @@ export interface SettingsDocumentDataSocialMediaItem {
 }
 
 /**
+ * Item in *settings → OpeningHours*
+ */
+export interface SettingsDocumentDataOpeningHoursItem {
+	/**
+	 * DaysHours field in *settings → OpeningHours*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: settings.opening_hours[].dayshours
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	dayshours: prismic.KeyTextField;
+}
+
+/**
  * Content for settings documents
  */
 interface SettingsDocumentData {
@@ -994,7 +1009,71 @@ interface SettingsDocumentData {
 	 * - **Tab**: Main
 	 * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
 	 */
-	root_link: prismic.LinkField;
+	root_link: prismic.LinkField /**
+	 * Food Type field in *settings*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: settings.food_type
+	 * - **Tab**: Meta
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */;
+	food_type: prismic.KeyTextField;
+
+	/**
+	 * addressLocality field in *settings*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: settings.addresslocality
+	 * - **Tab**: Meta
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	addresslocality: prismic.KeyTextField;
+
+	/**
+	 * adressRegion field in *settings*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: settings.adressregion
+	 * - **Tab**: Meta
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	adressregion: prismic.KeyTextField;
+
+	/**
+	 * PostalCode field in *settings*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: settings.postalcode
+	 * - **Tab**: Meta
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	postalcode: prismic.KeyTextField;
+
+	/**
+	 * StreetAdress field in *settings*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: settings.streetadress
+	 * - **Tab**: Meta
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	streetadress: prismic.KeyTextField;
+
+	/**
+	 * OpeningHours field in *settings*
+	 *
+	 * - **Field Type**: Group
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: settings.opening_hours[]
+	 * - **Tab**: Meta
+	 * - **Documentation**: https://prismic.io/docs/field#group
+	 */
+	opening_hours: prismic.GroupField<Simplify<SettingsDocumentDataOpeningHoursItem>>;
 }
 
 /**
@@ -1959,6 +2038,7 @@ declare module '@prismicio/client' {
 			SettingsDocument,
 			SettingsDocumentData,
 			SettingsDocumentDataSocialMediaItem,
+			SettingsDocumentDataOpeningHoursItem,
 			WineDocument,
 			WineDocumentData,
 			WineDocumentDataItemItem,
