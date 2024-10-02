@@ -41,7 +41,6 @@
 <PrismicPreview {repositoryName} />
 
 {@html `<script type="application/ld+json">
-<script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Restaurant",
