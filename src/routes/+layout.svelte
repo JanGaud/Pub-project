@@ -59,7 +59,7 @@
   ],
   "priceRange": "$",
   "servesCuisine": [
-    "${businessInfo.food_type}",
+    "${businessInfo.food_type}"
   ],
   "telephone": "${businessInfo.phone}",
   "url": "${businessInfo.website}"
