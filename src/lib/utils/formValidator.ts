@@ -44,24 +44,20 @@ export function validateForm(
     success.name = true;
   }
 
-  // Validate email
-  if (formData.email.trim() && !/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(formData.email)) {
+  // Validate email (mandatory)
+  if (!formData.email.trim()) {
+    errors.email = getErrorMessage('email', 'required');
+  } else if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(formData.email)) {
     errors.email = getErrorMessage('email', 'invalid');
-  } else if (formData.email.trim()) {
+  } else {
     success.email = true;
   }
 
-  // Validate phone number (only if provided, 10 digits minimum)
+  // Validate phone number (optional, but if provided, it should have 10 digits)
   if (formData.phone.trim() && !/^\d{10,}$/.test(formData.phone.replace(/\D/g, ''))) {
     errors.phone = getErrorMessage('phone', 'minimum');
   } else if (formData.phone.trim()) {
     success.phone = true;
-  }
-
-  // Validate that either phone or email is provided
-  if (!formData.email.trim() && !formData.phone.trim()) {
-    errors.phone = getErrorMessage('phone', 'required');
-    errors.email = getErrorMessage('email', 'required');
   }
 
   // Validate subject
