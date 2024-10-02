@@ -5,17 +5,12 @@
 	// Define a prop to accept the cocktail menu data structure
 	export let cocktailMenu: any[];
 
-	console.log(cocktailMenu);
-
 	// Safely access the items array from the cocktailMenu data
 	let items = cocktailMenu?.[0]?.data?.item || [];
 
 	// Separate the items into two categories based on `soft` property
 	let nonAlcoholicItems = items.filter((item: { soft: boolean }) => item.soft === true);
 	let alcoholicItems = items.filter((item: { soft: boolean }) => item.soft === false);
-
-	console.log(alcoholicItems);
-	console.log(nonAlcoholicItems);
 </script>
 
 <!-- Render items in two columns using Tailwind CSS -->
