@@ -24,7 +24,7 @@ export async function POST({ request }: RequestEvent) {
             },
         });
         // Attach the logo image using Content-ID (CID)
-        const logoPath = path.join(cwd(), 'static', 'circleLogo.png');
+        const logoUrl = 'https://pub-project.vercel.app/circleLogo.png'; // Replace with your deployed URL
         const logoCid = 'logo@100genies';
 
         // Reservation Template
@@ -122,9 +122,9 @@ export async function POST({ request }: RequestEvent) {
             attachments: [
                 {
                     filename: 'circleLogo.png',
-                    path: logoPath,
-                    cid: logoCid
-                }
+                    path: 'https://pub-project.vercel.app/circleLogo.png',
+                    cid: 'logo@100genies',
+                },
             ]
         };
 
@@ -155,9 +155,9 @@ export async function POST({ request }: RequestEvent) {
             attachments: [
                 {
                     filename: 'circleLogo.png',
-                    path: logoPath, // Path to your logo file
-                    cid: logoCid // Attach the image with this CID
-                }
+                    path: 'https://pub-project.vercel.app/circleLogo.png', // Use the public URL of the image
+                    cid: 'logo@100genies',
+                },
             ]
         };
 
