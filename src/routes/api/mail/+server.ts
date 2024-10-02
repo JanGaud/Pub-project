@@ -24,7 +24,7 @@ export async function POST({ request }: RequestEvent) {
             },
         });
         // Attach the logo image using Content-ID (CID)
-        const logoPath = path.join(process.cwd(), 'static', 'circleLogo.png');
+        const logoPath = path.join(cwd(), 'static', 'circleLogo.png');
         const logoCid = 'logo@100genies';
 
         // Reservation Template
@@ -174,3 +174,7 @@ export async function POST({ request }: RequestEvent) {
         return json({ success: false, message: "Échec de l'envoi du courriel", error: errorMessage }, { status: 500 });
     }
 }
+function cwd(): string {
+    throw new Error('Function not implemented.');
+}
+
