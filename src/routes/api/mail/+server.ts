@@ -27,7 +27,7 @@ export async function POST({ request }: RequestEvent) {
         const logoPath = path.join('static', 'circleLogo.png');
         const logoCid = 'logo@100genies';
 
-        // Reservation Template with Inline Styles and External Image URL
+        // Reservation Template
         const reservationTemplate = `
             <div style="background-color: #F9F9F9; display: flex; justify-content: center; align-items: center;">
                 <div style="font-family: 'DM Sans', sans-serif; color: #333; line-height: 1.6; max-width: 600px; margin: 0 auto; background-color: #ffffff; box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3); border: 1px solid #e0e0e0; border-radius: 10px; border-top: 8px solid #DCBD5B;">
@@ -50,7 +50,7 @@ export async function POST({ request }: RequestEvent) {
             </div>
         `;
 
-        // General Template with Inline Styles and External Image URL
+        // General Template
         const generalTemplate = `
             <div style="background-color: #F9F9F9; display: flex; justify-content: center; align-items: center;">
                 <div style="font-family: 'DM Sans', sans-serif; color: #333; line-height: 1.6; max-width: 600px; margin: 0 auto; background-color: #ffffff; box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3); border: 1px solid #e0e0e0; border-radius: 10px; border-top: 8px solid #DCBD5B;">
@@ -59,7 +59,6 @@ export async function POST({ request }: RequestEvent) {
                         <p style="font-size: 16px;"><strong>Nom:</strong> ${formData.name}</p>
                         <p style="font-size: 16px;"><strong>Courriel:</strong> <a href="mailto:${formData.email}" style="color: #1a73e8; text-decoration: none;">${formData.email}</a></p>
                         <p style="font-size: 16px;"><strong>Téléphone:</strong> <a href="tel:${formData.phone}" style="color: #1a73e8; text-decoration: none;">${formData.phone}</a></p>
-                        <p style="font-size: 16px;"><strong>Sujet:</strong> ${formData.subject}</p>
                         <p style="font-size: 16px; margin-bottom: 20px;"><strong>Message:</strong> ${formData.message}</p>
                     </div>
                     <footer style="background-color: #DCBD5B; padding: 20px; text-align: center; font-size: 14px; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
@@ -70,7 +69,7 @@ export async function POST({ request }: RequestEvent) {
             </div>
         `;
 
-        // Confirmation Template for the user
+        // Confirmation Template
         const confirmationTemplate = `
             <div style="background-color: #F9F9F9; display: flex; justify-content: center; align-items: center;">
                 <div style="font-family: 'DM Sans', sans-serif; color: #333; line-height: 1.6; max-width: 600px; margin: 0 auto; background-color: #ffffff; box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3); border: 1px solid #e0e0e0; border-radius: 10px; border-top: 8px solid #DCBD5B;">
