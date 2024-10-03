@@ -5,7 +5,6 @@
 	import { repositoryName } from '$lib/prismicio';
 	import '../app.css';
 	import Navbar from '$lib/components/Navbar.svelte';
-	import LocaleSelect from '$lib/components/LocaleSelect.svelte';
 	import Footer from '$lib/components/Footer.svelte';
 	import { injectSpeedInsights } from '@vercel/speed-insights/sveltekit';
 	import { dev } from '$app/environment';
@@ -32,7 +31,6 @@
 </svelte:head>
 
 <Navbar />
-<LocaleSelect />
 <main class="mx-auto mt-36 px-2 md:px-20 max-w-screen-2xl">
 	<slot />
 </main>

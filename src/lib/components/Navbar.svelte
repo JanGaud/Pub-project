@@ -2,7 +2,8 @@
     import Icon from '@iconify/svelte';
     import { page } from '$app/stores';
     import { PrismicImage, PrismicLink } from '@prismicio/svelte';
-    import { onMount, onDestroy } from 'svelte';
+        import { onMount, onDestroy } from 'svelte';
+	import LocaleSelect from './LocaleSelect.svelte';
 
     // Reactive declarations to use $page store
     const logo = $page.data.nav.data.logo;
@@ -11,6 +12,8 @@
 
     let isMenuOpen = false;
     let isScrolled = false;
+    let isVisible = true; // Track the visibility of the navbar
+    let lastScrollY = 0; // Store the last scroll position
 
     // Function to toggle the mobile menu
     function toggleMenu() {
@@ -24,7 +27,20 @@
 
     // Function to handle the scroll event
     function handleScroll() {
-        isScrolled = window.scrollY > 50; // Adjust value as needed
+        const currentScrollY = window.scrollY;
+
+        // Hide navbar when scrolling down and show it when scrolling up
+        if (currentScrollY > lastScrollY && currentScrollY > 100) {
+            isVisible = false;
+        } else if (currentScrollY < lastScrollY) {
+            isVisible = true;
+        }
+
+        // Track whether the user has scrolled past a certain point
+        isScrolled = currentScrollY > 50; // Adjust this value as needed
+
+        // Update the last scroll position
+        lastScrollY = currentScrollY;
     }
 
     // Ensure this code only runs on the client-side
@@ -42,7 +58,9 @@
     });
 </script>
 
-<nav class="h-28 w-full fixed top-0 px-4 pt-4 text-white bg-gold-gradient z-50 flex items-center justify-center md:justify-between drop-shadow-lg transition-all duration-300 ease-in-out">
+<!-- Navbar -->
+<nav class={`h-28 w-full fixed top-0 px-4 pt-4 text-white bg-gold-gradient z-50 flex items-center justify-center md:justify-between drop-shadow-lg transition-all duration-300 ease-in-out ${isVisible ? 'translate-y-0' : '-translate-y-full'}`}>
+   <LocaleSelect />
     <div class="h-full w-[300px]">
         <PrismicLink field={rootLink}>
             {#if logo}

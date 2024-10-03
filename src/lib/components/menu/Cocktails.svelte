@@ -94,7 +94,7 @@
 					{/each}
 				</div>
 			{/if}
-			<div class="flex justify-center border shadow-sm p-2"><small>{cocktailMenu[0].data?.notes}</small></div>
+			<div class="flex justify-center text-center border shadow-sm p-2"><small>{cocktailMenu[0].data?.notes}</small></div>
 		</div>
 	</div>
 </MenuContainer>
