@@ -111,7 +111,7 @@
         "form_inputs": {
           "type": "Group",
           "config": {
-            "label": "Form Inputs",
+            "label": "Form",
             "repeat": false,
             "fields": {
               "name": {
@@ -160,6 +160,43 @@
                 "type": "Text",
                 "config": {
                   "label": "Send Button",
+                  "placeholder": ""
+                }
+              }
+            }
+          }
+        },
+        "form_sent": {
+          "type": "Group",
+          "config": {
+            "label": "Form Sent",
+            "repeat": false,
+            "fields": {
+              "error": {
+                "type": "Text",
+                "config": {
+                  "label": "error",
+                  "placeholder": ""
+                }
+              },
+              "success": {
+                "type": "Text",
+                "config": {
+                  "label": "success",
+                  "placeholder": ""
+                }
+              },
+              "button": {
+                "type": "Text",
+                "config": {
+                  "label": "button",
+                  "placeholder": ""
+                }
+              },
+              "try_again": {
+                "type": "Text",
+                "config": {
+                  "label": "try again",
                   "placeholder": ""
                 }
               }

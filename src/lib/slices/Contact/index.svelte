@@ -15,6 +15,8 @@
 
 	let isVisible = false;
 	let submissionMessage = ''; // For displaying success or error messages
+	let isSubmitting = false; // Loading state
+	let errorTimeoutId: ReturnType<typeof setTimeout>; // Timeout ID to track error message timer
 
 	// Form data, errors, and success states
 	let formData = {
@@ -45,6 +47,8 @@
 
 		// If no errors, submit the form
 		if (Object.keys(errors).length === 0) {
+			isSubmitting = true; // Set loading state
+
 			try {
 				// Send the form data to the server endpoint
 				const response = await fetch('/api/mail', {
@@ -53,10 +57,13 @@
 					body: JSON.stringify(formData)
 				});
 
+				// Parse the JSON response
 				const result = await response.json();
 
-				if (response.ok) {
-					submissionMessage = 'Form submitted successfully. Thank you!';
+				if (response.ok && result.success) {
+					submissionMessage = slice.primary.form_sent[0]?.success ?? '';
+					resetMessage(); // Call the function to reset the message
+
 					// Optionally, reset the form data after successful submission
 					formData = {
 						name: '',
@@ -69,16 +76,41 @@
 					};
 					success = {}; // Reset success state
 				} else {
-					submissionMessage = `Failed to submit form: ${result.message}`;
+					submissionMessage = `Err: ${result.message}`;
+					resetMessage(); // Call the function to reset the message
 				}
 			} catch (error) {
 				console.error('Error submitting form:', error);
-				submissionMessage = 'An error occurred while submitting the form. Please try again later.';
+				submissionMessage = slice.primary.form_sent[0]?.try_again ?? '';
+				resetMessage();
+			} finally {
+				isSubmitting = false; // Reset loading state
 			}
 		} else {
-			submissionMessage = 'Please fix the errors in the form before submitting.';
+			submissionMessage = slice.primary.form_sent[0]?.error ?? '';
 			console.error('Form has validation errors:', errors);
+			resetMessage(); // Call the function to reset the message
+			resetErrors(); // Call the function to reset errors
 		}
+	};
+
+	// Function to reset the submission message after 5 seconds
+	const resetMessage = () => {
+		setTimeout(() => {
+			submissionMessage = '';
+		}, 5000);
+	};
+
+	// Function to reset error messages after 5 seconds if nothing changes
+	const resetErrors = () => {
+		if (errorTimeoutId) {
+			clearTimeout(errorTimeoutId); // Clear the existing timeout to reset it
+		}
+
+		// Set a new timeout to clear error messages after 5 seconds
+		errorTimeoutId = setTimeout(() => {
+			errors = {}; // Clear all error messages
+		}, 5000);
 	};
 
 	// Function to handle input changes and validate fields on keyup
@@ -95,6 +127,9 @@
 		errors = newErrors;
 		success = newSuccess;
 
+		// Reset errors after 5 seconds if they are not changing
+		resetErrors();
+
 		// If the subject is changed, check if 'reservation' is selected
 		if (field === 'subject') {
 			isReservationSelected = value.toLowerCase() === 'reservation';
@@ -110,13 +145,13 @@
 	function getCurrentDateAndTime() {
 		const now = new Date();
 		const year = now.getFullYear();
-		const month = String(now.getMonth() + 1).padStart(2, '0'); // Months are zero-based
+		const month = String(now.getMonth() + 1).padStart(2, '0');
 		const day = String(now.getDate()).padStart(2, '0');
 		const hours = String(now.getHours()).padStart(2, '0');
 		const minutes = String(now.getMinutes()).padStart(2, '0');
 
-		minDate = `${year}-${month}-${day}`; // Format: YYYY-MM-DD
-		minTime = `${hours}:${minutes}`; // Format: HH:MM
+		minDate = `${year}-${month}-${day}`;
+		minTime = `${hours}:${minutes}`;
 	}
 
 	// Function to update minTime based on the selected date
@@ -147,17 +182,20 @@
 		const mapOptions = {
 			center: { lat: location.latitude, lng: location.longitude },
 			zoom: 14,
-			styles: mapStyles
+			styles: mapStyles,
 		};
 
 		if (typeof google !== 'undefined') {
-			const map = new google.maps.Map(document.getElementById('map') as HTMLElement, mapOptions);
+			const map = new google.maps.Map(
+				document.getElementById('map') as HTMLElement,
+				mapOptions
+			);
 
 			// Add a marker at the specified location
 			new google.maps.Marker({
 				position: { lat: location.latitude, lng: location.longitude },
 				map: map,
-				title: 'Location'
+				title: 'Location',
 			});
 		}
 	}
@@ -191,6 +229,7 @@
 		return () => window.removeEventListener('scroll', handleScroll);
 	});
 </script>
+
 
 <section
 	use:animateOnScroll
@@ -330,7 +369,9 @@
 									on:change={(e) => handleInputChange('appointmentDate', e.target.value)}
 								/>
 								{#if errors.appointmentDate}
-									<span class="absolute top-0 right-0 text-red-500 cursor-none">{errors.appointmentDate}</span>
+									<span class="absolute top-0 right-0 text-red-500 cursor-none"
+										>{errors.appointmentDate}</span
+									>
 								{/if}
 								{#if success.appointmentDate}
 									<span class="absolute top-0 right-0 text-green-500">✓</span>
@@ -347,7 +388,9 @@
 									on:change={(e) => handleInputChange('appointmentTime', e.target.value)}
 								/>
 								{#if errors.appointmentTime}
-									<span class="absolute top-0 right-0 text-red-500 cursor-none">{errors.appointmentTime}</span>
+									<span class="absolute top-0 right-0 text-red-500 cursor-none"
+										>{errors.appointmentTime}</span
+									>
 								{/if}
 								{#if success.appointmentTime}
 									<span class="absolute top-0 right-0 text-green-500">✓</span>
@@ -377,10 +420,26 @@
 					<!-- Submit button -->
 					<button
 						type="submit"
-						class="mt-6 shadow-xl flex items-center justify-center gap-4 w-full border-4 uppercase bg-background text-white backdrop-blur border-gold-second hover:border-gold duration-200 p-4"
+						class="mt-6 shadow-xl flex items-center justify-center gap-4 w-full border-4 uppercase bg-background text-white backdrop-blur border-gold-second hover:border-gold active:border-gold duration-200 p-4"
+						disabled={isSubmitting}
 					>
-						{slice.primary.form_inputs[0]?.send_button}
+						{#if isSubmitting}
+							<!-- Loading spinner -->
+							<svg class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+								<circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+								<path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
+							</svg>
+							{slice.primary.form_sent[0]?.button}
+						{:else}
+							{slice.primary.form_inputs[0]?.send_button ?? 'Envoyer'}
+						{/if}
 					</button>
+					<div class="h-4 flex items-center justify-center">
+						<!-- Submission message display -->
+						{#if submissionMessage}
+							<p class="text-sm">{submissionMessage}</p>
+						{/if}
+					</div>
 				</div>
 			</form>
 		</div>
@@ -403,13 +462,5 @@
 	.slide-in.visible {
 		transform: translateX(0);
 		opacity: 1;
-	}
-
-	.text-green-500 {
-		color: #48bb78; /* TailwindCSS green */
-	}
-
-	.text-red-500 {
-		color: #f56565; /* TailwindCSS red */
 	}
 </style>

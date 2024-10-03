@@ -168,6 +168,48 @@
 				"__TYPE__": "FieldContent",
 				"value": "friendly",
 				"type": "Text"
+			},
+			"form_sent": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"error",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "perhaps",
+									"type": "Text"
+								}
+							],
+							[
+								"button",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "met",
+									"type": "Text"
+								}
+							],
+							[
+								"success",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "keep",
+									"type": "Text"
+								}
+							],
+							[
+								"try_again",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "aware",
+									"type": "Text"
+								}
+							]
+						]
+					}
+				]
 			}
 		},
 		"items": []

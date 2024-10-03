@@ -55,7 +55,7 @@
 		{#each navItems as navItem}
 			<button
 				class="h-18 aspect-square md:h-24 md:w-full md:aspect-auto rounded-full flex items-center justify-center gap-4 p-4 shadow-lg transition-all
-					hover:bg-gold hover:shadow-inner hover:text-black
+					hover:bg-gold hover:shadow-inner hover:text-black active:bg-gold
 					{(navItem.type === $selectedSection) ? 'bg-gold text-black shadow-inner' : 'bg-background text-white'}"
 				on:click={() => selectSection(navItem.type)}
 			>

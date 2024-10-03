@@ -1482,11 +1482,11 @@ export interface ContactSliceDefaultPrimaryEmailInputItem {
 }
 
 /**
- * Item in *Contact → Default → Primary → Form Inputs*
+ * Item in *Contact → Default → Primary → Form*
  */
 export interface ContactSliceDefaultPrimaryFormInputsItem {
 	/**
-	 * Name field in *Contact → Default → Primary → Form Inputs*
+	 * Name field in *Contact → Default → Primary → Form*
 	 *
 	 * - **Field Type**: Text
 	 * - **Placeholder**: *None*
@@ -1496,7 +1496,7 @@ export interface ContactSliceDefaultPrimaryFormInputsItem {
 	name: prismic.KeyTextField;
 
 	/**
-	 * Email field in *Contact → Default → Primary → Form Inputs*
+	 * Email field in *Contact → Default → Primary → Form*
 	 *
 	 * - **Field Type**: Text
 	 * - **Placeholder**: *None*
@@ -1506,7 +1506,7 @@ export interface ContactSliceDefaultPrimaryFormInputsItem {
 	email: prismic.KeyTextField;
 
 	/**
-	 * Subject field in *Contact → Default → Primary → Form Inputs*
+	 * Subject field in *Contact → Default → Primary → Form*
 	 *
 	 * - **Field Type**: Text
 	 * - **Placeholder**: *None*
@@ -1516,7 +1516,7 @@ export interface ContactSliceDefaultPrimaryFormInputsItem {
 	subject: prismic.KeyTextField;
 
 	/**
-	 * Subject Option 1 field in *Contact → Default → Primary → Form Inputs*
+	 * Subject Option 1 field in *Contact → Default → Primary → Form*
 	 *
 	 * - **Field Type**: Text
 	 * - **Placeholder**: *None*
@@ -1526,7 +1526,7 @@ export interface ContactSliceDefaultPrimaryFormInputsItem {
 	subject_option_1: prismic.KeyTextField;
 
 	/**
-	 * Subject Option 2 field in *Contact → Default → Primary → Form Inputs*
+	 * Subject Option 2 field in *Contact → Default → Primary → Form*
 	 *
 	 * - **Field Type**: Text
 	 * - **Placeholder**: *None*
@@ -1536,7 +1536,7 @@ export interface ContactSliceDefaultPrimaryFormInputsItem {
 	subject_option_2: prismic.KeyTextField;
 
 	/**
-	 * Message field in *Contact → Default → Primary → Form Inputs*
+	 * Message field in *Contact → Default → Primary → Form*
 	 *
 	 * - **Field Type**: Text
 	 * - **Placeholder**: *None*
@@ -1546,7 +1546,7 @@ export interface ContactSliceDefaultPrimaryFormInputsItem {
 	message: prismic.KeyTextField;
 
 	/**
-	 * Send Button field in *Contact → Default → Primary → Form Inputs*
+	 * Send Button field in *Contact → Default → Primary → Form*
 	 *
 	 * - **Field Type**: Text
 	 * - **Placeholder**: *None*
@@ -1554,6 +1554,51 @@ export interface ContactSliceDefaultPrimaryFormInputsItem {
 	 * - **Documentation**: https://prismic.io/docs/field#key-text
 	 */
 	send_button: prismic.KeyTextField;
+}
+
+/**
+ * Item in *Contact → Default → Primary → Form Sent*
+ */
+export interface ContactSliceDefaultPrimaryFormSentItem {
+	/**
+	 * error field in *Contact → Default → Primary → Form Sent*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: contact.default.primary.form_sent[].error
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	error: prismic.KeyTextField;
+
+	/**
+	 * success field in *Contact → Default → Primary → Form Sent*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: contact.default.primary.form_sent[].success
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	success: prismic.KeyTextField;
+
+	/**
+	 * button field in *Contact → Default → Primary → Form Sent*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: contact.default.primary.form_sent[].button
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	button: prismic.KeyTextField;
+
+	/**
+	 * try again field in *Contact → Default → Primary → Form Sent*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: contact.default.primary.form_sent[].try_again
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	try_again: prismic.KeyTextField;
 }
 
 /**
@@ -1631,7 +1676,7 @@ export interface ContactSliceDefaultPrimary {
 	email_input: prismic.GroupField<Simplify<ContactSliceDefaultPrimaryEmailInputItem>>;
 
 	/**
-	 * Form Inputs field in *Contact → Default → Primary*
+	 * Form field in *Contact → Default → Primary*
 	 *
 	 * - **Field Type**: Group
 	 * - **Placeholder**: *None*
@@ -1639,6 +1684,16 @@ export interface ContactSliceDefaultPrimary {
 	 * - **Documentation**: https://prismic.io/docs/field#group
 	 */
 	form_inputs: prismic.GroupField<Simplify<ContactSliceDefaultPrimaryFormInputsItem>>;
+
+	/**
+	 * Form Sent field in *Contact → Default → Primary*
+	 *
+	 * - **Field Type**: Group
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: contact.default.primary.form_sent[]
+	 * - **Documentation**: https://prismic.io/docs/field#group
+	 */
+	form_sent: prismic.GroupField<Simplify<ContactSliceDefaultPrimaryFormSentItem>>;
 }
 
 /**
@@ -2058,6 +2113,7 @@ declare module '@prismicio/client' {
 			ContactSliceDefaultPrimaryAdresseInputItem,
 			ContactSliceDefaultPrimaryEmailInputItem,
 			ContactSliceDefaultPrimaryFormInputsItem,
+			ContactSliceDefaultPrimaryFormSentItem,
 			ContactSliceDefaultPrimary,
 			ContactSliceVariation,
 			ContactSliceDefault,

@@ -31,7 +31,7 @@ export async function POST({ request }: RequestEvent) {
         const reservationTemplate = `
             <div style="background-color: #F9F9F9; display: flex; justify-content: center; align-items: center;">
                 <div style="font-family: 'DM Sans', sans-serif; color: #333; line-height: 1.6; max-width: 600px; margin: 0 auto; background-color: #ffffff; box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3); border: 1px solid #e0e0e0; border-radius: 10px; border-top: 8px solid #DCBD5B;">
-                    <h1 style="text-align: center; font-size: 32px; margin: 0; margin-bottom: 20px; padding: 30px;">Nouvelle demande de réservation</h1>
+                    <h1 style="text-align: center; font-size: 32px; padding: 30px;">Nouvelle demande de réservation</h1>
                     <div style="padding: 20px;">
                         <p style="font-size: 16px;"><strong>Nom:</strong> ${formData.name}</p>
                         <p style="font-size: 16px;"><strong>Courriel:</strong> <a href="mailto:${formData.email}" style="color: #1a73e8; text-decoration: none;">${formData.email}</a></p>
@@ -54,12 +54,12 @@ export async function POST({ request }: RequestEvent) {
         const generalTemplate = `
             <div style="background-color: #F9F9F9; display: flex; justify-content: center; align-items: center;">
                 <div style="font-family: 'DM Sans', sans-serif; color: #333; line-height: 1.6; max-width: 600px; margin: 0 auto; background-color: #ffffff; box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3); border: 1px solid #e0e0e0; border-radius: 10px; border-top: 8px solid #DCBD5B;">
-                    <h1 style="text-align: center; font-size: 32px; margin: 0; margin-bottom: 20px; padding: 30px;">Nouveau message depuis votre site web</h1>
+                    <h1 style="text-align: center; font-size: 32px; margin: 0; padding: 30px;">Nouveau message depuis votre site web</h1>
                     <div style="padding: 20px;">
                         <p style="font-size: 16px;"><strong>Nom:</strong> ${formData.name}</p>
                         <p style="font-size: 16px;"><strong>Courriel:</strong> <a href="mailto:${formData.email}" style="color: #1a73e8; text-decoration: none;">${formData.email}</a></p>
                         <p style="font-size: 16px;"><strong>Téléphone:</strong> <a href="tel:${formData.phone}" style="color: #1a73e8; text-decoration: none;">${formData.phone}</a></p>
-                        <p style="font-size: 16px; margin-bottom: 20px;"><strong>Message:</strong> ${formData.message}</p>
+                        <p style="font-size: 16px; margin-bottom: 10px;"><strong>Message:</strong> ${formData.message}</p>
                     </div>
                     <footer style="background-color: #DCBD5B; padding: 20px; text-align: center; font-size: 14px; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
                         <p style="margin: 0;">Envoyé depuis le site web 100 Génies.</p>
@@ -73,7 +73,7 @@ export async function POST({ request }: RequestEvent) {
         const confirmationTemplate = `
             <div style="background-color: #F9F9F9; display: flex; justify-content: center; align-items: center;">
                 <div style="font-family: 'DM Sans', sans-serif; color: #333; line-height: 1.6; max-width: 600px; margin: 0 auto; background-color: #ffffff; box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3); border: 1px solid #e0e0e0; border-radius: 10px; border-top: 8px solid #DCBD5B;">
-                    <h1 style="text-align: center; font-size: 32px; margin: 0; margin-bottom: 20px; padding: 30px;">Merci pour votre message, ${formData.name}!</h1>
+                    <h1 style="text-align: center; font-size: 32px; margin: 0; padding: 30px;">Merci pour votre message, ${formData.name}!</h1>
                     <div style="padding: 20px;">
                         <p style="font-size: 16px;">Nous avons bien reçu votre courriel et nous vous répondrons dans les plus brefs délais.</p>
                         <p style="font-size: 16px;">Voici un récapitulatif de votre demande :</p>
@@ -121,7 +121,7 @@ export async function POST({ request }: RequestEvent) {
             html: selectedTemplate,
             attachments: [
                 {
-                    filename: 'circleLogo.png',
+                    filename: '100Genies.png',
                     path: 'https://pub-project.vercel.app/circleLogo.png',
                     cid: 'logo@100genies',
                 },
@@ -154,7 +154,7 @@ export async function POST({ request }: RequestEvent) {
             html: confirmationTemplate,
             attachments: [
                 {
-                    filename: 'circleLogo.png',
+                    filename: '100Genies.png',
                     path: 'https://pub-project.vercel.app/circleLogo.png', // Use the public URL of the image
                     cid: 'logo@100genies',
                 },
