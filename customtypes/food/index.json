@@ -19,11 +19,12 @@
 					"placeholder": "Nourriture"
 				}
 			},
-			"icon": {
-				"type": "Text",
+			"image": {
+				"type": "Image",
 				"config": {
-					"label": "Icon",
-					"placeholder": ""
+					"label": "Image",
+					"constraint": {},
+					"thumbnails": []
 				}
 			},
 			"item": {

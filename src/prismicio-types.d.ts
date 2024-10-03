@@ -96,15 +96,15 @@ interface BeerDocumentData {
 	title: prismic.KeyTextField;
 
 	/**
-	 * Icon field in *beer*
+	 * Image field in *beer*
 	 *
-	 * - **Field Type**: Text
+	 * - **Field Type**: Image
 	 * - **Placeholder**: *None*
-	 * - **API ID Path**: beer.icon
+	 * - **API ID Path**: beer.image
 	 * - **Tab**: Main
-	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 * - **Documentation**: https://prismic.io/docs/field#image
 	 */
-	icon: prismic.KeyTextField;
+	image: prismic.ImageField<never>;
 
 	/**
 	 * Item field in *beer*
@@ -216,6 +216,17 @@ interface CocktailsDocumentData {
 	title: prismic.KeyTextField;
 
 	/**
+	 * Image field in *drink*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: cocktails.image
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#image
+	 */
+	image: prismic.ImageField<never>;
+
+	/**
 	 * Notes field in *drink*
 	 *
 	 * - **Field Type**: Text
@@ -225,17 +236,6 @@ interface CocktailsDocumentData {
 	 * - **Documentation**: https://prismic.io/docs/field#key-text
 	 */
 	notes: prismic.KeyTextField;
-
-	/**
-	 * Icon field in *drink*
-	 *
-	 * - **Field Type**: Text
-	 * - **Placeholder**: *None*
-	 * - **API ID Path**: cocktails.icon
-	 * - **Tab**: Main
-	 * - **Documentation**: https://prismic.io/docs/field#key-text
-	 */
-	icon: prismic.KeyTextField;
 
 	/**
 	 * Item field in *drink*
@@ -347,15 +347,15 @@ interface FoodDocumentData {
 	title: prismic.KeyTextField;
 
 	/**
-	 * Icon field in *food*
+	 * Image field in *food*
 	 *
-	 * - **Field Type**: Text
+	 * - **Field Type**: Image
 	 * - **Placeholder**: *None*
-	 * - **API ID Path**: food.icon
+	 * - **API ID Path**: food.image
 	 * - **Tab**: Main
-	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 * - **Documentation**: https://prismic.io/docs/field#image
 	 */
-	icon: prismic.KeyTextField;
+	image: prismic.ImageField<never>;
 
 	/**
 	 * Item field in *food*
@@ -1173,15 +1173,15 @@ interface WineDocumentData {
 	title: prismic.KeyTextField;
 
 	/**
-	 * Icon field in *wine*
+	 * Image field in *wine*
 	 *
-	 * - **Field Type**: Text
+	 * - **Field Type**: Image
 	 * - **Placeholder**: *None*
-	 * - **API ID Path**: wine.icon
+	 * - **API ID Path**: wine.image
 	 * - **Tab**: Main
-	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 * - **Documentation**: https://prismic.io/docs/field#image
 	 */
-	icon: prismic.KeyTextField;
+	image: prismic.ImageField<never>;
 
 	/**
 	 * Item field in *wine*

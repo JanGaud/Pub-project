@@ -19,18 +19,19 @@
 					"placeholder": "Cocktails"
 				}
 			},
+			"image": {
+				"type": "Image",
+				"config": {
+					"label": "Image",
+					"constraint": {},
+					"thumbnails": []
+				}
+			},
 			"notes": {
 				"type": "Text",
 				"config": {
 					"label": "Notes",
 					"placeholder": "Premium liquors cost an additional $2.50, and d"
-				}
-			},
-			"icon": {
-				"type": "Text",
-				"config": {
-					"label": "Icon",
-					"placeholder": ""
 				}
 			},
 			"item": {

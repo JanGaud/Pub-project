@@ -21,9 +21,9 @@
 <div class="fixed top-4 left-2 z-50 text-black">
 	<button class="flex items-center justify-center gap-1" on:click={toggleDropdown}>
 		{#if $selectedLocale === 'fr-ca'}
-			<img src="/france.png" alt="France Flag" class="w-6 h-auto" /><span>FR</span>
+			<img loading="lazy" src="/france.png" alt="France Flag" class="w-6 h-auto" /><span>FR</span>
 		{:else}
-			<img src="/united-kingdom.png" alt="UK Flag" class="w-6 h-auto" /><span>EN</span>
+			<img loading="lazy" src="/united-kingdom.png" alt="UK Flag" class="w-6 h-auto" /><span>EN</span>
 		{/if}
 	</button>
 
