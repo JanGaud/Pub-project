@@ -51,16 +51,16 @@
 <!-- Tailwind CSS Styles for navigation and menu -->
 <section class="mb-48 mt-2" data-slice-type={slice.slice_type} data-slice-variation={slice.variation}>
 	<!-- Navigation bar with Tailwind styles -->
-	<nav class="grid grid-cols-4 md:grid-cols-2 lg:grid-cols-4 items-center gap-2 md:gap-4 mb-8">
+	<nav class="flex justify-around md:grid grid-cols-4 md:grid-cols-2 lg:grid-cols-4 items-center gap-2 md:gap-4 mb-8">
 		{#each navItems as navItem}
 			<button
-				class="h-16 aspect-square md:h-24 md:w-full md:aspect-auto rounded-full flex items-center justify-center gap-4 p-4 shadow-lg transition-all
+				class="h-18 aspect-square md:h-24 md:w-full md:aspect-auto rounded-full flex items-center justify-center gap-4 p-4 shadow-lg transition-all
 					hover:bg-gold hover:shadow-inner hover:text-black
 					{(navItem.type === $selectedSection) ? 'bg-gold text-black shadow-inner' : 'bg-background text-white'}"
 				on:click={() => selectSection(navItem.type)}
 			>
 				<!-- Display the icon and title for each navigation item -->
-				<Icon class="min-w-[40px] text-[50px] md:text-[75px]" icon={navItem.icon} />
+				<Icon class="md:min-w-[40px] text-[3em] md:text-[75px]" icon={navItem.icon} />
 				<span class="text-md lg:text-xl text-center font-medium hidden md:block">{navItem.title}</span>
 			</button>
 		{/each}
