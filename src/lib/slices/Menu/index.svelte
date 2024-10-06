@@ -2,7 +2,6 @@
 	import { page } from '$app/stores';
 	import { writable } from 'svelte/store';
 	import type { Content } from '@prismicio/client';
-	import Icon from '@iconify/svelte';
 
 	// Import menu components
 	import Food from '$lib/components/menu/Food.svelte';

@@ -567,6 +567,36 @@ export interface FormerrorsDocumentDataDateItem {
 }
 
 /**
+ * Item in *form Errors → reservationType*
+ */
+export interface FormerrorsDocumentDataReservationtypeItem {
+	/**
+	 * Required field in *form Errors → reservationType*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: formerrors.reservationtype[].required
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	required: prismic.KeyTextField;
+}
+
+/**
+ * Item in *form Errors → NumberOfPeople*
+ */
+export interface FormerrorsDocumentDataNumberofpeopleItem {
+	/**
+	 * Required field in *form Errors → NumberOfPeople*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: formerrors.numberofpeople[].required
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	required: prismic.KeyTextField;
+}
+
+/**
  * Content for form Errors documents
  */
 interface FormerrorsDocumentData {
@@ -635,6 +665,28 @@ interface FormerrorsDocumentData {
 	 * - **Documentation**: https://prismic.io/docs/field#group
 	 */
 	date: prismic.GroupField<Simplify<FormerrorsDocumentDataDateItem>>;
+
+	/**
+	 * reservationType field in *form Errors*
+	 *
+	 * - **Field Type**: Group
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: formerrors.reservationtype[]
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#group
+	 */
+	reservationtype: prismic.GroupField<Simplify<FormerrorsDocumentDataReservationtypeItem>>;
+
+	/**
+	 * NumberOfPeople field in *form Errors*
+	 *
+	 * - **Field Type**: Group
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: formerrors.numberofpeople[]
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#group
+	 */
+	numberofpeople: prismic.GroupField<Simplify<FormerrorsDocumentDataNumberofpeopleItem>>;
 }
 
 /**
@@ -1506,6 +1558,16 @@ export interface ContactSliceDefaultPrimaryFormInputsItem {
 	email: prismic.KeyTextField;
 
 	/**
+	 * Phone field in *Contact → Default → Primary → Form*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: contact.default.primary.form_inputs[].phone
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	phone: prismic.KeyTextField;
+
+	/**
 	 * Subject field in *Contact → Default → Primary → Form*
 	 *
 	 * - **Field Type**: Text
@@ -1534,6 +1596,46 @@ export interface ContactSliceDefaultPrimaryFormInputsItem {
 	 * - **Documentation**: https://prismic.io/docs/field#key-text
 	 */
 	subject_option_2: prismic.KeyTextField;
+
+	/**
+	 * Reservationtype field in *Contact → Default → Primary → Form*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: contact.default.primary.form_inputs[].reservationtype
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	reservationtype: prismic.KeyTextField;
+
+	/**
+	 * Reservationtype Option 1 field in *Contact → Default → Primary → Form*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: contact.default.primary.form_inputs[].reservationtype_option_1
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	reservationtype_option_1: prismic.KeyTextField;
+
+	/**
+	 * Reservationtype Option 2 field in *Contact → Default → Primary → Form*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: contact.default.primary.form_inputs[].reservationtype_option_2
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	reservationtype_option_2: prismic.KeyTextField;
+
+	/**
+	 * NbPerson field in *Contact → Default → Primary → Form*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: contact.default.primary.form_inputs[].nbperson
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	nbperson: prismic.KeyTextField;
 
 	/**
 	 * Message field in *Contact → Default → Primary → Form*
@@ -2081,6 +2183,8 @@ declare module '@prismicio/client' {
 			FormerrorsDocumentDataSubjectItem,
 			FormerrorsDocumentDataMessageItem,
 			FormerrorsDocumentDataDateItem,
+			FormerrorsDocumentDataReservationtypeItem,
+			FormerrorsDocumentDataNumberofpeopleItem,
 			NavDocument,
 			NavDocumentData,
 			NavDocumentDataLinkItem,

@@ -1,8 +1,6 @@
 import { json } from '@sveltejs/kit';
 import nodemailer from 'nodemailer';
 import dotenv from 'dotenv';
-import fs from 'fs';
-import path from 'path';
 
 dotenv.config();
 
@@ -23,6 +21,7 @@ export async function POST({ request }: RequestEvent) {
                 pass: process.env.EMAIL_PASS,
             },
         });
+
         // Attach the logo image using Content-ID (CID)
         const logoUrl = 'https://pub-project.vercel.app/circleLogo.png'; // Replace with your deployed URL
         const logoCid = 'logo@100genies';
@@ -41,6 +40,8 @@ export async function POST({ request }: RequestEvent) {
                         <h2 style="margin-top: 20px; font-size: 20px; border-bottom: 2px solid #ddd; padding-bottom: 5px;">Détails de la réservation</h2>
                         <p style="font-size: 16px;"><strong>Date du rendez-vous :</strong> ${formData.appointmentDate}</p>
                         <p style="font-size: 16px;"><strong>Heure du rendez-vous :</strong> ${formData.appointmentTime}</p>
+                        <p style="font-size: 16px;"><strong>Type de réservation :</strong> ${formData.reservationType}</p>
+                        <p style="font-size: 16px;"><strong>Nombre de personnes :</strong> ${formData.numberOfPeople}</p>
                     </div>
                     <footer style="background-color: #DCBD5B; padding: 20px; text-align: center; font-size: 14px; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
                         <p style="margin: 0;">Envoyé depuis le site web 100 Génies.</p>
@@ -50,7 +51,7 @@ export async function POST({ request }: RequestEvent) {
             </div>
         `;
 
-        // General Template
+        // General Template (Non-reservation messages)
         const generalTemplate = `
             <div style="background-color: #F9F9F9; display: flex; justify-content: center; align-items: center;">
                 <div style="font-family: 'DM Sans', sans-serif; color: #333; line-height: 1.6; max-width: 600px; margin: 0 auto; background-color: #ffffff; box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3); border: 1px solid #e0e0e0; border-radius: 10px; border-top: 8px solid #DCBD5B;">
@@ -86,6 +87,8 @@ export async function POST({ request }: RequestEvent) {
                         ${isReservation ? `
                         <p style="font-size: 16px;"><strong>Date du rendez-vous :</strong> ${formData.appointmentDate}</p>
                         <p style="font-size: 16px;"><strong>Heure du rendez-vous :</strong> ${formData.appointmentTime}</p>
+                        <p style="font-size: 16px;"><strong>Type de réservation :</strong> ${formData.reservationType}</p>
+                        <p style="font-size: 16px;"><strong>Nombre de personnes :</strong> ${formData.numberOfPeople}</p>
                         ` : ''}
                     </div>
                     <footer style="background-color: #DCBD5B; padding: 20px; text-align: center; font-size: 14px; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
@@ -116,6 +119,8 @@ export async function POST({ request }: RequestEvent) {
                 ${isReservation ? `
                 Date: ${formData.appointmentDate}
                 Heure: ${formData.appointmentTime}
+                Type de réservation: ${formData.reservationType}
+                Nombre de personnes: ${formData.numberOfPeople}
                 ` : ''}
             `,
             html: selectedTemplate,
@@ -147,6 +152,8 @@ export async function POST({ request }: RequestEvent) {
                 ${isReservation ? `
                 Date: ${formData.appointmentDate}
                 Heure: ${formData.appointmentTime}
+                Type de réservation: ${formData.reservationType}
+                Nombre de personnes: ${formData.numberOfPeople}
                 ` : ''}
 
                 Merci!
@@ -174,7 +181,3 @@ export async function POST({ request }: RequestEvent) {
         return json({ success: false, message: "Échec de l'envoi du courriel", error: errorMessage }, { status: 500 });
     }
 }
-function cwd(): string {
-    throw new Error('Function not implemented.');
-}
-

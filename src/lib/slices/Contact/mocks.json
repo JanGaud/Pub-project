@@ -159,6 +159,46 @@
 									"value": "author",
 									"type": "Text"
 								}
+							],
+							[
+								"reservationtype",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "figure",
+									"type": "Text"
+								}
+							],
+							[
+								"reservationtype_option_1",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "remove",
+									"type": "Text"
+								}
+							],
+							[
+								"reservationtype_option_2",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "can",
+									"type": "Text"
+								}
+							],
+							[
+								"phone",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "breath",
+									"type": "Text"
+								}
+							],
+							[
+								"nbperson",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "such",
+									"type": "Text"
+								}
 							]
 						]
 					}

@@ -15,20 +15,24 @@ if (typeof window !== 'undefined') {
   });
 }
 
-// Utility function to get dynamic error message
+// Utility function to get dynamic error message based on field and type
 const getErrorMessage = (field: string, type: string): string => {
-  return formErrors[field]?.[0]?.[type] || 'Invalid input';
+  // Access the appropriate error message from the formErrors object
+  const message = formErrors[field]?.[0]?.[type];
+  return message || ''; // Return the message if found, otherwise return an empty string
 };
 
 export function validateForm(
   formData: {
-    name: string;
-    email: string;
-    phone: string;
-    subject: string;
-    message: string;
+    name?: string;
+    email?: string;
+    phone?: string;
+    subject?: string;
+    message?: string;
     appointmentDate?: string;
     appointmentTime?: string;
+    reservationType?: string;
+    numberOfPeople?: string | number;
   },
   isReservationSelected: boolean
 ): { errors: Record<string, string>; success: Record<string, boolean> } {
@@ -36,67 +40,82 @@ export function validateForm(
   const success: Record<string, boolean> = {};
 
   // Validate name
-  if (!formData.name.trim()) {
-    errors.name = getErrorMessage('name', 'required');
+  if (!formData.name?.trim()) {
+    errors.name = getErrorMessage('name', 'required') || 'Le nom est requis.';
   } else if (formData.name.trim().length < 3) {
-    errors.name = getErrorMessage('name', 'minimum');
+    errors.name = getErrorMessage('name', 'minimum') || '3 caractères minimum.';
   } else {
     success.name = true;
   }
 
-  // Validate email (mandatory)
-  if (!formData.email.trim()) {
-    errors.email = getErrorMessage('email', 'required');
+  // Validate email
+  if (!formData.email?.trim()) {
+    errors.email = getErrorMessage('email', 'required') || 'Courriel obligatoire.';
   } else if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(formData.email)) {
-    errors.email = getErrorMessage('email', 'invalid');
+    errors.email = getErrorMessage('email', 'invalid') || "Format d'email invalide.";
   } else {
     success.email = true;
   }
 
-  // Validate phone number (optional, but if provided, it should have 10 digits)
-  if (formData.phone.trim() && !/^\d{10,}$/.test(formData.phone.replace(/\D/g, ''))) {
-    errors.phone = getErrorMessage('phone', 'minimum');
-  } else if (formData.phone.trim()) {
+  // Validate phone number (optional)
+  if (formData.phone?.trim() && !/^\d{10,}$/.test(formData.phone.replace(/\D/g, ''))) {
+    errors.phone = getErrorMessage('phone', 'minimum') || '10 chiffres minimum.';
+  } else if (formData.phone?.trim()) {
     success.phone = true;
   }
 
   // Validate subject
   if (!formData.subject) {
-    errors.subject = getErrorMessage('subject', 'required');
+    errors.subject = getErrorMessage('subject', 'required') || 'Le sujet est requis.';
   } else {
     success.subject = true;
   }
 
   // Validate message
-  if (!formData.message.trim()) {
-    errors.message = getErrorMessage('message', 'required');
+  if (!formData.message?.trim()) {
+    errors.message = getErrorMessage('message', 'required') || 'Le message est requis.';
   } else if (formData.message.split(' ').length < 5) {
-    errors.message = getErrorMessage('message', 'minimum');
+    errors.message = getErrorMessage('message', 'minimum') || '5 mots minimum.';
   } else {
     success.message = true;
   }
 
-  // If the 'reservation' subject is selected, validate appointmentDate and appointmentTime
+  // If the 'reservation' subject is selected, validate additional fields
   if (isReservationSelected) {
     const today = new Date().toISOString().split('T')[0]; // Get today's date in YYYY-MM-DD format
     const now = new Date().toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' }); // Get current time in HH:MM format
 
     // Validate appointmentDate
     if (!formData.appointmentDate?.trim()) {
-      errors.appointmentDate = getErrorMessage('date', 'required_date');
+      errors.appointmentDate = getErrorMessage('date', 'required_date') || 'La date est requise.';
     } else if (formData.appointmentDate < today) {
-      errors.appointmentDate = getErrorMessage('date', 'invalid_date'); // Use a dynamic message if available
+      errors.appointmentDate = getErrorMessage('date', 'invalid_date') || 'La date sélectionnée est invalide.';
     } else {
       success.appointmentDate = true;
     }
 
     // Validate appointmentTime
     if (!formData.appointmentTime?.trim()) {
-      errors.appointmentTime = getErrorMessage('date', 'required_time');
+      errors.appointmentTime = getErrorMessage('date', 'required_time') || "L'heure est requise.";
     } else if (formData.appointmentDate === today && formData.appointmentTime < now) {
-      errors.appointmentTime = getErrorMessage('date', 'invalid_time'); // Use a dynamic message if available
+      errors.appointmentTime = getErrorMessage('date', 'invalid_time') || "L'heure sélectionnée est invalide.";
     } else {
       success.appointmentTime = true;
+    }
+
+    // Validate reservationType (mandatory when reservation is selected)
+    if (!formData.reservationType?.trim()) {
+      errors.reservationType = getErrorMessage('reservationtype', 'required') || 'Le type de réservation est obligatoire.';
+    } else {
+      success.reservationType = true;
+    }
+
+    // Validate numberOfPeople (mandatory when reservation is selected)
+    const numberOfPeopleStr = String(formData.numberOfPeople).trim(); // Convert to string for consistent validation
+    if (!numberOfPeopleStr) {
+      errors.numberOfPeople = getErrorMessage('numberofpeople', 'required') || 'Le nombre de personnes est obligatoire.';
+    } else {
+      success.numberOfPeople = true;
     }
   }
 

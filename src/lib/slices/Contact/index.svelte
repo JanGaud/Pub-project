@@ -26,7 +26,9 @@
 		subject: '',
 		message: '',
 		appointmentDate: '',
-		appointmentTime: ''
+		appointmentTime: '',
+		reservationType: '', // New field for reservation type
+		numberOfPeople: ''    // New field for number of people
 	};
 	let errors: Record<string, string> = {};
 	let success: Record<string, boolean> = {};
@@ -72,7 +74,9 @@
 						subject: '',
 						message: '',
 						appointmentDate: '',
-						appointmentTime: ''
+						appointmentTime: '',
+						reservationType: '', // Reset new field
+						numberOfPeople: ''    // Reset new field
 					};
 					success = {}; // Reset success state
 				} else {
@@ -228,8 +232,8 @@
 		window.addEventListener('scroll', handleScroll);
 		return () => window.removeEventListener('scroll', handleScroll);
 	});
-</script>
 
+</script>
 
 <section
 	use:animateOnScroll
@@ -394,7 +398,47 @@
 								{/if}
 								{#if success.appointmentTime}
 									<span class="absolute top-0 right-0 text-green-500">✓</span>
-									<!-- Green check mark -->
+								{/if}
+							</div>
+						</div>
+
+						<!-- New fields for Reservation Type and Number of People -->
+						<div class="grid grid-cols-2 gap-4">
+							<!-- Reservation Type Dropdown -->
+							<div class="relative py-2">
+								<select
+									placeholder="Select Reservation Type"
+									class="w-full p-3 border-b border-gray-300 rounded-md focus:outline-none focus:border-gold"
+									bind:value={formData.reservationType}
+									on:change={(e) => handleInputChange('reservationType', e.target.value)}
+								>
+									<option value="" disabled selected>{slice.primary.form_inputs[0]?.reservationtype}</option>
+									<option value="table">{slice.primary.form_inputs[0]?.reservationtype_option_1}</option>
+									<option value="vip">{slice.primary.form_inputs[0]?.reservationtype_option_2}</option>
+								</select>
+								{#if errors.reservationType}
+									<span class="absolute top-0 right-0 text-red-500 cursor-none">{errors.reservationType}</span>
+								{/if}
+								{#if success.reservationType}
+									<span class="absolute top-0 right-0 text-green-500">✓</span>
+								{/if}
+							</div>
+
+							<!-- Number of People Input -->
+							<div class="relative py-2">
+								<input
+									type="number"
+									placeholder={slice.primary.form_inputs[0]?.nbperson}
+									min="1"
+									class="w-full p-3 border-b border-gray-300 rounded-md focus:outline-none focus:border-gold"
+									bind:value={formData.numberOfPeople}
+									on:keyup={(e) => handleInputChange('numberOfPeople', e.target.value)}
+								/>
+								{#if errors.numberOfPeople}
+									<span class="absolute top-0 right-0 text-red-500 cursor-none">{errors.numberOfPeople}</span>
+								{/if}
+								{#if success.numberOfPeople}
+									<span class="absolute top-0 right-0 text-green-500">✓</span>
 								{/if}
 							</div>
 						</div>

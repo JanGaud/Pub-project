@@ -136,6 +136,38 @@
 						}
 					}
 				}
+			},
+			"reservationtype": {
+				"type": "Group",
+				"config": {
+					"label": "reservationType",
+					"repeat": false,
+					"fields": {
+						"required": {
+							"type": "Text",
+							"config": {
+								"label": "Required",
+								"placeholder": ""
+							}
+						}
+					}
+				}
+			},
+			"numberofpeople": {
+				"type": "Group",
+				"config": {
+					"label": "NumberOfPeople",
+					"repeat": false,
+					"fields": {
+						"required": {
+							"type": "Text",
+							"config": {
+								"label": "Required",
+								"placeholder": ""
+							}
+						}
+					}
+				}
 			}
 		}
 	}

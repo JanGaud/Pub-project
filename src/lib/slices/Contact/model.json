@@ -128,6 +128,13 @@
                   "placeholder": ""
                 }
               },
+              "phone": {
+                "type": "Text",
+                "config": {
+                  "label": "Phone",
+                  "placeholder": ""
+                }
+              },
               "subject": {
                 "type": "Text",
                 "config": {
@@ -146,6 +153,34 @@
                 "type": "Text",
                 "config": {
                   "label": "Subject Option 2",
+                  "placeholder": ""
+                }
+              },
+              "reservationtype": {
+                "type": "Text",
+                "config": {
+                  "label": "Reservationtype",
+                  "placeholder": ""
+                }
+              },
+              "reservationtype_option_1": {
+                "type": "Text",
+                "config": {
+                  "label": "Reservationtype Option 1",
+                  "placeholder": ""
+                }
+              },
+              "reservationtype_option_2": {
+                "type": "Text",
+                "config": {
+                  "label": "Reservationtype Option 2",
+                  "placeholder": ""
+                }
+              },
+              "nbperson": {
+                "type": "Text",
+                "config": {
+                  "label": "NbPerson",
                   "placeholder": ""
                 }
               },
