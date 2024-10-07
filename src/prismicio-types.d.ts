@@ -300,6 +300,28 @@ export interface FoodDocumentDataItemItem {
 	ingredients: prismic.KeyTextField;
 
 	/**
+	 * Vegan field in *food → Item*
+	 *
+	 * - **Field Type**: Boolean
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: false
+	 * - **API ID Path**: food.item[].vegan
+	 * - **Documentation**: https://prismic.io/docs/field#boolean
+	 */
+	vegan: prismic.BooleanField;
+
+	/**
+	 * Spicy field in *food → Item*
+	 *
+	 * - **Field Type**: Boolean
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: false
+	 * - **API ID Path**: food.item[].spicy
+	 * - **Documentation**: https://prismic.io/docs/field#boolean
+	 */
+	spicy: prismic.BooleanField;
+
+	/**
 	 * Price field in *food → Item*
 	 *
 	 * - **Field Type**: Number

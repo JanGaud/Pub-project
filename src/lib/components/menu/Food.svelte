@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { animateOnScroll } from '$lib/actions/animateOnScroll';
+	import Icon from '@iconify/svelte';
 	import MenuContainer from './MenuContainer.svelte';
 
 	// Define a prop to accept the food menu data structure
@@ -32,28 +33,29 @@
 									{item.title}
 								</h3>
 								<div class="flex items-center text-lg gap-2 h-fit">
-									<small class="font-medium {item.out_of_stock ? 'text-black/25' : ''}"
-										>${item.price}</small
-									>
+									<small class="font-medium {item.out_of_stock ? 'text-black/25' : ''}">${item.price}</small>
 									{#if item.price_variant != null}
 										<span>|</span>
-										<small class="font-medium {item.out_of_stock ? 'text-black/25' : ''}"
-											>${item.price_variant}</small
-										>
+										<small class="font-medium {item.out_of_stock ? 'text-black/25' : ''}">${item.price_variant}</small>
 									{/if}
 									{#if item.price_variant_2 != null}
 										<span>|</span>
-										<small class="font-medium {item.out_of_stock ? 'text-black/25' : ''}"
-											>${item.price_variant_2}</small
-										>
+										<small class="font-medium {item.out_of_stock ? 'text-black/25' : ''}">${item.price_variant_2}</small>
 									{/if}
 								</div>
 							</div>
 							{#if item.ingredients}
-								<p class={item.out_of_stock ? 'text-black/25' : ''}>
-									{item.ingredients}
-								</p>
+								<p class={item.out_of_stock ? 'text-black/25' : ''}>{item.ingredients}</p>
 							{/if}
+							<div class="flex gap-4 items-center border-b py-2">
+								<!-- Check if the item is spicy or vegan and display icons accordingly -->
+								{#if item.vegan}
+									<Icon class="text-green-500 w-6 h-6" icon="iconoir:vegan-circle" />
+								{/if}
+								{#if item.spicy}
+									<Icon class="w-6 h-6" icon="noto-v1:hot-pepper" />
+								{/if}
+							</div>
 						</div>
 					</div>
 				{/each}
@@ -76,22 +78,25 @@
 									{item.title}
 								</h3>
 								<div class="flex items-center text-lg gap-2 h-fit">
-									<small class="font-medium {item.out_of_stock ? 'text-black/25' : ''}"
-										>${item.price}</small
-									>
+									<small class="font-medium {item.out_of_stock ? 'text-black/25' : ''}">${item.price}</small>
 									{#if item.price_variant != null}
 										<span>|</span>
-										<small class="font-medium {item.out_of_stock ? 'text-black/25' : ''}"
-											>${item.price_variant}</small
-										>
+										<small class="font-medium {item.out_of_stock ? 'text-black/25' : ''}">${item.price_variant}</small>
 									{/if}
 								</div>
 							</div>
 							{#if item.ingredients}
-								<p class={item.out_of_stock ? 'text-black/25' : ''}>
-									{item.ingredients}
-								</p>
+								<p class={item.out_of_stock ? 'text-black/25' : ''}>{item.ingredients}</p>
 							{/if}
+							<div class="flex gap-4 items-center border-b py-2">
+								<!-- Check if the item is spicy or vegan and display icons accordingly -->
+								{#if item.vegan}
+									<Icon class="text-green-500 w-6 h-6" icon="iconoir:vegan-circle" />
+								{/if}
+								{#if item.spicy}
+									<Icon class="w-6 h-6" icon="noto-v1:hot-pepper" />
+								{/if}
+							</div>
 						</div>
 					</div>
 				{/each}
@@ -99,3 +104,4 @@
 		</div>
 	</div>
 </MenuContainer>
+

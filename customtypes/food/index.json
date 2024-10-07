@@ -56,6 +56,24 @@
 								"placeholder": "Steak angus - Frites - Salade césar"
 							}
 						},
+						"vegan": {
+							"type": "Boolean",
+							"config": {
+								"label": "Vegan",
+								"placeholder_false": "false",
+								"placeholder_true": "true",
+								"default_value": false
+							}
+						},
+						"spicy": {
+							"type": "Boolean",
+							"config": {
+								"label": "Spicy",
+								"placeholder_false": "false",
+								"placeholder_true": "true",
+								"default_value": false
+							}
+						},
 						"price": {
 							"type": "Number",
 							"config": {
