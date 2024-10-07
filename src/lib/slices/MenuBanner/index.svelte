@@ -13,6 +13,14 @@
 	let currentSlideIndex = 0;
 	let interval: ReturnType<typeof setInterval> | undefined;
 
+	// Helper function to clear the existing interval and restart it
+	function resetInterval() {
+		if (interval) clearInterval(interval);
+		if (specials.length > 1) {
+			interval = setInterval(showNextSlide, 5000); // Restart the interval
+		}
+	}
+
 	// Navigate to the previous slide in the carousel
 	function showPreviousSlide() {
 		if (currentSlideIndex > 0) {
@@ -20,6 +28,7 @@
 		} else {
 			currentSlideIndex = specials.length - 1;
 		}
+		resetInterval(); // Reset interval when navigating manually
 	}
 
 	// Navigate to the next slide in the carousel
@@ -29,6 +38,7 @@
 		} else {
 			currentSlideIndex = 0;
 		}
+		resetInterval(); // Reset interval when navigating manually
 	}
 
 	// Automatically switch the slide every 5 seconds, only if there's more than 1 promo
@@ -37,7 +47,7 @@
 			interval = setInterval(showNextSlide, 5000);
 		}
 		return () => {
-			if (interval) clearInterval(interval);
+			if (interval) clearInterval(interval); // Clear the interval when the component is destroyed
 		};
 	});
 </script>
