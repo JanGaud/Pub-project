@@ -2,8 +2,12 @@
 	import type { Content } from '@prismicio/client';
 	import { onMount } from 'svelte';
 	import { PrismicImage } from '@prismicio/svelte';
+	import { page } from '$app/stores';
 
 	export let slice: Content.MenuBannerSlice;
+
+	// Access the specials item data from the menu
+	let specials = $page.data.menu.specials[0].data.item;
 
 	// Track the current slide index for the carousel
 	let currentSlideIndex = 0;
@@ -14,13 +18,13 @@
 		if (currentSlideIndex > 0) {
 			currentSlideIndex--;
 		} else {
-			currentSlideIndex = slice.primary.promo.length - 1;
+			currentSlideIndex = specials.length - 1;
 		}
 	}
 
 	// Navigate to the next slide in the carousel
 	function showNextSlide() {
-		if (currentSlideIndex < slice.primary.promo.length - 1) {
+		if (currentSlideIndex < specials.length - 1) {
 			currentSlideIndex++;
 		} else {
 			currentSlideIndex = 0;
@@ -29,11 +33,11 @@
 
 	// Automatically switch the slide every 5 seconds, only if there's more than 1 promo
 	onMount(() => {
-		if (slice.primary.promo.length > 1) {
+		if (specials.length > 1) {
 			interval = setInterval(showNextSlide, 5000);
 		}
 		return () => {
-			if (interval) clearInterval(interval); // Clear the interval when the component is destroyed
+			if (interval) clearInterval(interval);
 		};
 	});
 </script>
@@ -55,13 +59,14 @@
 					{slice.primary.description}
 				</h2>
 			</div>
-			{#if slice.primary.promo.length > 0}
+
+			{#if specials.length > 0}
 				<!-- Carousel Section -->
 				<div
 					class="mt-24 px-4 sm:px-16 lg:px-24 hidden md:flex justify-center items-center relative"
 				>
 					<!-- Left Arrow, visible only when more than one promo -->
-					{#if slice.primary.promo.length > 1}
+					{#if specials.length > 1}
 						<button
 							class="absolute left-4 lg:left-16 z-10 text-white text-6xl hover:text-gold duration-200 p-2 rounded-full"
 							aria-label="Previous Slide"
@@ -76,13 +81,13 @@
 						class="bg-[#00000046] backdrop-blur-md rounded-lg w-full min-h-[250px] flex flex-col justify-center items-center p-4"
 					>
 						<h3 class="text-white text-2xl mb-2 font-bold">
-							{slice.primary.promo[currentSlideIndex]?.title}
+							{specials[currentSlideIndex]?.title}
 						</h3>
-						<p class="text-white text-lg">{slice.primary.promo[currentSlideIndex]?.description}</p>
+						<p class="text-white text-md">{specials[currentSlideIndex]?.description}</p>
 					</div>
 
 					<!-- Right Arrow, visible only when more than one promo -->
-					{#if slice.primary.promo.length > 1}
+					{#if specials.length > 1}
 						<button
 							class="absolute right-4 lg:right-16 z-10 text-white text-6xl hover:text-gold duration-200 p-2 rounded-full"
 							aria-label="Next Slide"
@@ -98,11 +103,11 @@
 		<PrismicImage field={slice.primary.image} class="w-full h-full object-cover" />
 	</div>
 
-	{#if slice.primary.promo.length > 0}
+	{#if specials.length > 0}
 		<!-- Mobile Carousel Section -->
 		<div class="-mt-32 px-2 flex justify-center items-center relative md:hidden">
 			<!-- Left Arrow, visible only when more than one promo -->
-			{#if slice.primary.promo.length > 1}
+			{#if specials.length > 1}
 				<button
 					class="absolute left-2 lg:left-16 z-10 text-black text-7xl hover:text-gold duration-200 p-2 rounded-full"
 					aria-label="Previous Slide"
@@ -117,15 +122,15 @@
 				class="bg-[#0000007e] px-10 backdrop-blur-md rounded-lg w-full min-h-[250px] flex flex-col justify-center items-center p-4"
 			>
 				<h3 class="text-white drop-shadow-md text-2xl mb-2 font-bold">
-					{slice.primary.promo[currentSlideIndex]?.title}
+					{specials[currentSlideIndex]?.title}
 				</h3>
-				<p class="text-white text-lg drop-shadow">
-					{slice.primary.promo[currentSlideIndex]?.description}
+				<p class="text-white text-md drop-shadow">
+					{specials[currentSlideIndex]?.description}
 				</p>
 			</div>
 
 			<!-- Right Arrow, visible only when more than one promo -->
-			{#if slice.primary.promo.length > 1}
+			{#if specials.length > 1}
 				<button
 					class="absolute right-2 lg:right-16 z-10 text-black text-7xl hover:text-gold duration-200 p-2 rounded-full"
 					aria-label="Next Slide"

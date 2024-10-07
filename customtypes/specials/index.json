@@ -1,7 +1,7 @@
 {
 	"format": "custom",
-	"id": "wine",
-	"label": "wine",
+	"id": "specials",
+	"label": "Specials",
 	"repeatable": true,
 	"status": true,
 	"json": {
@@ -16,7 +16,7 @@
 				"type": "Text",
 				"config": {
 					"label": "Title",
-					"placeholder": "Wines"
+					"placeholder": ""
 				}
 			},
 			"image": {
@@ -33,17 +33,10 @@
 					"label": "Item",
 					"repeat": true,
 					"fields": {
-						"label": {
+						"title": {
 							"type": "Text",
 							"config": {
-								"label": "Label",
-								"placeholder": ""
-							}
-						},
-						"wine_color": {
-							"type": "Color",
-							"config": {
-								"label": "Wine Color",
+								"label": "Title",
 								"placeholder": ""
 							}
 						},
@@ -54,27 +47,12 @@
 								"placeholder": ""
 							}
 						},
-						"price": {
-							"type": "Number",
+						"affiche": {
+							"type": "Image",
 							"config": {
-								"label": "Price Glass",
-								"placeholder": ""
-							}
-						},
-						"price_bottle": {
-							"type": "Number",
-							"config": {
-								"label": "Price Bottle",
-								"placeholder": ""
-							}
-						},
-						"out_of_stock": {
-							"type": "Boolean",
-							"config": {
-								"label": "Out of stock",
-								"placeholder_false": "false",
-								"placeholder_true": "true",
-								"default_value": false
+								"label": "Affiche",
+								"constraint": {},
+								"thumbnails": []
 							}
 						}
 					}

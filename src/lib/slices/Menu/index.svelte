@@ -7,7 +7,8 @@
 	import Food from '$lib/components/menu/Food.svelte';
 	import Cocktails from '$lib/components/menu/Cocktails.svelte';
 	import Beers from '$lib/components/menu/Beers.svelte';
-	import Wines from '$lib/components/menu/Wines.svelte';
+	import Specials from '$lib/components/menu/Specials.svelte'; // Verify default export here
+	import { PrismicImage } from '@prismicio/svelte';
 
 	// Props for Prismic slice content
 	export let slice: Content.MenuSlice;
@@ -22,7 +23,7 @@
 	let navItems = Object.entries(menu).map(([key, value]) => ({
 		type: key,
 		title: (value as any)[0]?.data?.title || key, // Use `title` from `data` or fallback to key
-		icon: (value as any)[0]?.data?.icon || '' // Use `icon` from `data` or empty string
+		image: (value as any)[0]?.data?.image || '' // Use `image` from `data` or empty string
 	}));
 
 	// Function to update the selected section when a navigation item is clicked
@@ -39,8 +40,8 @@
 				return Beers;
 			case 'cocktail':
 				return Cocktails;
-			case 'wine':
-				return Wines;
+			case 'specials':
+				return Specials;
 			default:
 				return Food;
 		}
@@ -54,33 +55,41 @@
 	data-slice-variation={slice.variation}
 >
 	<!-- Navigation bar with Tailwind styles -->
-	<nav
-		class="grid grid-cols-2 lg:grid-cols-4 items-center gap-2 md:gap-4 mb-8"
-	>
+	<nav class="relative grid grid-cols-2 lg:grid-cols-4 items-center gap-2 md:gap-4 mb-8">
 		{#each navItems as navItem}
 			<button
-				class="h-28 rounded-lg w-full md:aspect-auto flex items-center justify-center gap-4 p-4 shadow-lg transition-all
-				hover:bg-gold hover:shadow-inner hover:text-black active:bg-gold
+				class="relative h-28 uppercase rounded-lg w-full overflow-hidden flex items-center justify-center gap-4 p-4 shadow-lg transition-all
+				hover:shadow-inner hover:text-gold active:bg-opacity-50
 				{navItem.type === $selectedSection
-					? 'bg-gold text-black shadow-inner'
-					: 'bg-background text-white'}"
+					? 'bg-opacity-60 text-gold underline'
+					: 'bg-opacity-40 text-white'}"
 				on:click={() => selectSection(navItem.type)}
 			>
-				<!-- Display the icon and title for each navigation item -->
-				<span class="text-md md:text-xl lg:text-2xl text-center font-medium">{navItem.title}</span>
+				<!-- PrismicImage as background -->
+				{#if navItem.image}
+					<PrismicImage
+						field={navItem.image}
+						alt={navItem.title}
+						class="absolute w-full h-full object-cover z-0"
+					/>
+				{/if}
+
+				<!-- Optional overlay for darkening or adding opacity over the image -->
+				<div class="absolute inset-0 bg-black bg-opacity-70 z-10 pointer-events-none"></div>
+				<span class="relative z-20 text-md md:text-xl lg:text-2xl text-center font-medium"
+					>{navItem.title}</span
+				>
 			</button>
 		{/each}
 	</nav>
 
-	<!-- Display the content of the currently selected menu section -->
 	<div class="p-4">
-		<!-- Dynamic component rendering based on the selected menu section -->
 		<svelte:component
 			this={currentMenuComponent}
 			foodMenu={menu.food}
 			beerMenu={menu.beer}
 			cocktailMenu={menu.cocktail}
-			wineMenu={menu.wine}
+			specialsMenu={menu.specials}
 		/>
 	</div>
 </section>

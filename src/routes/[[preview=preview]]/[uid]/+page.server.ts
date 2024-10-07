@@ -6,7 +6,7 @@ type Menu = {
 	food?: any;
 	beer?: any;
 	cocktail?: any;
-	wine?: any;
+	specials?: any;
 };
 
 // @ts-ignore
@@ -48,12 +48,12 @@ export async function load({ params, fetch, cookies }) {
 			menu.cocktail = null;
 		}
 
-		// Fetch wine data
+		// Fetch specials data
 		try {
-			menu.wine = await client.getAllByType('wine');
+			menu.specials = await client.getAllByType('specials');
 		} catch (fetchError) {
-			console.error('Failed to fetch wine data from Prismic:', fetchError);
-			menu.wine = null;
+			console.error('Failed to fetch specials data from Prismic:', fetchError);
+			menu.specials = null;
 		}
 
 		return {

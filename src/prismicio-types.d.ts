@@ -1144,121 +1144,90 @@ export type SettingsDocument<Lang extends string = string> = prismic.PrismicDocu
 >;
 
 /**
- * Item in *wine → Item*
+ * Item in *Specials → Item*
  */
-export interface WineDocumentDataItemItem {
+export interface SpecialsDocumentDataItemItem {
 	/**
-	 * Label field in *wine → Item*
+	 * Title field in *Specials → Item*
 	 *
 	 * - **Field Type**: Text
 	 * - **Placeholder**: *None*
-	 * - **API ID Path**: wine.item[].label
+	 * - **API ID Path**: specials.item[].title
 	 * - **Documentation**: https://prismic.io/docs/field#key-text
 	 */
-	label: prismic.KeyTextField;
+	title: prismic.KeyTextField;
 
 	/**
-	 * Wine Color field in *wine → Item*
-	 *
-	 * - **Field Type**: Color
-	 * - **Placeholder**: *None*
-	 * - **API ID Path**: wine.item[].wine_color
-	 * - **Documentation**: https://prismic.io/docs/field#color
-	 */
-	wine_color: prismic.ColorField;
-
-	/**
-	 * Description field in *wine → Item*
+	 * Description field in *Specials → Item*
 	 *
 	 * - **Field Type**: Text
 	 * - **Placeholder**: *None*
-	 * - **API ID Path**: wine.item[].description
+	 * - **API ID Path**: specials.item[].description
 	 * - **Documentation**: https://prismic.io/docs/field#key-text
 	 */
 	description: prismic.KeyTextField;
 
 	/**
-	 * Price Glass field in *wine → Item*
+	 * Affiche field in *Specials → Item*
 	 *
-	 * - **Field Type**: Number
+	 * - **Field Type**: Image
 	 * - **Placeholder**: *None*
-	 * - **API ID Path**: wine.item[].price
-	 * - **Documentation**: https://prismic.io/docs/field#number
+	 * - **API ID Path**: specials.item[].affiche
+	 * - **Documentation**: https://prismic.io/docs/field#image
 	 */
-	price: prismic.NumberField;
-
-	/**
-	 * Price Bottle field in *wine → Item*
-	 *
-	 * - **Field Type**: Number
-	 * - **Placeholder**: *None*
-	 * - **API ID Path**: wine.item[].price_bottle
-	 * - **Documentation**: https://prismic.io/docs/field#number
-	 */
-	price_bottle: prismic.NumberField;
-
-	/**
-	 * Out of stock field in *wine → Item*
-	 *
-	 * - **Field Type**: Boolean
-	 * - **Placeholder**: *None*
-	 * - **Default Value**: false
-	 * - **API ID Path**: wine.item[].out_of_stock
-	 * - **Documentation**: https://prismic.io/docs/field#boolean
-	 */
-	out_of_stock: prismic.BooleanField;
+	affiche: prismic.ImageField<never>;
 }
 
 /**
- * Content for wine documents
+ * Content for Specials documents
  */
-interface WineDocumentData {
+interface SpecialsDocumentData {
 	/**
-	 * Title field in *wine*
+	 * Title field in *Specials*
 	 *
 	 * - **Field Type**: Text
-	 * - **Placeholder**: Wines
-	 * - **API ID Path**: wine.title
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: specials.title
 	 * - **Tab**: Main
 	 * - **Documentation**: https://prismic.io/docs/field#key-text
 	 */
 	title: prismic.KeyTextField;
 
 	/**
-	 * Image field in *wine*
+	 * Image field in *Specials*
 	 *
 	 * - **Field Type**: Image
 	 * - **Placeholder**: *None*
-	 * - **API ID Path**: wine.image
+	 * - **API ID Path**: specials.image
 	 * - **Tab**: Main
 	 * - **Documentation**: https://prismic.io/docs/field#image
 	 */
 	image: prismic.ImageField<never>;
 
 	/**
-	 * Item field in *wine*
+	 * Item field in *Specials*
 	 *
 	 * - **Field Type**: Group
 	 * - **Placeholder**: *None*
-	 * - **API ID Path**: wine.item[]
+	 * - **API ID Path**: specials.item[]
 	 * - **Tab**: Main
 	 * - **Documentation**: https://prismic.io/docs/field#group
 	 */
-	item: prismic.GroupField<Simplify<WineDocumentDataItemItem>>;
+	item: prismic.GroupField<Simplify<SpecialsDocumentDataItemItem>>;
 }
 
 /**
- * wine document from Prismic
+ * Specials document from Prismic
  *
- * - **API ID**: `wine`
+ * - **API ID**: `specials`
  * - **Repeatable**: `true`
  * - **Documentation**: https://prismic.io/docs/custom-types
  *
  * @typeParam Lang - Language API ID of the document.
  */
-export type WineDocument<Lang extends string = string> = prismic.PrismicDocumentWithUID<
-	Simplify<WineDocumentData>,
-	'wine',
+export type SpecialsDocument<Lang extends string = string> = prismic.PrismicDocumentWithUID<
+	Simplify<SpecialsDocumentData>,
+	'specials',
 	Lang
 >;
 
@@ -1272,7 +1241,7 @@ export type AllDocumentTypes =
 	| OpeningHoursDocument
 	| PageDocument
 	| SettingsDocument
-	| WineDocument;
+	| SpecialsDocument;
 
 /**
  * Primary content in *About → Default → Primary*
@@ -2198,9 +2167,9 @@ declare module '@prismicio/client' {
 			SettingsDocumentData,
 			SettingsDocumentDataSocialMediaItem,
 			SettingsDocumentDataOpeningHoursItem,
-			WineDocument,
-			WineDocumentData,
-			WineDocumentDataItemItem,
+			SpecialsDocument,
+			SpecialsDocumentData,
+			SpecialsDocumentDataItemItem,
 			AllDocumentTypes,
 			AboutSlice,
 			AboutSliceDefaultPrimary,
