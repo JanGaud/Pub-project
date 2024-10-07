@@ -59,7 +59,7 @@
 <section class="flex flex-col gap-4 items-center">
 	{#each items as item, i}
 		{#if item.affiche}
-			<div class="w-full md:w-[500px]">
+			<div use:animateOnScroll class="w-full md:w-[500px]">
 				<PrismicImage field={item.affiche} />
 			</div>
 		{/if}
