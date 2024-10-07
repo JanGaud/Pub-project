@@ -41,6 +41,12 @@
 											>${item.price_variant}</small
 										>
 									{/if}
+									{#if item.price_variant_2 != null}
+										<span>|</span>
+										<small class="font-medium {item.out_of_stock ? 'text-black/25' : ''}"
+											>${item.price_variant_2}</small
+										>
+									{/if}
 								</div>
 							</div>
 							{#if item.ingredients}

@@ -70,6 +70,13 @@
 								"placeholder": "    "
 							}
 						},
+						"price_variant_2": {
+							"type": "Number",
+							"config": {
+								"label": "Price Variant 2",
+								"placeholder": ""
+							}
+						},
 						"out_of_stock": {
 							"type": "Boolean",
 							"config": {

@@ -320,6 +320,16 @@ export interface FoodDocumentDataItemItem {
 	price_variant: prismic.NumberField;
 
 	/**
+	 * Price Variant 2 field in *food → Item*
+	 *
+	 * - **Field Type**: Number
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: food.item[].price_variant_2
+	 * - **Documentation**: https://prismic.io/docs/field#number
+	 */
+	price_variant_2: prismic.NumberField;
+
+	/**
 	 * Out of stock field in *food → Item*
 	 *
 	 * - **Field Type**: Boolean
