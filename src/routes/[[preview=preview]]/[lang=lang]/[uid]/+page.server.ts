@@ -50,7 +50,7 @@ export async function load({ params, fetch, cookies }) {
 
 		// Fetch specials data
 		try {
-			menu.specials = await client.getAllByType('specials');
+			menu.specials = await client.getAllByType('specials', { lang: params.lang });
 		} catch (fetchError) {
 			console.error('Failed to fetch specials data from Prismic:', fetchError);
 			menu.specials = null;

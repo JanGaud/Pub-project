@@ -1144,11 +1144,11 @@ export type SettingsDocument<Lang extends string = string> = prismic.PrismicDocu
 >;
 
 /**
- * Item in *Specials → Item*
+ * Item in *specials → Item*
  */
 export interface SpecialsDocumentDataItemItem {
 	/**
-	 * Title field in *Specials → Item*
+	 * Title field in *specials → Item*
 	 *
 	 * - **Field Type**: Text
 	 * - **Placeholder**: *None*
@@ -1158,7 +1158,7 @@ export interface SpecialsDocumentDataItemItem {
 	title: prismic.KeyTextField;
 
 	/**
-	 * Description field in *Specials → Item*
+	 * Description field in *specials → Item*
 	 *
 	 * - **Field Type**: Text
 	 * - **Placeholder**: *None*
@@ -1168,7 +1168,7 @@ export interface SpecialsDocumentDataItemItem {
 	description: prismic.KeyTextField;
 
 	/**
-	 * Affiche field in *Specials → Item*
+	 * Affiche field in *specials → Item*
 	 *
 	 * - **Field Type**: Image
 	 * - **Placeholder**: *None*
@@ -1179,11 +1179,11 @@ export interface SpecialsDocumentDataItemItem {
 }
 
 /**
- * Content for Specials documents
+ * Content for specials documents
  */
 interface SpecialsDocumentData {
 	/**
-	 * Title field in *Specials*
+	 * Title field in *specials*
 	 *
 	 * - **Field Type**: Text
 	 * - **Placeholder**: *None*
@@ -1194,7 +1194,7 @@ interface SpecialsDocumentData {
 	title: prismic.KeyTextField;
 
 	/**
-	 * Image field in *Specials*
+	 * Image field in *specials*
 	 *
 	 * - **Field Type**: Image
 	 * - **Placeholder**: *None*
@@ -1205,7 +1205,7 @@ interface SpecialsDocumentData {
 	image: prismic.ImageField<never>;
 
 	/**
-	 * Item field in *Specials*
+	 * Item field in *specials*
 	 *
 	 * - **Field Type**: Group
 	 * - **Placeholder**: *None*
@@ -1217,7 +1217,7 @@ interface SpecialsDocumentData {
 }
 
 /**
- * Specials document from Prismic
+ * specials document from Prismic
  *
  * - **API ID**: `specials`
  * - **Repeatable**: `true`
@@ -2016,31 +2016,6 @@ type MenuSliceVariation = MenuSliceDefault;
 export type MenuSlice = prismic.SharedSlice<'menu', MenuSliceVariation>;
 
 /**
- * Item in *MenuBanner → Default → Primary → Promo*
- */
-export interface MenuBannerSliceDefaultPrimaryPromoItem {
-	/**
-	 * Title field in *MenuBanner → Default → Primary → Promo*
-	 *
-	 * - **Field Type**: Text
-	 * - **Placeholder**: *None*
-	 * - **API ID Path**: menu_banner.default.primary.promo[].title
-	 * - **Documentation**: https://prismic.io/docs/field#key-text
-	 */
-	title: prismic.KeyTextField;
-
-	/**
-	 * Description field in *MenuBanner → Default → Primary → Promo*
-	 *
-	 * - **Field Type**: Text
-	 * - **Placeholder**: *None*
-	 * - **API ID Path**: menu_banner.default.primary.promo[].description
-	 * - **Documentation**: https://prismic.io/docs/field#key-text
-	 */
-	description: prismic.KeyTextField;
-}
-
-/**
  * Primary content in *MenuBanner → Default → Primary*
  */
 export interface MenuBannerSliceDefaultPrimary {
@@ -2073,16 +2048,6 @@ export interface MenuBannerSliceDefaultPrimary {
 	 * - **Documentation**: https://prismic.io/docs/field#key-text
 	 */
 	description: prismic.KeyTextField;
-
-	/**
-	 * Promo field in *MenuBanner → Default → Primary*
-	 *
-	 * - **Field Type**: Group
-	 * - **Placeholder**: *None*
-	 * - **API ID Path**: menu_banner.default.primary.promo[]
-	 * - **Documentation**: https://prismic.io/docs/field#group
-	 */
-	promo: prismic.GroupField<Simplify<MenuBannerSliceDefaultPrimaryPromoItem>>;
 }
 
 /**
@@ -2204,7 +2169,6 @@ declare module '@prismicio/client' {
 			MenuSliceVariation,
 			MenuSliceDefault,
 			MenuBannerSlice,
-			MenuBannerSliceDefaultPrimaryPromoItem,
 			MenuBannerSliceDefaultPrimary,
 			MenuBannerSliceVariation,
 			MenuBannerSliceDefault

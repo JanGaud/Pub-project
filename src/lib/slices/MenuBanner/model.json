@@ -33,29 +33,6 @@
             "label": "Description",
             "placeholder": ""
           }
-        },
-        "promo": {
-          "type": "Group",
-          "config": {
-            "label": "Promo",
-            "repeat": true,
-            "fields": {
-              "title": {
-                "type": "Text",
-                "config": {
-                  "label": "Title",
-                  "placeholder": ""
-                }
-              },
-              "description": {
-                "type": "Text",
-                "config": {
-                  "label": "Description",
-                  "placeholder": ""
-                }
-              }
-            }
-          }
         }
       },
       "items": {}

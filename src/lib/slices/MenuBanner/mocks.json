@@ -35,32 +35,6 @@
 				"__TYPE__": "FieldContent",
 				"value": "proper",
 				"type": "Text"
-			},
-			"promo": {
-				"__TYPE__": "GroupContentType",
-				"value": [
-					{
-						"__TYPE__": "GroupItemContent",
-						"value": [
-							[
-								"title",
-								{
-									"__TYPE__": "FieldContent",
-									"value": "between",
-									"type": "Text"
-								}
-							],
-							[
-								"description",
-								{
-									"__TYPE__": "FieldContent",
-									"value": "shoulder",
-									"type": "Text"
-								}
-							]
-						]
-					}
-				]
 			}
 		},
 		"items": []
