@@ -46,7 +46,7 @@
 			<!-- Static Title and Subtitle Section -->
 			<div class="mt-24 px-4 sm:px-10 lg:px-24 text-left">
 				<h1
-					class="drop-shadow text-transparent text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold font-secondary tracking-widest uppercase mb-4 bg-clip-text bg-gradient-to-r from-gold via-white to-gold"
+					class="drop-shadow text-transparent text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold font-secondary tracking-widest uppercase mb-4 bg-clip-text bg-gradient-to-r from-gold via-[#E6DFC6] to-gold"
 				>
 					{slice.primary.title}
 				</h1>

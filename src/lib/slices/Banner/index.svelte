@@ -53,7 +53,7 @@
 			>
 				<div class="text-left p-4 sm:p-6 md:p-8">
 					<h1
-						class="drop-shadow text-transparent text-4xl md:text-5xl lg:text-8xl font-semibold font-secondary tracking-widest uppercase mb-4 bg-clip-text bg-gradient-to-r from-gold via-white to-gold"
+						class="drop-shadow text-transparent text-4xl md:text-5xl lg:text-8xl font-semibold font-secondary tracking-widest uppercase mb-4 bg-clip-text bg-gradient-to-r from-gold via-[#E6DFC6] to-gold"
 					>
 						{slice.primary.title}
 					</h1>
