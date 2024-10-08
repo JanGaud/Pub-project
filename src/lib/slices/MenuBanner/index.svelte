@@ -129,7 +129,7 @@
 
 			<!-- Inner Carousel Container -->
 			<div
-				class="bg-[#0000007e] px-10 backdrop-blur-md rounded-lg w-full h-[300px] flex flex-col justify-center items-center p-4"
+				class="bg-[#0000007e] px-8 backdrop-blur-md rounded-lg w-full h-[325px] flex flex-col justify-center items-center p-4"
 			>
 				<h3 class="text-white drop-shadow-md text-2xl mb-2 font-bold">
 					{specials[currentSlideIndex]?.title}
