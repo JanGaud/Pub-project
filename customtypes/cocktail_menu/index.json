@@ -1,22 +1,16 @@
 {
 	"format": "custom",
-	"id": "cocktails",
-	"label": "drink",
-	"repeatable": true,
+	"id": "cocktail_menu",
+	"label": "cocktail menu",
+	"repeatable": false,
 	"status": true,
 	"json": {
 		"Main": {
-			"uid": {
-				"type": "UID",
-				"config": {
-					"label": "UID"
-				}
-			},
 			"title": {
 				"type": "Text",
 				"config": {
 					"label": "Title",
-					"placeholder": "Cocktails"
+					"placeholder": ""
 				}
 			},
 			"image": {
@@ -31,7 +25,7 @@
 				"type": "Text",
 				"config": {
 					"label": "Notes",
-					"placeholder": "Premium liquors cost an additional $2.50, and d"
+					"placeholder": ""
 				}
 			},
 			"item": {
@@ -53,14 +47,14 @@
 							"type": "Text",
 							"config": {
 								"label": "Label",
-								"placeholder": "Bloody Mary"
+								"placeholder": ""
 							}
 						},
 						"ingredients": {
 							"type": "Text",
 							"config": {
 								"label": "Ingredients",
-								"placeholder": "Vodka - Tomato juice - Spice blend"
+								"placeholder": ""
 							}
 						},
 						"price": {
@@ -70,7 +64,7 @@
 								"placeholder": ""
 							}
 						},
-						"price_p": {
+						"price_pitcher": {
 							"type": "Number",
 							"config": {
 								"label": "Price Pitcher",

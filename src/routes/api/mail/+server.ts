@@ -44,7 +44,7 @@ export async function POST({ request }: RequestEvent) {
                         <p style="font-size: 16px;"><strong>Nombre de personnes :</strong> ${formData.numberOfPeople}</p>
                     </div>
                     <footer style="background-color: #DCBD5B; padding: 20px; text-align: center; font-size: 14px; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
-                        <p style="margin: 0;">Envoyé depuis le site web 100 Génies.</p>
+                        <p style="margin: 0; color: black;">Envoyé depuis le site web 100 Génies.</p>
                          <img src="cid:logo@100genies" alt="100 Génies" style="width: 100px; margin-top: 10px;">
                     </footer>
                 </div>
@@ -63,7 +63,7 @@ export async function POST({ request }: RequestEvent) {
                         <p style="font-size: 16px; margin-bottom: 10px;"><strong>Message:</strong> ${formData.message}</p>
                     </div>
                     <footer style="background-color: #DCBD5B; padding: 20px; text-align: center; font-size: 14px; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
-                        <p style="margin: 0;">Envoyé depuis le site web 100 Génies.</p>
+                        <p style="margin: 0; color: black;">Envoyé depuis le site web 100 Génies.</p>
                          <img src="cid:logo@100genies" alt="100 Génies" style="width: 100px; margin-top: 10px;">
                     </footer>
                 </div>
@@ -92,7 +92,7 @@ export async function POST({ request }: RequestEvent) {
                         ` : ''}
                     </div>
                     <footer style="background-color: #DCBD5B; padding: 20px; text-align: center; font-size: 14px; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
-                        <p style="margin: 0;">Nous vous remercions pour votre message. À bientôt!</p>
+                        <p style="margin: 0; color: black;">Nous vous remercions pour votre message. À bientôt!</p>
                          <img src="cid:logo@100genies" alt="100 Génies" style="width: 100px; margin-top: 10px;">
                     </footer>
                 </div>             

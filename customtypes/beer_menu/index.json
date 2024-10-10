@@ -1,0 +1,86 @@
+{
+	"format": "custom",
+	"id": "beer_menu",
+	"label": "beer menu",
+	"repeatable": false,
+	"status": true,
+	"json": {
+		"Main": {
+			"title": {
+				"type": "Text",
+				"config": {
+					"label": "Title",
+					"placeholder": ""
+				}
+			},
+			"image": {
+				"type": "Image",
+				"config": {
+					"label": "Image",
+					"constraint": {},
+					"thumbnails": []
+				}
+			},
+			"item": {
+				"type": "Group",
+				"config": {
+					"label": "Item",
+					"repeat": true,
+					"fields": {
+						"label": {
+							"type": "Text",
+							"config": {
+								"label": "Label",
+								"placeholder": ""
+							}
+						},
+						"beer_color": {
+							"type": "Color",
+							"config": {
+								"label": "Beer Color",
+								"placeholder": ""
+							}
+						},
+						"beer_description": {
+							"type": "Text",
+							"config": {
+								"label": "Beer Description",
+								"placeholder": ""
+							}
+						},
+						"price_glass": {
+							"type": "Number",
+							"config": {
+								"label": "Price Glass",
+								"placeholder": ""
+							}
+						},
+						"price_pint": {
+							"type": "Number",
+							"config": {
+								"label": "Price Pint",
+								"placeholder": ""
+							}
+						},
+						"price_pitcher": {
+							"type": "Number",
+							"config": {
+								"label": "Price Pitcher",
+								"placeholder": ""
+							}
+						},
+						"out_of_stock": {
+							"type": "Boolean",
+							"config": {
+								"label": "Out of stock",
+								"placeholder_false": "false",
+								"placeholder_true": "true",
+								"default_value": false
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

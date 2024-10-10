@@ -26,7 +26,7 @@ export async function load({ params, fetch, cookies }) {
 
 		// Fetch food data using the specified language
 		try {
-			menu.food = await client.getAllByType('food', { lang: params.lang });
+			menu.food = await client.getAllByType('food_menu', { lang: params.lang });
 		} catch (fetchError) {
 			console.error('Failed to fetch food data from Prismic:', fetchError);
 			menu.food = null;
@@ -34,7 +34,7 @@ export async function load({ params, fetch, cookies }) {
 
 		// Fetch beer data using the specified language
 		try {
-			menu.beer = await client.getAllByType('beer', { lang: params.lang });
+			menu.beer = await client.getAllByType('beer_menu', { lang: params.lang });
 		} catch (fetchError) {
 			console.error('Failed to fetch beer data from Prismic:', fetchError);
 			menu.beer = null;
@@ -42,7 +42,7 @@ export async function load({ params, fetch, cookies }) {
 
 		// Fetch cocktail data using the specified language
 		try {
-			menu.cocktail = await client.getAllByType('cocktails', { lang: params.lang });
+			menu.cocktail = await client.getAllByType('cocktail_menu', { lang: params.lang });
 		} catch (fetchError) {
 			console.error('Failed to fetch cocktail data from Prismic:', fetchError);
 			menu.cocktail = null;
@@ -50,7 +50,7 @@ export async function load({ params, fetch, cookies }) {
 
 		// Fetch specials data
 		try {
-			menu.specials = await client.getAllByType('specials', { lang: params.lang });
+			menu.specials = await client.getAllByType('special_menu', { lang: params.lang });
 		} catch (fetchError) {
 			console.error('Failed to fetch specials data from Prismic:', fetchError);
 			menu.specials = null;

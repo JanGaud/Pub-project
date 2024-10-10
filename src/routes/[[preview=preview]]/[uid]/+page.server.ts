@@ -26,7 +26,7 @@ export async function load({ params, fetch, cookies }) {
 
 		// Fetch food data
 		try {
-			menu.food = await client.getAllByType('food');
+			menu.food = await client.getAllByType('food_menu');
 		} catch (fetchError) {
 			console.error('Failed to fetch food data from Prismic:', fetchError);
 			menu.food = null;
@@ -34,7 +34,7 @@ export async function load({ params, fetch, cookies }) {
 
 		// Fetch beer data
 		try {
-			menu.beer = await client.getAllByType('beer');
+			menu.beer = await client.getAllByType('beer_menu');
 		} catch (fetchError) {
 			console.error('Failed to fetch beer data from Prismic:', fetchError);
 			menu.beer = null;
@@ -42,7 +42,7 @@ export async function load({ params, fetch, cookies }) {
 
 		// Fetch cocktail data
 		try {
-			menu.cocktail = await client.getAllByType('cocktails');
+			menu.cocktail = await client.getAllByType('cocktail_menu');
 		} catch (fetchError) {
 			console.error('Failed to fetch cocktail data from Prismic:', fetchError);
 			menu.cocktail = null;
@@ -50,7 +50,7 @@ export async function load({ params, fetch, cookies }) {
 
 		// Fetch specials data
 		try {
-			menu.specials = await client.getAllByType('specials');
+			menu.specials = await client.getAllByType('special_menu');
 		} catch (fetchError) {
 			console.error('Failed to fetch specials data from Prismic:', fetchError);
 			menu.specials = null;

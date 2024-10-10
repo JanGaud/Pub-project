@@ -53,14 +53,16 @@
 			position += items.length;
 		}
 		return position * 100; // Adjust the multiplier for spacing
-	}
+	} 
+
+	console.log(items);
 </script>
 
 <section class="flex flex-col gap-4 items-center">
 	{#each items as item, i}
-		{#if item.affiche}
+		{#if item.poster}
 			<div use:animateOnScroll class="w-full md:w-[500px]">
-				<PrismicImage field={item.affiche} />
+				<PrismicImage field={item.poster} />
 			</div>
 		{/if}
 	{/each}

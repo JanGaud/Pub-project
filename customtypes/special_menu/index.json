@@ -1,17 +1,11 @@
 {
 	"format": "custom",
-	"id": "specials",
-	"label": "specials",
-	"repeatable": true,
+	"id": "special_menu",
+	"label": "special menu",
+	"repeatable": false,
 	"status": true,
 	"json": {
 		"Main": {
-			"uid": {
-				"type": "UID",
-				"config": {
-					"label": "UID"
-				}
-			},
 			"title": {
 				"type": "Text",
 				"config": {
@@ -47,10 +41,10 @@
 								"placeholder": ""
 							}
 						},
-						"affiche": {
+						"poster": {
 							"type": "Image",
 							"config": {
-								"label": "Affiche",
+								"label": "Poster",
 								"constraint": {},
 								"thumbnails": []
 							}

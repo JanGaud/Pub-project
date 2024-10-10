@@ -16,6 +16,9 @@
 	// Access the `menu` data from the global store
 	let menu = $page.data.menu;
 
+
+	console.log(menu);
+
 	// Store to track the currently selected section
 	let selectedSection = writable(Object.keys(menu)[0]); // Default to the first section
 
