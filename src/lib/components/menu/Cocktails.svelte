@@ -12,10 +12,6 @@
 	let alcoholicItemsByFlavor = flavors.filter((flavor) => flavor.cocktails.length > 0);
 	let nonAlcoholicItems =
 		cocktailMenu?.[0]?.data?.item?.filter((item: { soft: boolean }) => item.soft === true) || [];
-
-	console.log('Flavors:', flavors);
-	console.log('Alcoholic Items by Flavor:', alcoholicItemsByFlavor);
-	console.log('Non-Alcoholic Items:', nonAlcoholicItems);
 </script>
 
 <!-- Render items in two columns using Tailwind CSS -->
