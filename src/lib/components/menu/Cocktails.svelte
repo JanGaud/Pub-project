@@ -20,10 +20,10 @@
 
 <!-- Render items in two columns using Tailwind CSS -->
 <MenuContainer>
-	<div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+	<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
 		<!-- Loop through each type of alcoholic flavor and put each in a separate grid cell -->
 		{#each alcoholicItemsByFlavor as flavor}
-			<div class="rounded-lg">
+			<div use:animateOnScroll>
 				<div class="bg-white">
 					<!-- Flavor Type Header with Background Color -->
 					<div class="p-2"  style="background: linear-gradient(to bottom, {flavor.data.color || '#f0f0f0'}, #ffffff);">
@@ -35,7 +35,7 @@
 					<div class="flex flex-col gap-4 mt-2 md:mt-4 px-4 pb-4">
 						{#each flavor.cocktails as item}
 							<!-- Each item container uses w-full to occupy full width -->
-							<div use:animateOnScroll class="flex w-full">
+							<div class="flex w-full">
 								<div class="flex flex-col justify-between w-full">
 									<!-- Header with drink name and price -->
 									<div class="flex justify-between items-start">
@@ -69,10 +69,10 @@
 		<!-- Last Box: Non-Alcoholic Cocktails -->
 		<div class="flex flex-col justify-between gap-4 p-2 md:p-4 border-t">
 			{#if nonAlcoholicItems.length > 0}
-				<div class="flex flex-col gap-4">
+				<div use:animateOnScroll class="flex flex-col gap-4">
 					{#each nonAlcoholicItems as item}
 						<!-- Each item container uses w-full to occupy full width -->
-						<div use:animateOnScroll class="flex w-full">
+						<div class="flex w-full">
 							<div class="flex flex-col justify-between w-full">
 								<!-- Header with drink name and price -->
 								<div class="flex justify-between items-start">
