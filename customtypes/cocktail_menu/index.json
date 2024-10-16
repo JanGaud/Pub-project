@@ -71,6 +71,14 @@
 								"placeholder": ""
 							}
 						},
+						"flavor_type": {
+							"type": "Link",
+							"config": {
+								"label": "Flavor Type",
+								"select": "document",
+								"customtypes": ["flavour_styles"]
+							}
+						},
 						"out_of_stock": {
 							"type": "Boolean",
 							"config": {

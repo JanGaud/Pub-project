@@ -71,6 +71,33 @@
 								"placeholder": ""
 							}
 						},
+						"vegan": {
+							"type": "Boolean",
+							"config": {
+								"label": "Vegan",
+								"placeholder_false": "false",
+								"placeholder_true": "true",
+								"default_value": false
+							}
+						},
+						"vegetarian": {
+							"type": "Boolean",
+							"config": {
+								"label": "Vegetarian",
+								"placeholder_false": "false",
+								"placeholder_true": "true",
+								"default_value": false
+							}
+						},
+						"spicy": {
+							"type": "Boolean",
+							"config": {
+								"label": "Spicy",
+								"placeholder_false": "false",
+								"placeholder_true": "true",
+								"default_value": false
+							}
+						},
 						"out_of_stock": {
 							"type": "Boolean",
 							"config": {

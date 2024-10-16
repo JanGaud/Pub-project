@@ -189,6 +189,16 @@ export interface CocktailMenuDocumentDataItemItem {
 	price_pitcher: prismic.NumberField;
 
 	/**
+	 * Flavor Type field in *cocktail menu → Item*
+	 *
+	 * - **Field Type**: Content Relationship
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: cocktail_menu.item[].flavor_type
+	 * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+	 */
+	flavor_type: prismic.ContentRelationshipField<'flavour_styles'>;
+
+	/**
 	 * Out of stock field in *cocktail menu → Item*
 	 *
 	 * - **Field Type**: Boolean
@@ -265,6 +275,101 @@ export type CocktailMenuDocument<Lang extends string = string> = prismic.Prismic
 >;
 
 /**
+ * Content for dietary badges documents
+ */
+interface DietaryBadgesDocumentData {
+	/**
+	 * Label field in *dietary badges*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: dietary_badges.label
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	label: prismic.KeyTextField;
+
+	/**
+	 * icon field in *dietary badges*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: dietary_badges.icon
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#image
+	 */
+	icon: prismic.ImageField<never>;
+}
+
+/**
+ * dietary badges document from Prismic
+ *
+ * - **API ID**: `dietary_badges`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type DietaryBadgesDocument<Lang extends string = string> = prismic.PrismicDocumentWithUID<
+	Simplify<DietaryBadgesDocumentData>,
+	'dietary_badges',
+	Lang
+>;
+
+/**
+ * Content for flavour styles documents
+ */
+interface FlavourStylesDocumentData {
+	/**
+	 * Title field in *flavour styles*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: flavour_styles.title
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	title: prismic.KeyTextField;
+
+	/**
+	 * Description field in *flavour styles*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: flavour_styles.description
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	description: prismic.KeyTextField;
+
+	/**
+	 * Color field in *flavour styles*
+	 *
+	 * - **Field Type**: Color
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: flavour_styles.color
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#color
+	 */
+	color: prismic.ColorField;
+}
+
+/**
+ * flavour styles document from Prismic
+ *
+ * - **API ID**: `flavour_styles`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type FlavourStylesDocument<Lang extends string = string> = prismic.PrismicDocumentWithUID<
+	Simplify<FlavourStylesDocumentData>,
+	'flavour_styles',
+	Lang
+>;
+
+/**
  * Item in *food menu → Item*
  */
 export interface FoodMenuDocumentDataItemItem {
@@ -328,6 +433,39 @@ export interface FoodMenuDocumentDataItemItem {
 	 * - **Documentation**: https://prismic.io/docs/field#number
 	 */
 	price_variant_2: prismic.NumberField;
+
+	/**
+	 * Vegan field in *food menu → Item*
+	 *
+	 * - **Field Type**: Boolean
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: false
+	 * - **API ID Path**: food_menu.item[].vegan
+	 * - **Documentation**: https://prismic.io/docs/field#boolean
+	 */
+	vegan: prismic.BooleanField;
+
+	/**
+	 * Vegetarian field in *food menu → Item*
+	 *
+	 * - **Field Type**: Boolean
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: false
+	 * - **API ID Path**: food_menu.item[].vegetarian
+	 * - **Documentation**: https://prismic.io/docs/field#boolean
+	 */
+	vegetarian: prismic.BooleanField;
+
+	/**
+	 * Spicy field in *food menu → Item*
+	 *
+	 * - **Field Type**: Boolean
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: false
+	 * - **API ID Path**: food_menu.item[].spicy
+	 * - **Documentation**: https://prismic.io/docs/field#boolean
+	 */
+	spicy: prismic.BooleanField;
 
 	/**
 	 * Out of stock field in *food menu → Item*
@@ -1244,6 +1382,8 @@ export type SpecialMenuDocument<Lang extends string = string> = prismic.PrismicD
 export type AllDocumentTypes =
 	| BeerMenuDocument
 	| CocktailMenuDocument
+	| DietaryBadgesDocument
+	| FlavourStylesDocument
 	| FoodMenuDocument
 	| FooterDocument
 	| FormerrorsDocument
@@ -2114,6 +2254,10 @@ declare module '@prismicio/client' {
 			CocktailMenuDocument,
 			CocktailMenuDocumentData,
 			CocktailMenuDocumentDataItemItem,
+			DietaryBadgesDocument,
+			DietaryBadgesDocumentData,
+			FlavourStylesDocument,
+			FlavourStylesDocumentData,
 			FoodMenuDocument,
 			FoodMenuDocumentData,
 			FoodMenuDocumentDataItemItem,

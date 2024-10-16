@@ -55,7 +55,6 @@
 		return position * 100; // Adjust the multiplier for spacing
 	} 
 
-	console.log(items);
 </script>
 
 <section class="flex flex-col gap-4 items-center">

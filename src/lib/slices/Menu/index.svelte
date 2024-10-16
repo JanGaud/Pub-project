@@ -7,17 +7,31 @@
 	import Food from '$lib/components/menu/Food.svelte';
 	import Cocktails from '$lib/components/menu/Cocktails.svelte';
 	import Beers from '$lib/components/menu/Beers.svelte';
-	import Specials from '$lib/components/menu/Specials.svelte'; // Verify default export here
+	import Specials from '$lib/components/menu/Specials.svelte';
 	import { PrismicImage } from '@prismicio/svelte';
 
 	// Props for Prismic slice content
 	export let slice: Content.MenuSlice;
 
-	// Access the `menu` data from the global store
+	// Access the `menu` and `flavors` data from the global store
 	let menu = $page.data.menu;
+	let flavors = $page.data.flavors;
 
+	// Group cocktails by flavor type
+	let cocktailsByFlavor = flavors.map((flavor: { id: any }) => {
+		// Find all cocktails that match this flavor type
+		const matchingCocktails =
+			menu.cocktail?.[0]?.data?.item?.filter(
+				(cocktail: { flavor_type: { id: any } }) => cocktail.flavor_type?.id === flavor.id
+			) || [];
 
-	console.log(menu);
+		return {
+			...flavor,
+			cocktails: matchingCocktails
+		};
+	});
+
+	console.log('Cocktails by Flavor:', cocktailsByFlavor);
 
 	// Store to track the currently selected section
 	let selectedSection = writable(Object.keys(menu)[0]); // Default to the first section
@@ -92,7 +106,23 @@
 			foodMenu={menu.food}
 			beerMenu={menu.beer}
 			cocktailMenu={menu.cocktail}
+			flavors={cocktailsByFlavor}
 			specialsMenu={menu.specials}
 		/>
 	</div>
+
+	<nav class="relative grid grid-cols-2 lg:grid-cols-4 items-center gap-2 md:gap-4 mb-4">
+		{#each navItems as navItem}
+			<button
+				class="relative rounded-lg shadow-md bg-background border h-16 text-sm w-full overflow-hidden flex items-center justify-center gap-4 p-4 transition-all
+				 hover:text-gold active:bg-opacity-50
+				{navItem.type === $selectedSection ? ' text-gold underline' : ' text-white'}"
+				on:click={() => selectSection(navItem.type)}
+			>
+				<span class="relative z-20 text-lg text-center font-medium"
+					>{navItem.title}</span
+				>
+			</button>
+		{/each}
+	</nav>
 </section>
