@@ -48,7 +48,7 @@
                 <p class={item.out_of_stock ? 'text-black/25' : ''}>{item.ingredients}</p>
               {/if}
               <!-- Display boolean attributes as images if true -->
-              <div class="flex gap-3 mt-2">
+              <div class="flex gap-3 my-2">
                 {#if item.vegan}
                   <img src="/dietaryTag/vegan.png" alt="Vegan" class="w-8 h-8" />
                 {/if}
@@ -56,7 +56,7 @@
                   <img src="/dietaryTag/vegetarian.png" alt="Vegetarian" class="w-8 h-8" />
                 {/if}
                 {#if item.spicy}
-                  <img src="/dietaryTag/red-chili-pepper.png" alt="Spicy" class="w-8 h-8" />
+                  <img src="/dietaryTag/red-chili-pepper.png" alt="Spicy" class="w-7 h-7" />
                 {/if}
               </div>
             </div>
@@ -92,7 +92,7 @@
                 <p class={item.out_of_stock ? 'text-black/25' : ''}>{item.ingredients}</p>
               {/if}
               <!-- Display boolean attributes as images if true -->
-              <div class="flex gap-3 mt-2">
+              <div class="flex gap-3 my-2">
                 {#if item.vegan}
                   <img src="/dietaryTag/vegan.png" alt="Vegan" class="w-8 h-8" />
                 {/if}
@@ -100,7 +100,7 @@
                   <img src="/dietaryTag/vegetarian.png" alt="Vegetarian" class="w-8 h-8" />
                 {/if}
                 {#if item.spicy}
-                  <img src="/dietaryTag/red-chili-pepper.png" alt="Spicy" class="w-8 h-8" />
+                  <img src="/dietaryTag/red-chili-pepper.png" alt="Spicy" class="w-7 h-7" />
                 {/if}
               </div>
             </div>
