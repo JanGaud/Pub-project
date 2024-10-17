@@ -22,10 +22,6 @@ export async function POST({ request }: RequestEvent) {
             },
         });
 
-        // Attach the logo image using Content-ID (CID)
-        const logoUrl = 'https://pub-project.vercel.app/circleLogo.png'; // Replace with your deployed URL
-        const logoCid = 'logo@100genies';
-
         // Reservation Template
         const reservationTemplate = `
             <div style="background-color: #F9F9F9; display: flex; justify-content: center; align-items: center;">
@@ -74,10 +70,16 @@ export async function POST({ request }: RequestEvent) {
         const confirmationTemplate = `
             <div style="background-color: #F9F9F9; display: flex; justify-content: center; align-items: center;">
                 <div style="font-family: 'DM Sans', sans-serif; color: #333; line-height: 1.6; max-width: 600px; margin: 0 auto; background-color: #ffffff; box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3); border: 1px solid #e0e0e0; border-radius: 10px; border-top: 8px solid #DCBD5B;">
-                    <h1 style="text-align: center; font-size: 32px; margin: 0; padding: 30px;">Merci pour votre message, ${formData.name}!</h1>
-                    <div style="padding: 20px;">
-                        <p style="font-size: 16px;">Nous avons bien reçu votre courriel et nous vous répondrons dans les plus brefs délais.</p>
-                        <p style="font-size: 16px;">Voici un récapitulatif de votre demande :</p>
+                    <div style="padding: 30px 30px 20px 30px;">
+                        <h1 style="text-align: center; font-size: 32px; margin: 0;">Merci pour votre message, ${formData.name}!</h1>
+                        ${isReservation ? `
+                            ${formData.reservationType === 'table'
+                            ? '<h2 style="font-size: 18px; text-align: center; margin-top: 10px;">Votre réservation est notée. Vous pouvez vous présenter à la date et heure de la réservation.</h2>'
+                            : '<h2 style="font-size: 18px; text-align: center; margin-top: 10px;">Un responsable prendra contact avec vous dans les prochains jours afin d\'en savoir plus.</h2>'}
+                        ` : ''}    
+                    </div>
+                    <div style="padding: 0px 40px;">
+                        <p style="font-size: 16px; font-style: bold;">Voici un récapitulatif de votre demande :</p>
                         <ul style="font-size: 16px; line-height: 1.6;">
                             <li><strong>Nom:</strong> ${formData.name}</li>
                             <li><strong>Courriel:</strong> ${formData.email}</li>
@@ -93,7 +95,7 @@ export async function POST({ request }: RequestEvent) {
                     </div>
                     <footer style="background-color: #DCBD5B; padding: 20px; text-align: center; font-size: 14px; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
                         <p style="margin: 0; color: black;">Nous vous remercions pour votre message. À bientôt!</p>
-                         <img src="cid:logo@100genies" alt="100 Génies" style="width: 100px; margin-top: 10px;">
+                        <img src="cid:logo@100genies" alt="100 Génies" style="width: 100px; margin-top: 10px;">
                     </footer>
                 </div>             
             </div>
@@ -109,6 +111,7 @@ export async function POST({ request }: RequestEvent) {
         const mailOptionsAdmin = {
             from: formData.email,
             to: process.env.EMAIL_USER,
+            cc: 'janis_gaudreault@hotmail.fr,',
             subject: emailSubject,
             text: `
                 Nom: ${formData.name}

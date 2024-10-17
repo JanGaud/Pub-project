@@ -1094,6 +1094,21 @@ export interface SettingsDocumentDataSocialMediaItem {
 }
 
 /**
+ * Item in *settings → CC emails*
+ */
+export interface SettingsDocumentDataCcEmailsItem {
+	/**
+	 * CC email field in *settings → CC emails*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: settings.cc_emails[].cc_email
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	cc_email: prismic.KeyTextField;
+}
+
+/**
  * Item in *settings → OpeningHours*
  */
 export interface SettingsDocumentDataOpeningHoursItem {
@@ -1209,7 +1224,18 @@ interface SettingsDocumentData {
 	 * - **Tab**: Main
 	 * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
 	 */
-	root_link: prismic.LinkField /**
+	root_link: prismic.LinkField;
+
+	/**
+	 * CC emails field in *settings*
+	 *
+	 * - **Field Type**: Group
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: settings.cc_emails[]
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#group
+	 */
+	cc_emails: prismic.GroupField<Simplify<SettingsDocumentDataCcEmailsItem>> /**
 	 * Food Type field in *settings*
 	 *
 	 * - **Field Type**: Text
@@ -2285,6 +2311,7 @@ declare module '@prismicio/client' {
 			SettingsDocument,
 			SettingsDocumentData,
 			SettingsDocumentDataSocialMediaItem,
+			SettingsDocumentDataCcEmailsItem,
 			SettingsDocumentDataOpeningHoursItem,
 			SpecialMenuDocument,
 			SpecialMenuDocumentData,

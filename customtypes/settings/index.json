@@ -87,6 +87,22 @@
 					"allowTargetBlank": false,
 					"select": null
 				}
+			},
+			"cc_emails": {
+				"type": "Group",
+				"config": {
+					"label": "CC emails",
+					"repeat": true,
+					"fields": {
+						"cc_email": {
+							"type": "Text",
+							"config": {
+								"label": "CC email",
+								"placeholder": ""
+							}
+						}
+					}
+				}
 			}
 		},
 		"Meta": {

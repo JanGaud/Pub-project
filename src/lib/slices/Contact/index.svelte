@@ -274,7 +274,7 @@
 				<!-- Address -->
 				{#if slice.primary.adresse_input[0]?.icon !== 'null'}
 					<div class="flex items-center gap-2 mb-4 text-xl">
-						<Icon class="text-gold-second w-12 h-12" icon={slice.primary.adresse_input[0]?.icon} />
+						<Icon class="text-gold-second w-12 h-12" icon={slice.primary.adresse_input[0]?.icon ?? ''} />
 						<p>{settings.data.address}</p>
 					</div>
 				{/if}
@@ -283,11 +283,11 @@
 
 		<!-- Form Container with sliding animation -->
 		<div
-			class="card bg-[#ffffffad] backdrop-blur-md z-30 border-2 border-gold-second border-opacity-30 shadow-md rounded-3xl flex flex-col justify-center items-center p-6 {isVisible
+			class="card bg-[#ffffffad] max-w-lg backdrop-blur-md z-30 border-2 border-gold-second border-opacity-30 shadow-md rounded-3xl flex flex-col justify-center items-center p-6 {isVisible
 				? 'slide-in visible'
 				: 'slide-in'}"
 		>
-			<form action="" class="w-full max-w-lg" on:submit={handleSubmit} novalidate>
+			<form action="" class="w-full" on:submit={handleSubmit} novalidate>
 				<div class="grid grid-cols-1 gap-4">
 					<!-- Name input -->
 					<div class="relative py-2">
