@@ -317,6 +317,59 @@ export type DietaryBadgesDocument<Lang extends string = string> = prismic.Prismi
 >;
 
 /**
+ * Content for error page documents
+ */
+interface ErrorPageDocumentData {
+	/**
+	 * 404 field in *error page*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: error_page.404
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	'404': prismic.KeyTextField;
+
+	/**
+	 * 505 field in *error page*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: error_page.505
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	'505': prismic.KeyTextField;
+
+	/**
+	 * Back Home field in *error page*
+	 *
+	 * - **Field Type**: Link
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: error_page.back_home
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+	 */
+	back_home: prismic.LinkField;
+}
+
+/**
+ * error page document from Prismic
+ *
+ * - **API ID**: `error_page`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type ErrorPageDocument<Lang extends string = string> = prismic.PrismicDocumentWithoutUID<
+	Simplify<ErrorPageDocumentData>,
+	'error_page',
+	Lang
+>;
+
+/**
  * Content for flavour styles documents
  */
 interface FlavourStylesDocumentData {
@@ -1409,6 +1462,7 @@ export type AllDocumentTypes =
 	| BeerMenuDocument
 	| CocktailMenuDocument
 	| DietaryBadgesDocument
+	| ErrorPageDocument
 	| FlavourStylesDocument
 	| FoodMenuDocument
 	| FooterDocument
@@ -2282,6 +2336,8 @@ declare module '@prismicio/client' {
 			CocktailMenuDocumentDataItemItem,
 			DietaryBadgesDocument,
 			DietaryBadgesDocumentData,
+			ErrorPageDocument,
+			ErrorPageDocumentData,
 			FlavourStylesDocument,
 			FlavourStylesDocumentData,
 			FoodMenuDocument,

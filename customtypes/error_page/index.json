@@ -1,0 +1,35 @@
+{
+	"format": "custom",
+	"id": "error_page",
+	"label": "error page",
+	"repeatable": false,
+	"status": true,
+	"json": {
+		"Main": {
+			"404": {
+				"type": "Text",
+				"config": {
+					"label": "404",
+					"placeholder": ""
+				}
+			},
+			"505": {
+				"type": "Text",
+				"config": {
+					"label": "505",
+					"placeholder": ""
+				}
+			},
+			"back_home": {
+				"type": "Link",
+				"config": {
+					"label": "Back Home",
+					"placeholder": "",
+					"allowTargetBlank": false,
+					"select": null,
+					"allowText": true
+				}
+			}
+		}
+	}
+}

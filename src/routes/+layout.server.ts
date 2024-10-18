@@ -12,6 +12,7 @@ export async function load({ fetch, url }: { fetch: any, url: any }) {
     let settings;
     let footer;
     let openingHours;
+    let page_errors;
 
     try {
         // Fetch navigation data from Prismic using the determined language
@@ -45,10 +46,19 @@ export async function load({ fetch, url }: { fetch: any, url: any }) {
         openingHours = null;
     }
 
+    try {
+        // Fetch navigation data from Prismic using the determined language
+        page_errors = await client.getSingle('error_page', { lang });
+    } catch (error) {
+        console.error('Failed to fetch page error data from Prismic:', error);
+        page_errors = null;
+    }
+
     // Return the fetched data to be accessible in +layout.svelte
     return {
         nav,
         settings,
+        page_errors,
         footer,
         openingHours,
         lang, // Include the language to use it in your layout
