@@ -18,10 +18,10 @@
 <MenuContainer>
 	<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
 		<!-- Left Column: Appetizers -->
-		<div class="flex flex-col gap-4 p-2 md:p-4 bg-gold bg-opacity-25">
+		<div class="flex flex-col gap-4 bg-gold bg-opacity-25">
 			{#if appetizerItems.length > 0}
 				{#each appetizerItems as item}
-					<div use:animateOnScroll class="flex w-full gap-2 border-b">
+					<div use:animateOnScroll class="flex w-full gap-2 border-b bg-[#ffffff31] backdrop-blur-md shadow-md p-2 md:p-4">
 						<div class="flex flex-col justify-between w-full">
 							<!-- Apply conditional class for out_of_stock -->
 							<div class="flex justify-between gap-2">
@@ -54,7 +54,7 @@
 								<p class={item.out_of_stock ? 'text-black/25' : ''}>{item.ingredients}</p>
 							{/if}
 							<!-- Display boolean attributes as images if true -->
-							<div class="flex gap-3 my-2">
+							<div class="flex gap-3 mt-2">
 								{#if item.vegan}
 									<img src="/dietaryTag/vegan.png" alt="Vegan" class="w-10 h-10" />
 								{/if}
@@ -72,10 +72,10 @@
 		</div>
 
 		<!-- Right Column: Main Items -->
-		<div class="flex flex-col gap-4 p-2 md:p-4">
+		<div class="flex flex-col gap-4">
 			{#if mainItems.length > 0}
 				{#each mainItems as item}
-					<div use:animateOnScroll class="flex w-full gap-2 border-b">
+					<div use:animateOnScroll class="flex w-full gap-2 border-b bg-[#ffffff8e] backdrop-blur-md shadow-md p-2 md:p-4">
 						<div class="flex flex-col justify-between w-full">
 							<!-- Apply conditional class for out_of_stock -->
 							<div class="flex justify-between gap-2">
@@ -102,7 +102,7 @@
 								<p class={item.out_of_stock ? 'text-black/25' : ''}>{item.ingredients}</p>
 							{/if}
 							<!-- Display boolean attributes as images if true -->
-							<div class="flex gap-3 my-2">
+							<div class="flex gap-3 mt-2">
 								{#if item.vegan}
 									<img src="/dietaryTag/vegan.png" alt="Vegan" class="w-10 h-10" />
 								{/if}

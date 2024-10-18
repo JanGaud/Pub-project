@@ -19,7 +19,7 @@
 	<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
 		<!-- Loop through each type of alcoholic flavor and put each in a separate grid cell -->
 		{#each alcoholicItemsByFlavor as flavor}
-			<div use:animateOnScroll>
+			<div use:animateOnScroll class="bg-[#ffffff8e] backdrop-blur-md shadow-md">
 				<div>
 					<!-- Flavor Type Header with Background Color -->
 					<div class="p-2" style="background: linear-gradient(to bottom, {flavor.data.color || '#f0f0f0'}, transparent);">
@@ -63,7 +63,7 @@
 		{/each}
 
 		<!-- Last Box: Non-Alcoholic Cocktails -->
-		<div class="flex flex-col justify-between gap-4 p-2 md:p-4 border-t">
+		<div class="flex flex-col justify-between gap-4 p-2 md:p-4 border-t bg-[#ffffff8e] backdrop-blur-md shadow-md">
 			{#if nonAlcoholicItems.length > 0}
 				<div use:animateOnScroll class="flex flex-col gap-4">
 					{#each nonAlcoholicItems as item}
