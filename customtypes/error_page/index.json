@@ -30,6 +30,15 @@
 					"allowText": true
 				}
 			}
+		},
+		"Meta": {
+			"meta_title": {
+				"type": "Text",
+				"config": {
+					"label": "Meta_Title",
+					"placeholder": ""
+				}
+			}
 		}
 	}
 }

@@ -351,7 +351,16 @@ interface ErrorPageDocumentData {
 	 * - **Tab**: Main
 	 * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
 	 */
-	back_home: prismic.LinkField;
+	back_home: prismic.LinkField /**
+	 * Meta_Title field in *error page*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: error_page.meta_title
+	 * - **Tab**: Meta
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */;
+	meta_title: prismic.KeyTextField;
 }
 
 /**

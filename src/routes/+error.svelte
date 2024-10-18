@@ -3,6 +3,17 @@
 	import { PrismicLink } from '@prismicio/svelte';
 </script>
 
+<svelte:head>
+  <title>{$page.data.page_errors.data.meta_title} {$page.status}</title>
+  {#if $page.status === 404}
+    <meta name="description" content={$page.data.page_errors.data['404']} />
+  {/if}
+  {#if $page.status === 500}
+    <meta name="description" content={$page.data.page_errors.data['505']} />
+  {/if}
+</svelte:head>
+
+
 <section class="h-fit -mt-8 md:-mt-36">
 	<div class="relative h-[350px] md:h-[500px]">
 		<div class="text-center">
@@ -32,7 +43,10 @@
 				<p class="text-xl md:text-2xl">{$page.data.page_errors.data['505']}</p>
 			{/if}
 		</div>
-		<PrismicLink class="bg-background text-white shadow-xl flex items-center gap-4 w-fit border-4 uppercase backdrop-blur border-gold-second hover:border-gold duration-200 p-4" field={$page.data.page_errors.data.back_home}
-			>{$page.data.page_errors.data.back_home.text}</PrismicLink>
+		<PrismicLink
+			class="bg-background text-white shadow-xl flex items-center gap-4 w-fit border-4 uppercase backdrop-blur border-gold-second hover:border-gold duration-200 p-4"
+			field={$page.data.page_errors.data.back_home}
+			>{$page.data.page_errors.data.back_home.text}</PrismicLink
+		>
 	</div>
 </section>
