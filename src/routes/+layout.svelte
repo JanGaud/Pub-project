@@ -36,8 +36,7 @@
 <Navbar />
 {#key data.url}
 	<main
-		in:blur={{ x: -200, duration: 300 }}
-		out:blur={{ x: -200, duration: 300 }}
+		transition:blur={{ amount: 20 }}
 		class="mx-auto mt-36 px-2 md:px-20 max-w-screen-2xl"
 	>
 		<slot />
