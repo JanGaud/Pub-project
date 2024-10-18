@@ -20,9 +20,9 @@
 		<!-- Loop through each type of alcoholic flavor and put each in a separate grid cell -->
 		{#each alcoholicItemsByFlavor as flavor}
 			<div use:animateOnScroll>
-				<div class="bg-white">
+				<div>
 					<!-- Flavor Type Header with Background Color -->
-					<div class="p-2"  style="background: linear-gradient(to bottom, {flavor.data.color || '#f0f0f0'}, #ffffff);">
+					<div class="p-2" style="background: linear-gradient(to bottom, {flavor.data.color || '#f0f0f0'}, transparent);">
 						<h2 class="text-2xl font-semibold uppercase">{flavor.data.title}</h2>
 						<p class="text-sm mb-4">{flavor.data.description}</p>
 					</div>
