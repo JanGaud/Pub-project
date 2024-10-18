@@ -111,7 +111,7 @@ export async function POST({ request }: RequestEvent) {
         const mailOptionsAdmin = {
             from: formData.email,
             to: process.env.EMAIL_USER,
-            cc: 'janis_gaudreault@hotmail.fr,',
+            cc: [process.env.CC_EMAIL_MIA, process.env.CC_EMAIL_DOM],
             subject: emailSubject,
             text: `
                 Nom: ${formData.name}
