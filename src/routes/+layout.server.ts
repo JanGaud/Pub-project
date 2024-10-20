@@ -62,6 +62,6 @@ export async function load({ fetch, url }: { fetch: any, url: any }) {
         footer,
         openingHours,
         url: url.pathname,
-        lang, // Include the language to use it in your layout
+        lang,
     };
 }

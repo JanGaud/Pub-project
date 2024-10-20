@@ -20,27 +20,24 @@
 </script>
 
 <svelte:head>
-  {#if $page.status !== 404 && $page.status !== 500}
-    <title>{$page.data.title}</title>
-    {#if $page.data.meta_description}
-      <meta name="description" content={$page.data.meta_description} />
-    {/if}
-    {#if $page.data.meta_title}
-      <meta name="og:title" content={$page.data.meta_title} />
-    {/if}
-    {#if $page.data.meta_image}
-      <meta name="og:image" content={$page.data.meta_image.url} />
-      <meta name="twitter:card" content="summary_large_image" />
-    {/if}
-  {/if}
+	{#if $page.status !== 404 && $page.status !== 500}
+		<title>{$page.data.title}</title>
+		{#if $page.data.meta_description}
+			<meta name="description" content={$page.data.meta_description} />
+		{/if}
+		{#if $page.data.meta_title}
+			<meta name="og:title" content={$page.data.meta_title} />
+		{/if}
+	{/if}
+	{#if $page.data.meta_image}
+		<meta name="og:image" content={$page.data.meta_image.url} />
+		<meta name="twitter:card" content="summary_large_image" />
+	{/if}
 </svelte:head>
 
 <Navbar />
 {#key data.url}
-	<main
-		transition:blur={{ amount: 20 }}
-		class="mx-auto mt-36 px-2 md:px-20 max-w-screen-2xl"
-	>
+	<main transition:blur={{ amount: 20 }} class="mx-auto mt-36 px-2 md:px-20 max-w-screen-2xl">
 		<slot />
 	</main>
 {/key}
