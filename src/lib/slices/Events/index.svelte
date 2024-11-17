@@ -19,7 +19,7 @@
 		<div class="flex flex-col items-center gap-10 border-2 border-gold-second border-opacity-30 rounded-3xl py-8">
 			<h3 class="text-4xl">Google Calendar</h3>
 			<a
-				class="drop-shadow h-fit aspect-square rounded-full overflow-hidden"
+				class="shadow-inner h-fit aspect-square rounded-full overflow-hidden"
 				target="_blank"
 				href={`https://calendar.google.com/calendar/u/0/embed?src=c_53ae943b843333bab36d9e11a63a0f18d3770bcd4a4a9e8fc63765ecc7a94d29@group.calendar.google.com&ctz=America/Toronto&pli=1&hl=${initialLocale}`}
 			>
@@ -30,7 +30,7 @@
 		<div class="flex flex-col items-center gap-10 border-2 border-gold-second border-opacity-30 rounded-3xl py-8">
 			<h3 class="text-4xl">Instagram</h3>
 			<a
-				class="drop-shadow h-fit aspect-square rounded-full overflow-hidden"
+				class="shadow-inner h-fit aspect-square rounded-full overflow-hidden"
 				target="_blank"
 				href={`https://calendar.google.com/calendar/u/0/embed?src=c_53ae943b843333bab36d9e11a63a0f18d3770bcd4a4a9e8fc63765ecc7a94d29@group.calendar.google.com&ctz=America/Toronto&pli=1&hl=${initialLocale}`}
 			>
@@ -41,7 +41,7 @@
 		<div class="flex flex-col items-center gap-10 border-2 border-gold-second border-opacity-30 rounded-3xl py-8">
 			<h3 class="text-4xl">Facebook</h3>
 			<a
-				class="drop-shadow h-fit aspect-square rounded-full overflow-hidden"
+				class="shadow-inner h-fit aspect-square rounded-full overflow-hidden"
 				target="_blank"
 				href={`https://calendar.google.com/calendar/u/0/embed?src=c_53ae943b843333bab36d9e11a63a0f18d3770bcd4a4a9e8fc63765ecc7a94d29@group.calendar.google.com&ctz=America/Toronto&pli=1&hl=${initialLocale}`}
 			>
