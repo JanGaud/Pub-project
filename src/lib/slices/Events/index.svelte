@@ -3,6 +3,8 @@
 	import Icon from '@iconify/svelte';
 	export let slice: any;
 
+	const social = $page.data.settings.data.social_media || [];
+	console.log(social);
 	const initialLocale = $page.url.pathname.split('/')[1].slice(0, 2);
 </script>
 
@@ -32,7 +34,7 @@
 			<a
 				class="shadow-inner h-fit aspect-square rounded-full overflow-hidden"
 				target="_blank"
-				href={`https://calendar.google.com/calendar/u/0/embed?src=c_53ae943b843333bab36d9e11a63a0f18d3770bcd4a4a9e8fc63765ecc7a94d29@group.calendar.google.com&ctz=America/Toronto&pli=1&hl=${initialLocale}`}
+				href={social[1].link.url}
 			>
 				<Icon class="w-40 h-40" icon="skill-icons:instagram" />
 			</a>
@@ -43,7 +45,7 @@
 			<a
 				class="shadow-inner h-fit aspect-square rounded-full overflow-hidden"
 				target="_blank"
-				href={`https://calendar.google.com/calendar/u/0/embed?src=c_53ae943b843333bab36d9e11a63a0f18d3770bcd4a4a9e8fc63765ecc7a94d29@group.calendar.google.com&ctz=America/Toronto&pli=1&hl=${initialLocale}`}
+				href={social[0].link.url}
 			>
 				<Icon class="w-40 h-40" icon="logos:facebook" />
 			</a>
