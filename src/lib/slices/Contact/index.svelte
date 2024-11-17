@@ -481,7 +481,7 @@
 					<div class="h-4 flex items-center justify-center">
 						<!-- Submission message display -->
 						{#if submissionMessage}
-							<p class="text-sm">{submissionMessage}</p>
+							<p class="text-sm text-center">{submissionMessage}</p>
 						{/if}
 					</div>
 				</div>
