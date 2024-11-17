@@ -18,51 +18,6 @@
             "label": "Title",
             "placeholder": ""
           }
-        },
-        "event": {
-          "type": "Group",
-          "config": {
-            "label": "Event",
-            "repeat": true,
-            "fields": {
-              "thum": {
-                "type": "Image",
-                "config": {
-                  "label": "Thumbnail",
-                  "constraint": {},
-                  "thumbnails": []
-                }
-              },
-              "title": {
-                "type": "Text",
-                "config": {
-                  "label": "Title",
-                  "placeholder": ""
-                }
-              },
-              "description": {
-                "type": "Text",
-                "config": {
-                  "label": "Description",
-                  "placeholder": ""
-                }
-              },
-              "date": {
-                "type": "Timestamp",
-                "config": {
-                  "label": "Date",
-                  "placeholder": ""
-                }
-              },
-              "date_end": {
-                "type": "Timestamp",
-                "config": {
-                  "label": "Date End",
-                  "placeholder": ""
-                }
-              }
-            }
-          }
         }
       },
       "items": {}

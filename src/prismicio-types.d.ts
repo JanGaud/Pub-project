@@ -2034,61 +2034,6 @@ type ContactSliceVariation = ContactSliceDefault;
 export type ContactSlice = prismic.SharedSlice<'contact', ContactSliceVariation>;
 
 /**
- * Item in *Events → Default → Primary → Event*
- */
-export interface EventsSliceDefaultPrimaryEventItem {
-	/**
-	 * Thumbnail field in *Events → Default → Primary → Event*
-	 *
-	 * - **Field Type**: Image
-	 * - **Placeholder**: *None*
-	 * - **API ID Path**: events.default.primary.event[].thum
-	 * - **Documentation**: https://prismic.io/docs/field#image
-	 */
-	thum: prismic.ImageField<never>;
-
-	/**
-	 * Title field in *Events → Default → Primary → Event*
-	 *
-	 * - **Field Type**: Text
-	 * - **Placeholder**: *None*
-	 * - **API ID Path**: events.default.primary.event[].title
-	 * - **Documentation**: https://prismic.io/docs/field#key-text
-	 */
-	title: prismic.KeyTextField;
-
-	/**
-	 * Description field in *Events → Default → Primary → Event*
-	 *
-	 * - **Field Type**: Text
-	 * - **Placeholder**: *None*
-	 * - **API ID Path**: events.default.primary.event[].description
-	 * - **Documentation**: https://prismic.io/docs/field#key-text
-	 */
-	description: prismic.KeyTextField;
-
-	/**
-	 * Date field in *Events → Default → Primary → Event*
-	 *
-	 * - **Field Type**: Timestamp
-	 * - **Placeholder**: *None*
-	 * - **API ID Path**: events.default.primary.event[].date
-	 * - **Documentation**: https://prismic.io/docs/field#timestamp
-	 */
-	date: prismic.TimestampField;
-
-	/**
-	 * Date End field in *Events → Default → Primary → Event*
-	 *
-	 * - **Field Type**: Timestamp
-	 * - **Placeholder**: *None*
-	 * - **API ID Path**: events.default.primary.event[].date_end
-	 * - **Documentation**: https://prismic.io/docs/field#timestamp
-	 */
-	date_end: prismic.TimestampField;
-}
-
-/**
  * Primary content in *Events → Default → Primary*
  */
 export interface EventsSliceDefaultPrimary {
@@ -2101,16 +2046,6 @@ export interface EventsSliceDefaultPrimary {
 	 * - **Documentation**: https://prismic.io/docs/field#key-text
 	 */
 	title: prismic.KeyTextField;
-
-	/**
-	 * Event field in *Events → Default → Primary*
-	 *
-	 * - **Field Type**: Group
-	 * - **Placeholder**: *None*
-	 * - **API ID Path**: events.default.primary.event[]
-	 * - **Documentation**: https://prismic.io/docs/field#group
-	 */
-	event: prismic.GroupField<Simplify<EventsSliceDefaultPrimaryEventItem>>;
 }
 
 /**
@@ -2402,7 +2337,6 @@ declare module '@prismicio/client' {
 			ContactSliceVariation,
 			ContactSliceDefault,
 			EventsSlice,
-			EventsSliceDefaultPrimaryEventItem,
 			EventsSliceDefaultPrimary,
 			EventsSliceVariation,
 			EventsSliceDefault,

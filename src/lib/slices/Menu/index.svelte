@@ -31,8 +31,6 @@
 		};
 	});
 
-	console.log('Cocktails by Flavor:', cocktailsByFlavor);
-
 	// Store to track the currently selected section
 	let selectedSection = writable(Object.keys(menu)[0]); // Default to the first section
 
