@@ -2046,6 +2046,66 @@ export interface EventsSliceDefaultPrimary {
 	 * - **Documentation**: https://prismic.io/docs/field#key-text
 	 */
 	title: prismic.KeyTextField;
+
+	/**
+	 * Google field in *Events → Default → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: events.default.primary.google
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	google: prismic.KeyTextField;
+
+	/**
+	 * Google Text field in *Events → Default → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: events.default.primary.google_text
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	google_text: prismic.KeyTextField;
+
+	/**
+	 * Instagram field in *Events → Default → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: events.default.primary.instagram
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	instagram: prismic.KeyTextField;
+
+	/**
+	 * Instagram Text field in *Events → Default → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: events.default.primary.instagram_texte
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	instagram_texte: prismic.KeyTextField;
+
+	/**
+	 * Facebook field in *Events → Default → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: events.default.primary.facebook
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	facebook: prismic.KeyTextField;
+
+	/**
+	 * Facebook Text field in *Events → Default → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: events.default.primary.facebook_texte
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	facebook_texte: prismic.KeyTextField;
 }
 
 /**

@@ -7,6 +7,36 @@
 				"__TYPE__": "FieldContent",
 				"value": "classroom",
 				"type": "Text"
+			},
+			"google": {
+				"__TYPE__": "FieldContent",
+				"value": "page",
+				"type": "Text"
+			},
+			"google_text": {
+				"__TYPE__": "FieldContent",
+				"value": "surface",
+				"type": "Text"
+			},
+			"instagram": {
+				"__TYPE__": "FieldContent",
+				"value": "watch",
+				"type": "Text"
+			},
+			"instagram_texte": {
+				"__TYPE__": "FieldContent",
+				"value": "increase",
+				"type": "Text"
+			},
+			"facebook": {
+				"__TYPE__": "FieldContent",
+				"value": "lower",
+				"type": "Text"
+			},
+			"facebook_texte": {
+				"__TYPE__": "FieldContent",
+				"value": "desert",
+				"type": "Text"
 			}
 		},
 		"items": []

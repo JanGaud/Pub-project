@@ -18,6 +18,48 @@
             "label": "Title",
             "placeholder": ""
           }
+        },
+        "google": {
+          "type": "Text",
+          "config": {
+            "label": "Google",
+            "placeholder": ""
+          }
+        },
+        "google_text": {
+          "type": "Text",
+          "config": {
+            "label": "Google Text",
+            "placeholder": ""
+          }
+        },
+        "instagram": {
+          "type": "Text",
+          "config": {
+            "label": "Instagram",
+            "placeholder": ""
+          }
+        },
+        "instagram_texte": {
+          "type": "Text",
+          "config": {
+            "label": "Instagram Text",
+            "placeholder": ""
+          }
+        },
+        "facebook": {
+          "type": "Text",
+          "config": {
+            "label": "Facebook",
+            "placeholder": ""
+          }
+        },
+        "facebook_texte": {
+          "type": "Text",
+          "config": {
+            "label": "Facebook Text",
+            "placeholder": ""
+          }
         }
       },
       "items": {}
