@@ -119,7 +119,7 @@
 			<!-- Left Arrow, visible only when more than one promo -->
 			{#if specials.length > 1}
 				<button
-					class="absolute left-2 lg:left-16 z-10 text-black text-7xl hover:text-gold duration-200 p-2 rounded-full"
+					class="absolute left-2 lg:left-16 z-10 text-black text-7xl active:text-gold duration-200 p-2 rounded-full"
 					aria-label="Previous Slide"
 					on:click={showPreviousSlide}
 				>
@@ -142,7 +142,7 @@
 			<!-- Right Arrow, visible only when more than one promo -->
 			{#if specials.length > 1}
 				<button
-					class="absolute right-2 lg:right-16 z-10 text-black text-7xl hover:text-gold duration-200 p-2 rounded-full"
+					class="absolute right-2 lg:right-16 z-10 text-black text-7xl active:text-gold duration-200 p-2 rounded-full"
 					aria-label="Next Slide"
 					on:click={showNextSlide}
 				>
