@@ -115,7 +115,7 @@
 
 	{#if specials.length > 0}
 		<!-- Mobile Carousel Section -->
-		<div class="-mt-32 px-2 flex justify-center items-center relative md:hidden">
+		<div class="-mt-32 p-4 h-[375px] flex justify-center items-center relative overflow-hidden md:hidden">
 			<!-- Left Arrow, visible only when more than one promo -->
 			{#if specials.length > 1}
 				<button
