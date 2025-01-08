@@ -47,7 +47,7 @@ body {
 
 /* Custom scrollbar styles */
 ::-webkit-scrollbar-track {
-    background-color: #ffffff;
+    background-color: #222222;
 }
 
 ::-webkit-scrollbar-thumb {

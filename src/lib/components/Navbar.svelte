@@ -60,7 +60,6 @@
 
 <!-- Navbar -->
 <nav class={`h-28 w-full fixed top-0 px-4 pt-4 text-white bg-gold-gradient z-50 flex items-center justify-center md:justify-between drop-shadow-lg transition-all duration-300 ease-in-out ${isVisible ? 'translate-y-0' : '-translate-y-full'}`}>
-   <LocaleSelect />
     <div class="h-full w-[300px]">
         <PrismicLink field={rootLink}>
             {#if logo}
@@ -88,6 +87,7 @@
                     </PrismicLink>
                 </li>
             {/each}
+            <li><LocaleSelect /></li>
         </ul>
     </div>
 </nav>
@@ -102,5 +102,6 @@
                 </PrismicLink>
             </li>
         {/each}
+        <li><LocaleSelect /></li>
     </ul>
 </div>

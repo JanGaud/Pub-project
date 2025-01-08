@@ -49,7 +49,7 @@
 		<!-- Title and Slogan Overlay -->
 		<div class="flex justify-center items-center">
 			<hgroup
-				class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-40 text-white text-center"
+				class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 text-white text-center"
 			>
 				<div class="text-left p-4 sm:p-6 md:p-8">
 					<h1
@@ -64,11 +64,10 @@
 					<PrismicLink
 						field={slice.primary.cta[0]?.link}
 						class="mt-6 shadow-xl flex items-center gap-4 w-fit border-4 uppercase backdrop-blur border-gold-second hover:border-gold duration-200 p-4"
-						>{slice.primary.cta[0]?.label}<Icon
+						>{slice.primary.cta[0]?.label}
+						<Icon
 							class="w-6 h-6"
-							icon="material-symbols-light:restaurant"
-						/></PrismicLink
-					>
+							icon="material-symbols-light:restaurant"/></PrismicLink>
 				</div>
 			</hgroup>
 		</div>
