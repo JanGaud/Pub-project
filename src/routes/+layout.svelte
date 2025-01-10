@@ -20,6 +20,7 @@
 </script>
 
 <svelte:head>
+	<link rel="canonical" href="{$page.url}" />
 	{#if $page.status !== 404 && $page.status !== 500}
 		<title>{$page.data.title}</title>
 		{#if $page.data.meta_description}
