@@ -21,13 +21,6 @@
 					"thumbnails": []
 				}
 			},
-			"notes": {
-				"type": "Text",
-				"config": {
-					"label": "Notes",
-					"placeholder": ""
-				}
-			},
 			"item": {
 				"type": "Group",
 				"config": {

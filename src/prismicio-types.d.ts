@@ -237,17 +237,6 @@ interface CocktailMenuDocumentData {
 	image: prismic.ImageField<never>;
 
 	/**
-	 * Notes field in *cocktail menu*
-	 *
-	 * - **Field Type**: Text
-	 * - **Placeholder**: *None*
-	 * - **API ID Path**: cocktail_menu.notes
-	 * - **Tab**: Main
-	 * - **Documentation**: https://prismic.io/docs/field#key-text
-	 */
-	notes: prismic.KeyTextField;
-
-	/**
 	 * Item field in *cocktail menu*
 	 *
 	 * - **Field Type**: Group

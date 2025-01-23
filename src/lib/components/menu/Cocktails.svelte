@@ -22,11 +22,15 @@
 			<div use:animateOnScroll class="bg-[#ffffff8e] backdrop-blur-md shadow-md">
 				<div>
 					<!-- Flavor Type Header with Background Color -->
-					<div class="p-2" style="background: linear-gradient(to bottom, {flavor.data.color || '#f0f0f0'}, transparent);">
+					<div
+						class="p-2"
+						style="background: linear-gradient(to bottom, {flavor.data.color ||
+							'#f0f0f0'}, transparent);"
+					>
 						<h2 class="text-2xl font-semibold uppercase">{flavor.data.title}</h2>
 						<p class="text-sm mb-4">{flavor.data.description}</p>
 					</div>
-					
+
 					<!-- Cocktails under each flavor -->
 					<div class="flex flex-col gap-4 mt-2 md:mt-4 px-4 pb-4">
 						{#each flavor.cocktails as item}
@@ -35,7 +39,11 @@
 								<div class="flex flex-col justify-between w-full">
 									<!-- Header with drink name and price -->
 									<div class="flex justify-between items-start">
-										<h3 class="text-xl font-semibold {item.out_of_stock ? 'line-through text-red-500' : ''}">
+										<h3
+											class="text-xl font-semibold {item.out_of_stock
+												? 'line-through text-red-500'
+												: ''}"
+										>
 											{item.label}
 										</h3>
 										<div class="flex items-center text-lg gap-2 h-fit">
@@ -63,8 +71,10 @@
 		{/each}
 
 		<!-- Last Box: Non-Alcoholic Cocktails -->
-		<div class="flex flex-col justify-between gap-4 p-2 md:p-4 border-t bg-[#ffffff8e] backdrop-blur-md shadow-md">
-			{#if nonAlcoholicItems.length > 0}
+		{#if nonAlcoholicItems.length > 0}
+			<div
+				class="flex flex-col justify-between gap-4 p-2 md:p-4 border-t bg-[#ffffff8e] backdrop-blur-md shadow-md"
+			>
 				<div use:animateOnScroll class="flex flex-col gap-4">
 					{#each nonAlcoholicItems as item}
 						<!-- Each item container uses w-full to occupy full width -->
@@ -72,7 +82,11 @@
 							<div class="flex flex-col justify-between w-full">
 								<!-- Header with drink name and price -->
 								<div class="flex justify-between items-start">
-									<h3 class="text-xl font-semibold {item.out_of_stock ? 'line-through text-red-500' : ''}">
+									<h3
+										class="text-xl font-semibold {item.out_of_stock
+											? 'line-through text-red-500'
+											: ''}"
+									>
 										{item.label}
 									</h3>
 									<div class="flex items-center text-lg gap-2 h-fit">
@@ -91,10 +105,7 @@
 						</div>
 					{/each}
 				</div>
-			{/if}
-			<div class="flex justify-center text-center border shadow-sm p-2">
-				<small>{cocktailMenu[0]?.data?.notes}</small>
 			</div>
-		</div>
+		{/if}
 	</div>
 </MenuContainer>
