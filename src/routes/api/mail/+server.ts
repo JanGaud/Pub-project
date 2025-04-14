@@ -24,9 +24,7 @@ const transporter = nodemailer.createTransport({
     auth: { user: EMAIL_USER, pass: EMAIL_PASS }
 });
 
-const ccList: string[] = [CC_EMAIL_MIA, CC_EMAIL_DOM].filter(
-    (v): v is string => Boolean(v)
-);
+const ccList = [CC_EMAIL_MIA, CC_EMAIL_DOM].filter(Boolean);
 
 const baseAttachments = [
     { filename: '100Genies.png', path: LOGO_URL, cid: 'logo@100genies' }
@@ -164,12 +162,12 @@ export async function POST({ request }: RequestEvent) {
             from: EMAIL_USER,
             replyTo: data.email,
             to: EMAIL_USER,
-            cc: ccList,
+            cc: ccList as string[],
             subject: adminSubject,
             text: buildText(data),
             html: buildHtml(data, { confirmation: false }),
             attachments: baseAttachments
-        } as const;
+        };
 
         const mailToUser = {
             from: EMAIL_USER,
@@ -178,7 +176,7 @@ export async function POST({ request }: RequestEvent) {
             text: buildText(data, true),
             html: buildHtml(data, { confirmation: true }),
             attachments: baseAttachments
-        } as const;
+        };
 
         await Promise.all([
             transporter.sendMail(mailToAdmin),
@@ -198,4 +196,3 @@ export async function POST({ request }: RequestEvent) {
         );
     }
 }
-gi
