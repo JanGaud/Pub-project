@@ -13,7 +13,6 @@ const {
     EMAIL_USER,
     EMAIL_PASS,
     CC_EMAIL_MIA,
-    CC_EMAIL_DOM,
     LOGO_URL = 'https://www.pub100genies.ca/circleLogo.png'
 } = process.env;
 
@@ -24,7 +23,7 @@ const transporter = nodemailer.createTransport({
     auth: { user: EMAIL_USER, pass: EMAIL_PASS }
 });
 
-const ccList = [CC_EMAIL_MIA, CC_EMAIL_DOM].filter(Boolean);
+const ccList = [CC_EMAIL_MIA].filter(Boolean);
 
 const baseAttachments = [
     { filename: '100Genies.png', path: LOGO_URL, cid: 'logo@100genies' }
