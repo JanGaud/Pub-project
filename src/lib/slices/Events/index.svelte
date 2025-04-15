@@ -110,18 +110,3 @@
 		</div>
 	</div>
 </section>
-
-<style>
-	/* Initial state for cards - hidden */
-	.animated-card {
-		opacity: 0;
-		transform: translateY(20px); /* Moving the card down initially */
-		transition: opacity 0.8s ease-out, transform 0.8s ease-out; /* Smooth animation */
-	}
-
-	/* When the card becomes visible */
-	.animated-card.visible {
-		opacity: 1 !important; /* Force opacity to be visible */
-		transform: translateY(0) !important; /* Force translation to original position */
-	}
-</style>
