@@ -17,6 +17,11 @@
 	inject({ mode: dev ? 'development' : 'production' });
 
 	const businessInfo = $page.data.settings.data;
+
+	// LAYOUT LOCKED: /traiteur has its own footer — the global Footer must stay
+	// suppressed on this route (see CLAUDE.md). Do not remove this check as a
+	// side effect of an unrelated change.
+	$: hideGlobalFooter = $page.url.pathname.startsWith('/traiteur');
 </script>
 
 <svelte:head>
@@ -42,7 +47,9 @@
 		<slot />
 	</main>
 {/key}
-<Footer />
+{#if !hideGlobalFooter}
+	<Footer />
+{/if}
 
 <PrismicPreview {repositoryName} />
 
