@@ -41,11 +41,17 @@
 	{/if}
 </svelte:head>
 
-<Navbar />
+{#if $page.url.pathname !== '/traiteur' && $page.url.pathname !== '/traiteur/'}
+	<Navbar />
+{/if}
 {#key data.url}
-	<main transition:blur={{ amount: 20 }} class="mx-auto mt-36 px-2 md:px-20 max-w-screen-2xl">
-		<slot />
-	</main>
+<main
+	transition:blur={{ amount: 20 }}
+	class="mx-auto px-2 md:px-20 max-w-screen-2xl"
+	class:mt-36={$page.url.pathname !== '/traiteur' && $page.url.pathname !== '/traiteur/'}
+>
+	<slot />
+</main>
 {/key}
 {#if !hideGlobalFooter}
 	<Footer />
